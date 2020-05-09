@@ -1,0 +1,74 @@
+<section class="card-center">
+    <div class="parent" fxLayout="row" fxLayout.lt-md="column" fxFlexFill fxLayoutAlign="center center">
+        <div fxFlex="30%" ngClass.lt-md="section-title-xs-margin">
+            <mat-card [class.mat-elevation-z2]="!isActive" [class.mat-elevation-z8]="isActive">
+                <mat-card-header>
+                    <div mat-card-avatar class="example-header-image"></div>
+                    <mat-card-title>
+                        <h1>
+                            <fa-icon [icon]="faSignInAlt"></fa-icon> Login
+                        </h1>
+                    </mat-card-title>
+                    <mat-card-subtitle>
+                        <div>
+                            <h6 class="text-justify">
+                                If you created your account recently, you must wait for activation of
+                                your account.
+                                <span class="text-success">
+                                    Should you prefer, contact us on teranostico@gmail.com</span>
+                            </h6>
+                        </div>
+                    </mat-card-subtitle>
+                </mat-card-header>
+
+                <mat-card-content class="text-block">
+
+                    <form [formGroup]="formModel">
+
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Username</mat-label>
+                            <input matInput placeholder="meuemail@email.com" formControlName="username" type="email"
+                                [(ngModel)]="credentials.email">
+                            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                            <mat-hint>This is the email you used to register!</mat-hint>
+                            <!-- This will make sure the field is fulfiled -->
+                            <mat-error
+                                *ngIf="!formModel.controls['username'].dirty && formModel.controls['username'].touched">
+                                Required
+                            </mat-error>
+                            <!--  -->
+
+                            <!--  This will make sure the field is fulfiled properly-->
+                            <mat-error
+                                *ngIf="formModel.controls['username'].invalid && formModel.controls['username'].dirty">
+                                invalid Email
+                            </mat-error>
+                            <!--  -->
+
+                        </mat-form-field>
+
+
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <input matInput [type]="hide ? 'password' : 'text'" placeholder="password"
+                                formControlName="password" [(ngModel)]="credentials.password">
+                            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                                [attr.aria-pressed]="hide">
+                                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            </button>
+                            <mat-error>The password is at least 6 character long</mat-error>
+                        </mat-form-field>
+
+                    </form>
+
+                </mat-card-content>
+
+                <mat-divider></mat-divider>
+
+                <mat-card-actions>
+                    <button mat-button (click)="onLoginSubmit()"
+                        [disabled]="formModel.controls['username'].invalid || formModel.controls['password'].invalid">Login</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,53 @@
+.card-center {
+    padding-top: 8rem;
+      // height: 500px;
+   }
+  
+   .example-card {
+      max-width: 400px;
+    }
+    
+    .example-header-image {
+      background-image: url('../../../assets/images/Fiocruz.png');
+      background-size: cover;
+    }
+    
+  .main-header{
+      align-content: center;
+  }  
+  
+  h1, h3, h6{
+    text-align: center;
+  }
+  
+  .section-title-xs-margin {
+      margin-right: 5%;
+      margin-left: 5%;
+    }
+  
+    h1{
+      font-size: 42px;
+    }
+  
+    .container{
+      align-content: center;
+    }
+  
+  
+  
+    .center {    
+      width: 90%;//this controls how much space the text will take
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      
+    }
+  
+  
+    .card{ 
+      margin-top: 1rem;
+    }
+  
+    .text-block{
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }

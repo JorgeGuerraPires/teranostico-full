@@ -5,6 +5,7 @@ const util = require("../utils/utils");
 
 
 const login = function (req, res) {
+    console.log(typeof req.body)
     passport.authenticate("local", { session: false }, (err, user, info) => {
         //Should anything go wrong
         if (err) {

@@ -1,0 +1,55 @@
+<section class="card-center">
+    <div class="parent" fxLayout="row" fxLayout.lt-md="column" fxFlexFill fxLayoutAlign="center center">
+        <div fxFlex="30%" ngClass.lt-md="section-title-xs-margin">
+            <mat-card [class.mat-elevation-z2]="!isActive" [class.mat-elevation-z8]="isActive">
+                <mat-card-header>
+                    <div mat-card-avatar class="example-header-image"></div>
+                    <mat-card-title>
+                        <fa-icon [icon]="faDna" [spin]="true"></fa-icon> {{ pageContent.header.title }}
+                    </mat-card-title>
+                    <mat-card-subtitle>{{ pageContent.header.subtitle }}</mat-card-subtitle>
+                </mat-card-header>
+
+
+                <div class="center">
+                    <h6><i class="fa fa-road"></i>
+                        <fa-icon [icon]="faRoad"></fa-icon> {{ pageContent.address.physical }}
+                    </h6>
+                    <h6>
+                        <fa-icon [icon]="faPhone"></fa-icon> {{ pageContent.address.phone }}
+                    </h6>
+                    <h6>
+
+                        <fa-icon [icon]="faEnvelope"></fa-icon> {{ pageContent.address.email }}
+                    </h6>
+                </div>
+
+                <mat-divider></mat-divider>
+                <mat-card-content class="text-block">
+
+                    <div class="text-block">
+                        <h6 class="text-justify">
+                            Hey there! This is an ongoing project page.
+                            <span class="text-success">
+                                The number of people that can have access to the system is
+                                limited</span>
+                            . If you have been asked to create an user/account, please, do it!
+                            After that, we shall double check your credentials and should
+                            everything be set, activate your account.
+                        </h6>
+                    </div>
+                </mat-card-content>
+
+                <mat-divider></mat-divider>
+
+                <mat-card-actions>
+                    <button mat-button>Register</button>
+                    <button mat-button routerLink="login">Login</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</section>
+
+<!-- Source: https://stackoverflow.com/questions/48196156/how-to-center-vertically-with-angular-flex-layout 
+https://www.angularjswiki.com/angular/how-to-use-font-awesome-icons-in-angular-applications/#rotating-font-awesome-icons-in-angular-->
