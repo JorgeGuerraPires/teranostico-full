@@ -1,0 +1,37 @@
+<!-- <div fxLayout fxLayoutAlign="center center" *ngIf="!showLogo">
+    <a class="toolbar__title" routerLink="/dashboard">
+        <fa-icon [icon]="faDna" [spin]="true"></fa-icon>Teranóstico
+    </a>
+
+</div> -->
+
+
+<mat-toolbar class="toolbar">
+    <button class="toolbar__icon-button" mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>menu</mat-icon>
+    </button>
+
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+    </mat-menu>
+
+    <div class="toolbar__logo-title-group" fxLayout fxLayoutAlign="center center" *ngIf="showLogo">
+        <a class="toolbar__title" routerLink="/dashboard">
+            <fa-icon [icon]="faDna" [spin]="true"></fa-icon>Teranóstico
+        </a>
+    </div>
+
+    <div fxFlex></div>
+
+    <button mat-icon-button class="toolbar__icon-button
+                     toolbar__shopping-cart-button" [matMenuTriggerFor]="menuUser">
+        <fa-icon [icon]="faUser"></fa-icon> Jorge Guerra Pires
+    </button>
+
+    <mat-menu #menuUser="matMenu">
+        <button mat-menu-item>Item 1 User related</button>
+        <button mat-menu-item>Item 2 User related</button>
+    </mat-menu>
+
+</mat-toolbar>

@@ -1,5 +1,9 @@
 <!-- Things here will appear in every page -->
 
+<!--  -->
+<ter-menu *ngIf="this.authenticationService.isThereAToken()"></ter-menu>
+<!--  -->
+
 <!--This is needed for the routing and navegation to work properly-->
 <router-outlet></router-outlet>
 <!--  -->

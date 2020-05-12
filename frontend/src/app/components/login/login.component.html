@@ -26,21 +26,19 @@
                     <form [formGroup]="formModel">
 
                         <mat-form-field class="example-full-width" appearance="fill">
-                            <mat-label>Username</mat-label>
-                            <input matInput placeholder="meuemail@email.com" formControlName="username" type="email"
-                                [(ngModel)]="credentials.email">
+                            <mat-label>Email</mat-label>
+                            <input matInput placeholder="meuemail@email.com" formControlName="email" type="email">
                             <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
                             <mat-hint>This is the email you used to register!</mat-hint>
                             <!-- This will make sure the field is fulfiled -->
                             <mat-error
-                                *ngIf="!formModel.controls['username'].dirty && formModel.controls['username'].touched">
+                                *ngIf="!formModel.controls['email'].dirty && formModel.controls['email'].touched">
                                 Required
                             </mat-error>
                             <!--  -->
 
                             <!--  This will make sure the field is fulfiled properly-->
-                            <mat-error
-                                *ngIf="formModel.controls['username'].invalid && formModel.controls['username'].dirty">
+                            <mat-error *ngIf="formModel.controls['email'].invalid && formModel.controls['email'].dirty">
                                 invalid Email
                             </mat-error>
                             <!--  -->
@@ -50,7 +48,7 @@
 
                         <mat-form-field class="example-full-width" appearance="fill">
                             <input matInput [type]="hide ? 'password' : 'text'" placeholder="password"
-                                formControlName="password" [(ngModel)]="credentials.password">
+                                formControlName="password">
                             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                                 [attr.aria-pressed]="hide">
                                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -66,7 +64,7 @@
 
                 <mat-card-actions>
                     <button mat-button (click)="onLoginSubmit()"
-                        [disabled]="formModel.controls['username'].invalid || formModel.controls['password'].invalid">Login</button>
+                        [disabled]="formModel.controls['email'].invalid || formModel.controls['password'].invalid">Login</button>
                 </mat-card-actions>
             </mat-card>
         </div>

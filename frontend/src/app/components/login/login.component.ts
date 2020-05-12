@@ -4,6 +4,7 @@ import { faSignInAlt } from '@fortawesome/free-solid-svg-icons';
 import { FormGroup, FormBuilder, Validators, ValidationErrors, FormControl, FormGroupDirective } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -22,25 +23,20 @@ export class LoginComponent implements OnInit {
   faSignInAlt = faSignInAlt
   //----------------------------------------
 
-  //----------------------------------------
-  public credentials = {
-    email: "",
-    password: "",
-  };
-  //-----------------------------------------
-  constructor(private fb: FormBuilder, private authenticationService: AuthenticationService) {
+
+  constructor(private fb: FormBuilder, private authenticationService: AuthenticationService, private router: Router) {
     this.formModel = fb.group({
-      username: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.minLength(6)]
     }, { updateOn: "blur" });
   }
-
 
   ngOnInit() {
   }
 
   onLoginSubmit() {
-    this.authenticationService.login(this.credentials).subscribe((msg) => console.log(msg));
+    this.authenticationService.login(this.formModel.value)
+      .subscribe(() => this.router.navigateByUrl("/dashboard"));//after login, this will lead the user to the dashboard
   }
 
 }

@@ -1,0 +1,23 @@
+{
+  "name": "teranostico",
+  "version": "4.0.0",
+  "description": "This is the main json file to the teranostico application",
+  "main": "index.js",
+  "scripts": {
+    "frontend": "cd frontend && ng serve -o",
+    "server": "cd server && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JorgeGuerraPires/Teranostico-v.-4.0.0-v4.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JorgeGuerraPires/Teranostico-v.-4.0.0-v4/issues"
+  },
+  "homepage": "https://github.com/JorgeGuerraPires/Teranostico-v.-4.0.0-v4#readme",
+  "dependencies": {
+    "@angular/flex-layout": "^7.0.0-beta.19"
+  }
+}
