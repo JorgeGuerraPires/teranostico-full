@@ -1,1 +1,10 @@
-<p>dashboard works!</p>
+<h1 class="mat-display-1" *ngIf="showOnSmallDevice">
+    <ter-current-time></ter-current-time>
+    <mat-icon> dashboard</mat-icon>Dashboard
+</h1>
+
+<div class="center-panel" ngClass.lt-md="xs-margin">
+    <ter-info-panel></ter-info-panel>
+</div>
+
+<!-- <button mat-button (click)="this.authenticationService.thisIsPrivate()">Basic</button> -->

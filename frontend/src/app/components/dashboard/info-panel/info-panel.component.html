@@ -1,0 +1,58 @@
+<mat-accordion class="example-headers-align">
+    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Account information
+            </mat-panel-title>
+            <mat-panel-description *ngIf="showOnSmallDevice">
+                Find here some security tips in order to keep salve your account and
+                information you have stored in our dataset <mat-icon>info</mat-icon>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <h1>enter content here!</h1>
+        <mat-action-row>
+            <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                placeholder
+            </mat-panel-title>
+            <mat-panel-description *ngIf="showOnSmallDevice">
+                placeholder
+                <mat-icon>map</mat-icon>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <h1>enter content here!</h1>
+
+
+        <mat-action-row>
+            <button mat-button color="warn" (click)="prevStep()">Previous</button>
+            <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                placeholder
+            </mat-panel-title>
+            <mat-panel-description *ngIf="showOnSmallDevice">
+                placeholder
+                <mat-icon>date_range</mat-icon>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <h1>enter content here!</h1>
+
+        <mat-datepicker #picker></mat-datepicker>
+
+        <mat-action-row>
+            <button mat-button color="warn" (click)="prevStep()">Previous</button>
+            <button mat-button color="primary" (click)="nextStep()">End</button>
+        </mat-action-row>
+    </mat-expansion-panel>
+
+</mat-accordion>

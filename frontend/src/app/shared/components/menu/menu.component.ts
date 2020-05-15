@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { MediaObserver, MediaChange } from '@angular/flex-layout';
 import { faDna, faUser } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
+import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
   selector: 'ter-menu',
@@ -9,6 +10,9 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
+
+  @Output() userSideBar = new EventEmitter();
+
   //-------------------------
   //Font Awesome
   faDna = faDna;
@@ -22,11 +26,8 @@ export class MenuComponent implements OnInit {
   watcher: Subscription;
   //activeMediaQuery = '';
 
-  constructor(mediaObserver: MediaObserver) {
+  constructor(mediaObserver: MediaObserver, private authenticationService: AuthenticationService) {
     this.watcher = mediaObserver.media$.subscribe((change: MediaChange) => {
-      // this.activeMediaQuery = change ? `'${change.mqAlias}' = (${change.mediaQuery})` : '';
-      // console.log(this.activeMediaQuery);
-
       if (change.mqAlias == 'xs') {
         this.loadMobileContent();
       }
@@ -39,13 +40,16 @@ export class MenuComponent implements OnInit {
   }
 
   loadMobileContent() {
-    // Do something special since the viewport is currently
-    // using mobile display sizes
-    // console.log("you are on mobile")
     this.showLogo = false;
   }
 
+
+  openSideBar() {
+    this.userSideBar.emit();
+  }
+
   ngOnInit() {
+    console.log(this.authenticationService.getCurrentUser().name)
   }
 
 }

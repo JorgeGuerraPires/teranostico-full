@@ -1,0 +1,94 @@
+<section class="card-center">
+    <div class="parent" fxLayout="row" fxLayout.lt-md="column" fxFlexFill fxLayoutAlign="center center">
+        <div fxFlex="30%" ngClass.lt-md="section-title-xs-margin">
+            <mat-card [class.mat-elevation-z2]="!isActive" [class.mat-elevation-z8]="isActive">
+                <mat-card-header>
+                    <div mat-card-avatar class="example-header-image"></div>
+                    <mat-card-title>
+                        <h1>
+                            <fa-icon [icon]="faUserPlus"></fa-icon> {{ pageContent.header.title }}
+                        </h1>
+                    </mat-card-title>
+                    <mat-card-subtitle>
+                        <div>
+                            <h6 class="text-justify">
+                                {{ pageContent.info.note }}
+                                <span class="text-success">
+                                    {{ pageContent.info.contactus }}</span>
+                            </h6>
+                        </div>
+                    </mat-card-subtitle>
+                </mat-card-header>
+
+                <mat-card-content class="text-block">
+
+                    <form [formGroup]="formModel">
+
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <input matInput placeholder="name" formControlName="name">
+                            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                            <mat-error *ngIf="formModel.controls['name'].hasError('minlength')">
+                                The name is too short, should at least 2 character long.</mat-error>
+                            <mat-error *ngIf="formModel.controls['name'].hasError('required')"> Required.</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Email</mat-label>
+                            <input matInput placeholder="meuemail@email.com" formControlName="email" type="email">
+                            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                            <mat-hint>The email cannot be in our database already. It is a unique identifier.</mat-hint>
+                            <!-- This will make sure the field is fulfiled -->
+                            <mat-error
+                                *ngIf="!formModel.controls['email'].dirty && formModel.controls['email'].touched">
+                                Required
+                            </mat-error>
+                            <!--  -->
+
+                            <!--  This will make sure the field is fulfiled properly-->
+                            <mat-error *ngIf="formModel.controls['email'].invalid && formModel.controls['email'].dirty">
+                                invalid Email
+                            </mat-error>
+                            <!--  -->
+                        </mat-form-field>
+
+                        <div formGroupName="passwordsGroup">
+
+
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <input matInput [type]="hide ? 'password' : 'text'" placeholder="password"
+                                    formControlName="password">
+                                <button mat-icon-button matSuffix (click)="hide = !hide"
+                                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                                <mat-error>The password is at least 6 character long</mat-error>
+                            </mat-form-field>
+
+                            <mat-form-field class="example-full-width" appearance="fill">
+                                <input matInput [type]="hide ? 'password' : 'text'" placeholder="repeat the password"
+                                    formControlName="pconfirm">
+                                <button mat-icon-button matSuffix (click)="hide = !hide"
+                                    [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                                <!-- <mat-error *ngIf="formModel.hasError('equal', 'passwordsGroup')">They passwords must
+                                    match</mat-error> -->
+                                <mat-hint class="error" [hidden]="!formModel.hasError('equal', 'passwordsGroup')">
+                                    Passwords must be the same</mat-hint>
+                            </mat-form-field>
+                        </div>
+                    </form>
+
+                </mat-card-content>
+
+                <mat-divider></mat-divider>
+
+                <mat-card-actions>
+                    <!-- <button mat-button (click)="onLoginSubmit()" [disabled]="formModel.controls['email'].invalid || formModel.controls['name'].invalid || formModel.hasError('equal', 'passwordsGroup')
+                        || formModel.hasError('minlength', ['passwordsGroup','password' ])">Register</button> -->
+                    <button mat-button (click)="register()" [disabled]="formModel.invalid">Register</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+</section>

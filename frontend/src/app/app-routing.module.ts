@@ -11,7 +11,7 @@ const routes: Routes = [
   {
     path: "",
     loadChildren: './components/welcome/welcome.module#WelcomeModule',
-    //canActivate: [LoginGuard]//this will make the user be redirected to dashboard in case of loggedin
+    canActivate: [LoginGuard]//this will make the user be redirected to dashboard in case of loggedin
   },
   //------------------------------------------------------
   //-----------------------------------------------------
@@ -22,6 +22,18 @@ const routes: Routes = [
     canActivate: [LoginGuard]//this will make the user be redirected to dashboard in case of loggedin
   },
   //------------------------------------------------------
+
+  //-----------------------------------------------------
+  //Login
+  {
+    path: "register",
+    loadChildren: './components/register/register.module#RegisterModule',
+    canActivate: [LoginGuard]//this will make the user be redirected to dashboard in case of loggedin
+  },
+  //------------------------------------------------------
+
+
+
   //-----------------------------------------------------
   //Dashboard
   {

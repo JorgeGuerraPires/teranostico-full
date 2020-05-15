@@ -1,0 +1,11 @@
+<dl class="actions" *ngIf="this.authenticationService.isThereAToken()">
+    <dt>User</dt>
+    <dd>
+        <fa-icon [icon]="faUser"></fa-icon> {{this.authenticationService.getCurrentUser().name}}
+    </dd>
+    <dt>Actions</dt>
+    <dd>
+        <button mat-button (click)="logout()">
+            <fa-icon [icon]="faSignOutAlt"></fa-icon> logout
+        </button></dd>
+</dl>

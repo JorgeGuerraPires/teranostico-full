@@ -8,10 +8,6 @@ const cors = require("cors"); //we need to cors in order to be able to make call
 //----------------------------------------------------
 
 
-
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-
 var app = express();
 
 //-------------------------------------------
@@ -27,9 +23,13 @@ const passport = require("passport"); //Require Passport.
 require("./models/db");
 
 require("./config/passport")(passport); //Require the strategy config.
-
 //---------------------------------------
 
+//-----------------------------------------------------
+//router related
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
+//---------------------------------------------------
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -41,7 +41,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+// app.use('/private', passport.authenticate("jwt", { session: false }), indexRouter);
+
 app.use('/api/users', usersRouter);
 
 // catch 404 and forward to error handler

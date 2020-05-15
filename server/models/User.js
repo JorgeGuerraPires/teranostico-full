@@ -60,7 +60,7 @@ UserSchema.methods.generateJwt = function () {
     //here is where I generate the JWT code
     return jwt.sign(
         {
-            _id: this._id, //this is created automatically by Mongo
+            name: this.name
         },
         process.env.JWT_SECRET,
         { expiresIn: "15m" } //in seconds

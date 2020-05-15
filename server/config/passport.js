@@ -31,15 +31,6 @@ module.exports = function (passport) {
                 secretOrKey: process.env.JWT_SECRET,
             },
             function (jwtPayload, done) {
-                //find the user in db if needed. This functionality may be omitted if you store everything you'll need in JWT payload.
-                // return UserModel.findOneById(jwtPayload.id)
-                //   .then((user) => {
-                //     return cb(null, user);
-                //   })
-                //   .catch((err) => {
-                //     return cb(err);
-                //   });
-                // return done(null, jwtPayload);
                 const expirationDate = new Date(jwtPayload.exp * 1000);
                 if (expirationDate < new Date()) {
                     console.log("token expired");
@@ -101,7 +92,9 @@ module.exports = function (passport) {
                     } else {//the user has a account, but not activated yet
                         return done(null, false, {
                             message:
-                                "You must wait for the activation of your account. You may contact us on test@test.com should it take long",
+                                `Are you ${user.name}? If so, you must wait for the activation of your account. 
+                                You may contact us on teranostico@gmail.com should it take too long, 
+                                or for any other query`,
                         });
                     }
                 }) //end of then

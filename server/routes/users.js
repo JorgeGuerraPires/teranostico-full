@@ -8,4 +8,10 @@ endpoint: /api/users/login
 */
 router.post('/login', ctrlUsers.login);
 
+router.post('/register', ctrlUsers.register);
+
+//api/users/refreshtoken
+router.post("/refreshtoken", ctrlUsers.refreshtoken);
+
+
 module.exports = router;

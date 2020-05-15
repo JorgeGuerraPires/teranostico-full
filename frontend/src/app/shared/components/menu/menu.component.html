@@ -24,10 +24,17 @@
 
     <div fxFlex></div>
 
-    <button mat-icon-button class="toolbar__icon-button
+    <!-- <button mat-icon-button class="toolbar__icon-button
                      toolbar__shopping-cart-button" [matMenuTriggerFor]="menuUser">
-        <fa-icon [icon]="faUser"></fa-icon> Jorge Guerra Pires
+        <fa-icon [icon]="faUser"></fa-icon> {{this.authenticationService.getCurrentUser().name}}
     </button>
+     -->
+
+    <button mat-icon-button class="toolbar__icon-button
+     toolbar__shopping-cart-button" (click)="openSideBar()">
+        <fa-icon [icon]="faUser"></fa-icon>
+    </button>
+
 
     <mat-menu #menuUser="matMenu">
         <button mat-menu-item>Item 1 User related</button>
