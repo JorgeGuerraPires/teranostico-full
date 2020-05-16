@@ -11,6 +11,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProtectedModule } from './shared/modules/protected/protected.module';
 import { UserSideBarMenuComponent } from './shared/components/user-side-bar-menu/user-side-bar-menu.component';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 
 @NgModule({
@@ -21,13 +22,12 @@ import { UserSideBarMenuComponent } from './shared/components/user-side-bar-menu
     BrowserAnimationsModule,
     HttpClientModule,//this is for http calls in the components
     MatSnackBarModule,
-    BrowserAnimationsModule,
     AngularmaterialModule,
     FlexLayoutModule,
     FontAwesomeModule,
     ProtectedModule
   ],
-  providers: [],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [LayoutComponent]
 })
 export class AppModule { }

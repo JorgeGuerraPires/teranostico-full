@@ -5,7 +5,6 @@ import { LoginGuard } from './shared/guards/login.guard';
 
 
 const routes: Routes = [
-
   //-----------------------------------------------------
   //Welcome!
   {
