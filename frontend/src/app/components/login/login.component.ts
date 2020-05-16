@@ -14,6 +14,8 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  isActive = false;
+
   hide = true;//this is for password
 
   //--------------------------------------------
@@ -24,7 +26,7 @@ export class LoginComponent implements OnInit {
   //----------------------------------------
 
 
-  constructor(private fb: FormBuilder, private authenticationService: AuthenticationService, private router: Router) {
+  constructor(private fb: FormBuilder, public authenticationService: AuthenticationService, private router: Router) {
     this.formModel = fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.minLength(6)]

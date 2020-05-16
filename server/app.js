@@ -32,14 +32,15 @@ var usersRouter = require('./routes/users');
 //---------------------------------------------------
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+// app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'jade');
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "./build/public/")));
 
 // app.use('/private', passport.authenticate("jwt", { session: false }), indexRouter);
 
@@ -49,6 +50,17 @@ app.use('/api/users', usersRouter);
 app.use(function (req, res, next) {
   next(createError(404));
 });
+
+
+//----------------------------------------------------
+//This will handle all the endpoints now addressed by express to Angular
+app.get("*", (req, res) => {
+  return res.sendFile(
+    path.join(__dirname, "./build/public/index.html")
+  );
+});
+//-----------------------------------------------------------
+
 
 // error handler
 app.use(function (err, req, res, next) {

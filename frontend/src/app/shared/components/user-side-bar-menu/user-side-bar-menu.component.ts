@@ -19,7 +19,7 @@ export class UserSideBarMenuComponent implements OnInit {
 
   @Output() userSideBar = new EventEmitter();
 
-  constructor(private authenticationService: AuthenticationService) { }
+  constructor(public authenticationService: AuthenticationService) { }
 
   ngOnInit() {
   }

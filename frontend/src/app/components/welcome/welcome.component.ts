@@ -8,6 +8,9 @@ import { faDna, faRoad, faPhone, faEnvelope } from '@fortawesome/free-solid-svg-
   styleUrls: ['./welcome.component.scss']
 })
 export class WelcomeComponent implements OnInit {
+  //------------------------------------
+  isActive = false;
+  //----------------------------------
 
   //-----------------------------------------------
   //Font Awesome

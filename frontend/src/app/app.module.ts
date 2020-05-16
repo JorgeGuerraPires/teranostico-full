@@ -12,6 +12,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProtectedModule } from './shared/modules/protected/protected.module';
 import { UserSideBarMenuComponent } from './shared/components/user-side-bar-menu/user-side-bar-menu.component';
 
+
 @NgModule({
   declarations: [LayoutComponent, MenuComponent, UserSideBarMenuComponent],
   imports: [

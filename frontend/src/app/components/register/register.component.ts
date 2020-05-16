@@ -19,6 +19,7 @@ export interface resServerRegister {
 export class RegisterComponent implements OnInit {
 
   hide = true;//this is for password
+  isActive = false;
 
   //-------------------------------------------------
   public pageContent = {
@@ -42,7 +43,7 @@ export class RegisterComponent implements OnInit {
   //----------------------------------------
 
 
-  constructor(private fb: FormBuilder, private authenticationService: AuthenticationService, private utilService: UtilService) {
+  constructor(private fb: FormBuilder, public authenticationService: AuthenticationService, private utilService: UtilService) {
     this.formModel = fb.group({
       //Personal info
       name: ['', [Validators.required, Validators.minLength(3)]],

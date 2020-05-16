@@ -13,7 +13,7 @@ export class LayoutComponent implements OnInit {
   showMessageSmallDevice = false;
 
   /**authenticationService is being used in the template, it is not useless! */
-  constructor(private authenticationService: AuthenticationService, mediaObserver: MediaObserver) {
+  constructor(public authenticationService: AuthenticationService, mediaObserver: MediaObserver) {
     this.watcher = mediaObserver.media$.subscribe((change: MediaChange) => {
 
       if (change.mqAlias == 'xs') {
