@@ -2,12 +2,10 @@
   "name": "client",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "build": "ng build --prod",
+    "postbuild": "npm run deploy",
+    "predeploy": "rimraf ../server/build/public && mkdirp ../server/build/public",
+    "deploy": "copyfiles -f dist/** ../server/build/public"
   },
   "private": true,
   "dependencies": {
@@ -42,6 +40,9 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
-    "typescript": "~3.5.3"
+    "typescript": "~3.5.3",
+    "copyfiles": "^2.1.0",
+    "mkdirp": "^0.5.1",
+    "rimraf": "^2.5.4"
   }
 }
