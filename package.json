@@ -4,9 +4,9 @@
   "description": "This is the main json file to the teranostico application",
   "main": "index.js",
   "scripts": {
-    "frontend": "cd client && ng serve -o",
+    "frontend": "cd frontend && ng serve -o",
     "server": "cd server && npm start",
-    "build": "cd client && npm run build"
+    "build": "cd frontend && npm run build"
   },
   "repository": {
     "type": "git",

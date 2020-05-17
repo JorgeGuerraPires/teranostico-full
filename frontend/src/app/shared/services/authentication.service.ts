@@ -25,7 +25,7 @@ export class AuthenticationService {
   ) { }
 
   login(user: User) {
-    return this.http.post(`${this.BASE_URL}/users/login`, user)
+    return this.http.post(`${this.BASE_URL}/api/users/login`, user)
       .pipe(
         //Transform the response into something known here
         map(res => res as LoginResponse),
@@ -50,7 +50,7 @@ export class AuthenticationService {
 
   register(user: User) {
     // console.log(user);
-    return this.http.post(`${this.BASE_URL}/users/register`, user)
+    return this.http.post(`${this.BASE_URL}/api/users/register`, user)
       .pipe(
         map(res => res as resServerRegister),
         catchError((error) => {
@@ -82,7 +82,7 @@ export class AuthenticationService {
   }
   public refreshToken() {
 
-    return this.http.post(`${this.BASE_URL}/users/refreshtoken`, {
+    return this.http.post(`${this.BASE_URL}/api/users/refreshtoken`, {
       refreshToken: this.localStorageService.getLocalRefreshToken()
     }).pipe(tap((tokens: LoginResponse) => {
       this.localStorageService.saveToken(tokens.token);
