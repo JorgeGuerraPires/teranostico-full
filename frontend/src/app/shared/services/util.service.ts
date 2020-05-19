@@ -13,6 +13,22 @@ export class UtilService {
   constructor(private _snackBar: MatSnackBar, private mediaObserver: MediaObserver) { }
 
   //-----------------------------------------------------------
+  getScreenSize(): Observable<string> {
+    /**This method return an observable that any component can 
+     * subscribe to, regarding the screen size. 
+     */
+    return new Observable(
+      observer => {
+        this.mediaObserver.media$.subscribe((change: MediaChange) => {
+          observer.next(change.mqAlias)
+        });
+      }
+    );
+  }
+  //---------------------------------------------------------
+
+
+  //-----------------------------------------------------------
   createObservableMobile(): Observable<boolean> {
     /**This method return an observable that any component can 
      * subscribe to, regarding the screen size. 

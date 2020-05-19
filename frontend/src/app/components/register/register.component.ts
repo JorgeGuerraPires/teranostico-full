@@ -4,8 +4,6 @@ import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { ErrorStateMatcher } from '@angular/material';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 import { UtilService } from 'src/app/shared/services/util.service';
-import { tap } from 'rxjs/operators';
-
 
 export interface resServerRegister {
   success_msg: string;

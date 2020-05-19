@@ -30,9 +30,6 @@ const routes: Routes = [
     canActivate: [LoginGuard]//this will make the user be redirected to dashboard in case of loggedin
   },
   //------------------------------------------------------
-
-
-
   //-----------------------------------------------------
   //Dashboard
   {
@@ -42,6 +39,14 @@ const routes: Routes = [
     canLoad: [ProtectedGuard],
   },
   //------------------------------------------------------
+  //-----------------------------------------------------
+  //About us
+  {
+    path: "aboutus",
+    loadChildren: './components/aboutus/aboutus.module#AboutusModule',
+  },
+  //------------------------------------------------------
+
 ];
 
 @NgModule({

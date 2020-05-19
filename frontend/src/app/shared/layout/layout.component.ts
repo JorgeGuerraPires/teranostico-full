@@ -9,8 +9,17 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent implements OnInit {
+
+  //---------------------------------------------------
+  //Meta information
+
+  version = "4.0.0";
+  //-------------------------------------------------
+
+  //--------------------------------------------------
   watcher: Subscription;
   showMessageSmallDevice = false;
+  //--------------------------------------------------
 
   /**authenticationService is being used in the template, it is not useless! */
   constructor(public authenticationService: AuthenticationService, mediaObserver: MediaObserver) {

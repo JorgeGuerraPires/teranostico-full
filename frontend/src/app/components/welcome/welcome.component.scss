@@ -16,32 +16,25 @@
       align-content: center;
   }  
   
-  h1, h3, h6{
+  h1, h3, h6, h4{
     text-align: center;
   }
   
-  .section-title-xs-margin {
-      margin-right: 5%;
-      margin-left: 5%;
-    }
-  
+
     h1{
       font-size: 42px;
     }
   
     .container{
       align-content: center;
-    }
-  
-  
+    }    
   
     .center {    
       width: 90%;//this controls how much space the text will take
       margin-top: 1rem;
       margin-bottom: 1rem;
       
-    }
-  
+    }  
   
     .card{ 
       margin-top: 1rem;
@@ -51,3 +44,13 @@
       margin-top: 2rem;
       margin-bottom: 2rem;
     }
+
+
+      //-------------------------------------------
+  //This is for small devices, it is activated just for small devices
+  .section-title-xs-margin {
+    margin-right: 5%;
+    margin-left: 5%;
+    
+  }
+//--------------------------------------------

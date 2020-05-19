@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { faDna, faRoad, faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faDna, faRoad, faPhone, faEnvelope, faUsers } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'ter-welcome',
@@ -18,6 +18,8 @@ export class WelcomeComponent implements OnInit {
   faRoad = faRoad;
   faPhone = faPhone;
   faEnvelope = faEnvelope;
+  faUsers = faUsers;
+
   //-----------------------------------------------
 
 

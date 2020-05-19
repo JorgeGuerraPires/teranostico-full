@@ -1,4 +1,4 @@
-<section class="card-center">
+<section ngClass.gt-md="card-center">
     <div class="parent" fxLayout="row" fxLayout.lt-md="column" fxFlexFill fxLayoutAlign="center center">
         <div fxFlex="30%" ngClass.lt-md="section-title-xs-margin">
             <mat-card [class.mat-elevation-z2]="!isActive" [class.mat-elevation-z8]="isActive">
@@ -41,6 +41,15 @@
                 </mat-card-content>
 
                 <mat-divider></mat-divider>
+
+                <div>
+                    <h4>
+                        <fa-icon [icon]="faUsers"></fa-icon> <a routerLink="/aboutus">About us</a>
+                    </h4>
+                </div>
+
+                <mat-divider></mat-divider>
+
 
                 <mat-card-actions>
                     <button mat-button routerLink="register">Register</button>

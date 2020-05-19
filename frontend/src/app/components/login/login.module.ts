@@ -24,6 +24,7 @@ import { AngularmaterialModule } from 'src/app/shared/modules/angular-material/a
       { path: '', component: LoginComponent }
     ]),
 
+
   ]
 })
 export class LoginModule { }
