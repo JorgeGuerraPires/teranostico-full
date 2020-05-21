@@ -60,7 +60,8 @@ UserSchema.methods.generateJwt = function () {
     //here is where I generate the JWT code
     return jwt.sign(
         {
-            name: this.name
+            name: this.name,
+            email: this.email
         },
         process.env.JWT_SECRET,
         { expiresIn: "15m" } //in seconds

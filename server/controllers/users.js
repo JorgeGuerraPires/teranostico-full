@@ -106,6 +106,47 @@ const refreshtoken = function (req, res) {
     }//end of if(refreshToken)
 }//end of refreshtoken
 
+const resetpassword = function (req, res) {
 
+    const { username, currentPassword, password } = req.body;
 
-module.exports = { login, refreshtoken, register }
+    // Match user
+    //As the email address is set to be unique in the schema, you can use the Mongoose findOne method.
+    User.findOne({
+        email: username,
+    })
+        .then((user) => {
+
+            // Match password
+            bcrypt.compare(currentPassword, user.password, (err, isMatch) => {
+                if (err) throw err;
+                //---------------------------------------------------------
+                //here if everything is fine!
+                if (isMatch) {
+                    bcrypt.genSalt(10, (err, salt) => {
+                        bcrypt.hash(password, salt, (err, hash) => {
+                            if (err) throw err;
+                            user.password = hash; //set password to hash
+
+                            user //salve the user
+                                .save()
+                                .then(() => {
+                                    //const token = newUser.generateJwt();
+                                    util.sendJSONresponse(res, 200, {
+                                        success_msg: "Password change successfully",
+                                    });
+                                })
+                                .catch((err) => console.log(err));
+                        }); //end of bcrypt.hash
+                    }); //end of bcrypt.genSalt
+                }
+                //---------------------------------------------------------
+                else {
+                    util.sendJSONresponse(res, 400, { msg: "The provided password does not match with the current one in our dataset!" })
+                }
+            });
+        }) //end of then
+        .catch((err) => console.log(err)); //end of then
+}
+
+module.exports = { login, refreshtoken, register, resetpassword }

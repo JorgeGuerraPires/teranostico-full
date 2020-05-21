@@ -10,6 +10,8 @@ router.post('/login', ctrlUsers.login);
 
 router.post('/register', ctrlUsers.register);
 
+router.post('/resetpassword', ctrlUsers.resetpassword);
+
 //api/users/refreshtoken
 router.post("/refreshtoken", ctrlUsers.refreshtoken);
 

@@ -9,6 +9,10 @@ import { throwError } from 'rxjs/internal/observable/throwError';
 import { UtilService } from './util.service';
 import { resServerRegister } from 'src/app/components/register/register.component';
 import { Router } from '@angular/router';
+import { resetPassword } from '../interfaces/reset-password';
+// import { ServerResponse } from 'http';
+import { Observable } from 'rxjs';
+import { ServerResponse } from '../interfaces/server-response';
 
 @Injectable({
   providedIn: 'root'
@@ -36,7 +40,6 @@ export class AuthenticationService {
         }),
         //Catch errors
         catchError((error) => {
-          console.log(error)
           if (error instanceof HttpErrorResponse && error["error"].message) {
             this.utilService.openSnackBar(error["error"].message, "x")
             return throwError(error);
@@ -49,13 +52,10 @@ export class AuthenticationService {
   }//end of login
 
   register(user: User) {
-    // console.log(user);
     return this.http.post(`${this.BASE_URL}/api/users/register`, user)
       .pipe(
         map(res => res as resServerRegister),
         catchError((error) => {
-          // console.log(error)
-          // return throwError(error.error[0].msg);
 
           if (error instanceof HttpErrorResponse && error.error[0].msg) {
             this.utilService.openSnackBar(error.error[0].msg, "x")
@@ -63,7 +63,8 @@ export class AuthenticationService {
           } else {
             return throwError(error);
           }
-        }))
+        })
+      )
   }
 
   public isThereAToken(): boolean {
@@ -75,8 +76,8 @@ export class AuthenticationService {
     if (this.isThereAToken()) {
       const token: string = this.localStorageService.getToken();
 
-      const { name } = JSON.parse(atob(token.split(".")[1]));
-      return { name } as User; //Typecasts object to the User type
+      const { name, email } = JSON.parse(atob(token.split(".")[1]));
+      return { name, email } as User; //Typecasts object to the User type
     }
 
   }
@@ -93,5 +94,20 @@ export class AuthenticationService {
     // this.storage.clear(); //clear all current stored local variables
     this.localStorageService.clearall();
     this.router.navigateByUrl("/login");
+  }
+
+
+  public resetpassword(newPassword: resetPassword): Observable<any> {
+    return this.http.post(`${this.BASE_URL}/api/users/resetpassword`, newPassword)
+      .pipe(map(res => res as ServerResponse),
+        catchError((error) => {
+          if (error instanceof HttpErrorResponse && error.error.msg) {
+            this.utilService.openSnackBar(error.error.msg, "x");
+            return throwError(error);
+          } else {
+            return throwError(error);
+          }
+        })
+      )
   }
 }

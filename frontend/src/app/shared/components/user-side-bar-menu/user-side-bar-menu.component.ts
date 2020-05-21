@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AuthenticationService } from '../../services/authentication.service';
 
-import { faSignOutAlt, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faSignOutAlt, faUser, faKey } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -13,7 +13,8 @@ export class UserSideBarMenuComponent implements OnInit {
 
   //-----------------------------------------
   faSignOutAlt = faSignOutAlt;
-  faUser = faUser
+  faUser = faUser;
+  faKey = faKey;
   //----------------------------------------
 
 

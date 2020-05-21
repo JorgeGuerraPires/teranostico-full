@@ -47,6 +47,21 @@ const routes: Routes = [
   },
   //------------------------------------------------------
 
+  //------------------------------------------------------
+  //-----------------------------------------------------
+  //Reset password
+  {
+    path: "resetpassword",
+    loadChildren: './components/resetpassword/resetpassword.module#ResetpasswordModule',
+    canActivate: [ProtectedGuard],
+    canLoad: [ProtectedGuard],
+  },
+  //------------------------------------------------------
+
+
+
+
+
 ];
 
 @NgModule({

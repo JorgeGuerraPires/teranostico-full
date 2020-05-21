@@ -25,7 +25,8 @@
                     <form [formGroup]="formModel">
 
                         <mat-form-field class="example-full-width" appearance="fill">
-                            <input matInput placeholder="name" formControlName="name">
+                            <mat-label>Name</mat-label>
+                            <input matInput placeholder="e.g., Walter O'Brien" formControlName="name">
                             <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
                             <mat-error *ngIf="formModel.controls['name'].hasError('minlength')">
                                 The name is too short, should at least 2 character long.</mat-error>

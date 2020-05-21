@@ -4,8 +4,18 @@
         <fa-icon [icon]="faUser"></fa-icon> {{this.authenticationService.getCurrentUser().name}}
     </dd>
     <dt>Actions</dt>
+
+    <dd>
+        <a mat-button routerLink="resetpassword" (click)="this.userSideBar.emit()">
+            <fa-icon [icon]="faKey"></fa-icon> Reset passwords
+        </a>
+    </dd>
+    <!-- Log out -->
     <dd>
         <button mat-button (click)="logout()">
             <fa-icon [icon]="faSignOutAlt"></fa-icon> logout
-        </button></dd>
+        </button>
+    </dd>
+
+
 </dl>
