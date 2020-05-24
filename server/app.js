@@ -10,6 +10,10 @@ const cors = require("cors"); //we need to cors in order to be able to make call
 
 var app = express();
 
+
+const util = require("./utils/utils");
+const jwt = require('express-jwt');
+
 //-------------------------------------------
 //Server related configuration
 require("dotenv").config();
@@ -27,13 +31,9 @@ require("./config/passport")(passport); //Require the strategy config.
 
 //-----------------------------------------------------
 //router related
-var indexRouter = require('./routes/index');
+var indexRouter = require('./routes/admin.routes');
 var usersRouter = require('./routes/users');
 //---------------------------------------------------
-
-// view engine setup
-// app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'jade');
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -42,9 +42,14 @@ app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, "./build/public")));
 
-// app.use('/private', passport.authenticate("jwt", { session: false }), indexRouter);
+
+app.use('/api/admin',
+  passport.authenticate("jwt", { session: false }), jwt({ secret: process.env.JWT_SECRET }), //this will double check the jwt(e.g., validity)
+  util.isAdmin, //make sure the user has administration level
+  indexRouter);//give access to routers if everything is fine
 
 app.use('/api/users', usersRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

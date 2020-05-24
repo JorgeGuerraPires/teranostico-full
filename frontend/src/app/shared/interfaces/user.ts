@@ -1,5 +1,16 @@
 export interface User {
+    //--------------------
     email: string;
-    password: string;
     name: string;
+    //---------------------
+
+    //----------------------------
+    password?: string;
+    _id?: String;
+    level?: string;
+    lastLogin?: string;
+    failedLogin?: string;
+    typeOfAccount?: string;
+    resetpassword?: string;
+    //------------------------
 }

@@ -33,6 +33,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
       { path: '', component: ResetpasswordComponent }
     ]),
     //---------------------------------------
+
   ]
 })
 export class ResetpasswordModule { }

@@ -1,0 +1,44 @@
+<div #alert class="alert alert-warning alert-dismissible fade show" role="alert">
+    <button type="button" class="close" aria-label="Close" (click)="closeAlert()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <strong>
+        Keep in mind that what you edit here and save will replace the original
+        content</strong>
+    in the database, therefore, use this tool with caution.
+    <strong>Do not forget to inform </strong> any user whose information is
+    altered.
+</div>
+<!-- Source https://mdbootstrap.com/docs/angular/components/alerts/ -->
+
+
+<mat-grid-list [cols]="columns$ | async" cols="2" rowHeight="500px">
+
+    <mat-grid-tile ngClass.gt-md="tile" ngClass.lt-md="tile-xs">
+        <div ngClass.gt-md="components" ngClass.lt-md="components-xs">
+            <ter-users (output)="userHandle($event)"></ter-users>
+        </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile ngClass.gt-md="tile" ngClass.lt-md="tile-xs">
+        <div ngClass.gt-md="components" ngClass.lt-md="components-xs">
+            <ter-users-editor [selectedUser]="selectedUser"></ter-users-editor>
+        </div>
+    </mat-grid-tile>
+
+</mat-grid-list>
+
+
+
+<div class="instructions">
+    <h1>Instructions</h1>
+    <h3>Reset password</h3>
+
+    <div class="text-block">
+        <h6 class="text-justify">
+            Once you reset the password, it should appear a code on the user information:
+            <span class="text-success"> send this code to the user </span>
+        </h6>
+    </div>
+
+</div>

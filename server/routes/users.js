@@ -1,3 +1,7 @@
+/**
+ * Routers responsible for user related actions that can be done by any user * 
+ */
+
 var express = require('express');
 var router = express.Router();
 const ctrlUsers = require("../controllers/users");
@@ -14,6 +18,10 @@ router.post('/resetpassword', ctrlUsers.resetpassword);
 
 //api/users/refreshtoken
 router.post("/refreshtoken", ctrlUsers.refreshtoken);
+
+router.post("/resetpasswordwithtoken/:jwt", ctrlUsers.resetpasswordWithToken);
+
+router.get("/verify/:jwt", ctrlUsers.verifyToken);
 
 
 module.exports = router;

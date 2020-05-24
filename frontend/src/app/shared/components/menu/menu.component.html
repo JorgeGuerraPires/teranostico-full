@@ -4,8 +4,8 @@
     </button>
 
     <mat-menu #menu="matMenu">
-        <button mat-menu-item>Item 1</button>
-        <button mat-menu-item>Item 2</button>
+        <button mat-menu-item routerLink="userpanel"
+            *ngIf="this.authenticationService.getCurrentUser().level==='admin'">User Administration</button>
     </mat-menu>
 
     <div class="toolbar__logo-title-group" fxLayout fxLayoutAlign="center center" *ngIf="showLogo">

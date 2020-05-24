@@ -48,6 +48,7 @@ export class AuthenticationService {
             return throwError(error);
           }
         })
+
       )//end of pipe
   }//end of login
 
@@ -76,8 +77,8 @@ export class AuthenticationService {
     if (this.isThereAToken()) {
       const token: string = this.localStorageService.getToken();
 
-      const { name, email } = JSON.parse(atob(token.split(".")[1]));
-      return { name, email } as User; //Typecasts object to the User type
+      const { name, email, level } = JSON.parse(atob(token.split(".")[1]));
+      return { name, email, level } as User; //Typecasts object to the User type
     }
 
   }
@@ -99,6 +100,20 @@ export class AuthenticationService {
 
   public resetpassword(newPassword: resetPassword): Observable<any> {
     return this.http.post(`${this.BASE_URL}/api/users/resetpassword`, newPassword)
+      .pipe(map(res => res as ServerResponse),
+        catchError((error) => {
+          if (error instanceof HttpErrorResponse && error.error.msg) {
+            this.utilService.openSnackBar(error.error.msg, "x");
+            return throwError(error);
+          } else {
+            return throwError(error);
+          }
+        })
+      )
+  }
+
+  public resetpasswordWithToken(token: String, newpassword: string): Observable<any> {
+    return this.http.post(`${this.BASE_URL}/api/users/resetpasswordwithtoken/${token}`, { newpassword })
       .pipe(map(res => res as ServerResponse),
         catchError((error) => {
           if (error instanceof HttpErrorResponse && error.error.msg) {

@@ -7,11 +7,13 @@ import { UtilService } from '../services/util.service';
   providedIn: "root",
 })
 export class ProtectedGuard implements CanActivate, CanLoad {
+
   constructor(
     private router: Router,
     private authService: AuthenticationService,
     private utilService: UtilService
   ) { }
+
   canActivate() {
     return this.canLoad();
   }

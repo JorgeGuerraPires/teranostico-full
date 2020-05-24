@@ -26,7 +26,9 @@ export class MenuComponent implements OnInit {
   watcher: Subscription;
   //activeMediaQuery = '';
 
-  constructor(mediaObserver: MediaObserver, private authenticationService: AuthenticationService) {
+  constructor(
+    mediaObserver: MediaObserver,
+    public authenticationService: AuthenticationService) {
     this.watcher = mediaObserver.media$.subscribe((change: MediaChange) => {
       if (change.mqAlias == 'xs') {
         this.loadMobileContent();

@@ -1,0 +1,43 @@
+<mat-card class="example-card mat-elevation-z4">
+    <h3 class="text-center mb-3">
+        <i class="fas fa-user-plus"></i> Registration/editing of user profiles
+    </h3>
+    <div class="container">
+        <form class="example-form">
+
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Name</mat-label>
+                <input matInput [(ngModel)]="selectedUser.name" placeholder="Enter your FullName" name="name" />
+            </mat-form-field>
+
+            <p>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Email</mat-label>
+                    <input matInput [(ngModel)]="selectedUser.email" placeholder="Enter your email" name="email" />
+                </mat-form-field>
+            </p>
+
+            <mat-form-field class="example-full-width" *ngIf="selectedUser.resetpassword">
+                <mat-label>Link for Password Reset</mat-label>
+                <textarea matInput value="http://localhost:4200/#/resetpasswordwithtoken/{{selectedUser.resetpassword}}"
+                    disabled name="resetpassword" rows="5"></textarea>
+            </mat-form-field>
+
+            <a ngxClipboard [cbContent]="'http://localhost:4200/#/resetpasswordwithtoken/' + selectedUser.resetpassword"
+                *ngIf="selectedUser.resetpassword" fxLayoutAlign="end">
+                <fa-icon [icon]="faCopy"></fa-icon>
+            </a>
+
+        </form>
+        <br>
+    </div>
+    <mat-divider></mat-divider>
+    <br>
+    <mat-divider></mat-divider>
+    <mat-card-actions>
+        <button mat-button (click)="submitToMongo()">Submit</button>
+        <button mat-button (click)="clearAll()">Clear all</button>
+        <button mat-raised-button color="warn" (click)="resetpassword()">Reset password</button>
+    </mat-card-actions>
+</mat-card>

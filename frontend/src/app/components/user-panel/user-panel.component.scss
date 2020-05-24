@@ -1,0 +1,53 @@
+
+@import '../../../styles/theme';
+
+.tile {
+    background-color: mat-color($nga-background, card);
+  
+    &:hover {
+      @include mat-elevation(4);
+      transition: .3s;
+    }
+  }
+  
+  .components {
+    width: 100%;    
+    align-items: flex-start;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+  
+  .components-xs {
+    width: 100%;    
+    align-items: flex-start;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+  }
+  
+  .tile-xs{
+    
+    // margin-top: 5%;
+    // background-color: mat-color($nga-background, card);
+
+    // // margin-right: 5%;
+  
+    // &:hover {
+    //   @include mat-elevation(4);
+    //   transition: .3s;
+    // } 
+  }
+
+  .instructions{
+    margin-right: 5%;
+    margin-left: 5%;
+  }
+
+
+  .text-block{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }

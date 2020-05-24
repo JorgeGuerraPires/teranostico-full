@@ -11,6 +11,8 @@ var options = { discriminatorKey: "kind" };
 var randtoken = require("rand-token");
 //--------------------------------------------
 
+const bcrypt = require("bcryptjs"); //used to encrypt the password
+
 
 //------------------------------------------------------------
 
@@ -28,8 +30,11 @@ const UserSchema = new mongoose.Schema(
         password: {
             type: String,
             default: "password not defined yet",
-        },
 
+        },
+        resetpassword: {
+            type: String,
+        },
         status: {
             type: Boolean,
             default: false,
@@ -61,7 +66,9 @@ UserSchema.methods.generateJwt = function () {
     return jwt.sign(
         {
             name: this.name,
-            email: this.email
+            email: this.email,
+            level: this.level,
+
         },
         process.env.JWT_SECRET,
         { expiresIn: "15m" } //in seconds
@@ -69,6 +76,24 @@ UserSchema.methods.generateJwt = function () {
     //--------------------------------------------------------------
 };
 
+
+
+
+UserSchema.methods.generateTokenResetPassword = function () {
+    //--------------------------------------------------------------
+    //here is where I generate the JWT code
+    this.resetpassword = jwt.sign(
+        {
+            name: this.name,
+            email: this.email,
+            level: this.level
+        },
+        process.env.JWT_SECRET,
+        { expiresIn: "7d" } //in seconds
+    ); // DO NOT KEEP YOUR SECRET IN THE CODE!
+    //--------------------------------------------------------------
+    return this.resetpassword;
+};
 
 //------------------------------------------------------
 UserSchema.methods.generateRefreshToken = function () {

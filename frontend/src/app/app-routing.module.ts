@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ProtectedGuard } from './shared/guards/protected.guard';
 import { LoginGuard } from './shared/guards/login.guard';
+import { AdminGuard } from './shared/guards/admin.guard';
+import { GuardGuard } from './components/resetpasswordwithtoken/guards/guard.guard';
 
 
 const routes: Routes = [
@@ -56,8 +58,20 @@ const routes: Routes = [
     canActivate: [ProtectedGuard],
     canLoad: [ProtectedGuard],
   },
+  {
+    path: "resetpasswordwithtoken/:jwt",
+    loadChildren: './components/resetpasswordwithtoken/resetpasswordwithtoken.module#ResetpasswordwithtokenModule',
+    canActivate: [GuardGuard],
+  },
   //------------------------------------------------------
-
+  //user panel, administration
+  {
+    path: "userpanel",
+    loadChildren: './components/user-panel/user-panel.module#UserPanelModule',
+    canActivate: [ProtectedGuard, AdminGuard],
+    canLoad: [ProtectedGuard, AdminGuard],
+  },
+  //------------------------------------------------------
 
 
 

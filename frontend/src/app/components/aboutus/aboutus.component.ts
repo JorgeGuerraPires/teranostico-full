@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { UtilService } from 'src/app/shared/services/util.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
-
 
 @Component({
   selector: 'ter-aboutus',
@@ -11,8 +9,6 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./aboutus.component.scss']
 })
 export class AboutusComponent implements OnInit {
-
-  private readonly BASE_URL = environment.API_URL; //reference to the base URL address of the API
 
   readonly columns$: Observable<number>;
   readonly breakpointsToColumnsNumber = new Map([
