@@ -35,7 +35,7 @@ const UserSchema = new mongoose.Schema(
         resetpassword: {
             type: String,
         },
-        status: {
+        status: {//this variable is responsible to allow access to the account
             type: Boolean,
             default: false,
         },
@@ -61,14 +61,17 @@ const UserSchema = new mongoose.Schema(
 //----------------------------------------------------------
 
 UserSchema.methods.generateJwt = function () {
+    /**Attention! this token is for user loggeding */
     //--------------------------------------------------------------
     //here is where I generate the JWT code
     return jwt.sign(
         {
+            _id: this._id, //this is created automatically by Mongo
             name: this.name,
             email: this.email,
             level: this.level,
-
+            lastLogin: this.lastLogin,
+            failedLogin: this.failedLogin,
         },
         process.env.JWT_SECRET,
         { expiresIn: "15m" } //in seconds
@@ -80,13 +83,15 @@ UserSchema.methods.generateJwt = function () {
 
 
 UserSchema.methods.generateTokenResetPassword = function () {
+    /**Attention! this token is for reset password! */
     //--------------------------------------------------------------
     //here is where I generate the JWT code
     this.resetpassword = jwt.sign(
         {
             name: this.name,
             email: this.email,
-            level: this.level
+            level: this.level,
+
         },
         process.env.JWT_SECRET,
         { expiresIn: "7d" } //in seconds

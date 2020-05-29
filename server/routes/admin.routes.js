@@ -10,6 +10,12 @@ router.delete("/deleteuserbyid/:id", adminUsers.deleteUserById)
 
 router.post("/resetpassword/:id", adminUsers.resetpassword)
 
+router.put("/switchuserstate", adminUsers.switchUserState);
+
+router.put("/setasadmin", adminUsers.setasadmin);
+
+router.put("/unsetasadmin", adminUsers.unsetasadmin);
+
 
 
 module.exports = router;

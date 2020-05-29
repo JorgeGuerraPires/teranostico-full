@@ -31,8 +31,9 @@ require("./config/passport")(passport); //Require the strategy config.
 
 //-----------------------------------------------------
 //router related
-var indexRouter = require('./routes/admin.routes');
-var usersRouter = require('./routes/users');
+const indexRouter = require('./routes/admin.routes');
+const usersRouter = require('./routes/users');
+const userRouter = require('./routes/user.routes');
 //---------------------------------------------------
 
 app.use(logger('dev'));
@@ -49,7 +50,12 @@ app.use('/api/admin',
   indexRouter);//give access to routers if everything is fine
 
 app.use('/api/users', usersRouter);
-
+//-----------------------------------------------------------
+//These routes are especific for users loggedin
+app.use(
+  '/api/user', passport.authenticate("jwt", { session: false }), jwt({ secret: process.env.JWT_SECRET }), //this will double check the jwt(e.g., validity)
+  userRouter);
+//------------------------------------------------------------
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

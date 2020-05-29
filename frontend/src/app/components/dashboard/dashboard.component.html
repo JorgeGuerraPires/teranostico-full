@@ -3,7 +3,17 @@
     <mat-icon> dashboard</mat-icon>Dashboard
 </h1>
 
-<div class="center-panel" ngClass.lt-md="xs-margin">
+<h4 class="title-1">
+    <fa-icon [icon]="faSmile"></fa-icon> Welcome back
+    <span class="badge badge-success">{{ this.authenticationService.getCurrentUser().name }}</span>
+</h4>
+
+<!-- <div class="userinfo">
+    <ter-userinfo></ter-userinfo>
+</div> -->
+
+
+<div class="center-panel" ngClass.lt-md="xs-margin" *ngIf="showOnSmallDevice">
     <ter-info-panel></ter-info-panel>
 </div>
 

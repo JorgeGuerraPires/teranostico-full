@@ -72,13 +72,17 @@ export class AuthenticationService {
     return !!this.localStorageService.getToken()
   }
 
+  /**
+   * @description this method is responsible to retrieving from the server
+   * the user information
+   */
   public getCurrentUser(): User {
 
     if (this.isThereAToken()) {
       const token: string = this.localStorageService.getToken();
 
-      const { name, email, level } = JSON.parse(atob(token.split(".")[1]));
-      return { name, email, level } as User; //Typecasts object to the User type
+      const { _id, name, email, level, lastLogin, failedLogin, status } = JSON.parse(atob(token.split(".")[1]));
+      return { _id, name, email, level, lastLogin, failedLogin, status } as User; //Typecasts object to the User type
     }
 
   }

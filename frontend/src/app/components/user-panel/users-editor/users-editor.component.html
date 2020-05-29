@@ -1,10 +1,9 @@
-<mat-card class="example-card mat-elevation-z4">
+<mat-card class="example-card mat-elevation-z4" *ngIf="selectedUser.name">
     <h3 class="text-center mb-3">
-        <i class="fas fa-user-plus"></i> Registration/editing of user profiles
+        <fa-icon [icon]="faUser"></fa-icon> User profile
     </h3>
     <div class="container">
         <form class="example-form">
-
 
             <mat-form-field class="example-full-width">
                 <mat-label>Name</mat-label>
@@ -38,6 +37,20 @@
     <mat-card-actions>
         <button mat-button (click)="submitToMongo()">Submit</button>
         <button mat-button (click)="clearAll()">Clear all</button>
-        <button mat-raised-button color="warn" (click)="resetpassword()">Reset password</button>
+        <!-- Administration functions -->
+        <mat-divider></mat-divider>
+        <br>
+        <mat-divider></mat-divider>
+        <button mat-raised-button color="warn" (click)="resetpassword()" *ngIf="selectedUser.name">Reset
+            password</button>
+        <button mat-raised-button color="primary" (click)="activeUser()" *ngIf=" !selectedUser.status">Activate account
+        </button>
+        <button mat-raised-button color="warn" (click)="deactiveUser()" *ngIf="selectedUser.status">Deactivate
+            account</button>
+        <button mat-raised-button color="primary" (click)="setasadmin()" *ngIf=" selectedUser.level!=='admin'">Set as
+            administrator</button>
+        <button mat-raised-button color="warn" (click)="unsetasadmin()" *ngIf="selectedUser.level==='admin'">Unset as
+            administrator</button>
+        <!--  -->
     </mat-card-actions>
 </mat-card>

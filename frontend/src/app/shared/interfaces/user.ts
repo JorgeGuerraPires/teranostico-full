@@ -5,12 +5,14 @@ export interface User {
     //---------------------
 
     //----------------------------
+    //optional parameters
     password?: string;
-    _id?: String;
+    _id?: string;
     level?: string;
     lastLogin?: string;
-    failedLogin?: string;
+    failedLogin?: [string];
     typeOfAccount?: string;
     resetpassword?: string;
+    status?: boolean
     //------------------------
 }

@@ -21,7 +21,7 @@
     </mat-grid-tile>
 
     <mat-grid-tile ngClass.gt-md="tile" ngClass.lt-md="tile-xs">
-        <div ngClass.gt-md="components" ngClass.lt-md="components-xs">
+        <div ngClass.gt-md="ter-users-editor" ngClass.lt-md="ter-users-editor-xs">
             <ter-users-editor [selectedUser]="selectedUser"></ter-users-editor>
         </div>
     </mat-grid-tile>
@@ -32,13 +32,49 @@
 
 <div class="instructions">
     <h1>Instructions</h1>
+    <!-- Reset password -->
     <h3>Reset password</h3>
 
     <div class="text-block">
         <h6 class="text-justify">
-            Once you reset the password, it should appear a code on the user information:
-            <span class="text-success"> send this code to the user </span>
-        </h6>
-    </div>
+            Once you reset the password, it should appear a token or/and link on the user information (you may need
+            to refresh the user table and reload the user on the edit table):
+            <span class="text-success"> send this token/link to the user </span>
+            <p>
+                <span class="text-warning">
+                    <fa-icon [icon]="faExclamation"></fa-icon> Important.
+                </span> Just accept requests to reset password from e-mails
+                associated with the
+                user account,
+                and just send the token to the associated e-mail with this account.
+                If necessary, gather more information before reseting the password.
+                Once the password is reset, the user will
+                no longer be able to use the previous password.
 
-</div>
+            </p>
+
+        </h6>
+
+        <!-- Deactivate/activate accounts -->
+        <h3>Deactivate/activate accounts</h3>
+
+        <div class="text-block">
+            <h6 class="text-justify">
+                On the current design, all the registered users are initially set as deactivated. <br>
+                Once you activate an account, the user will have access to it! <br>
+                If you deactive an user, they will lose access to
+                the account!
+            </h6>
+        </div>
+
+        <!-- Set/unset as administrator -->
+        <h3>Deactivate/activate accounts</h3>
+
+        <div class="text-block">
+            <h6 class="text-justify">
+                Administrators have access to all functionalities of the system. Keep this status to a handful names!
+            </h6>
+        </div>
+
+
+    </div>

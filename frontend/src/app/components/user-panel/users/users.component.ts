@@ -3,7 +3,7 @@ import { User } from 'src/app/shared/interfaces/user';
 import { UtilService } from 'src/app/shared/services/util.service';
 import { UsersService } from 'src/app/shared/services/users.service';
 
-import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faTrashAlt, faSyncAlt, faUsers } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -16,7 +16,8 @@ export class UsersComponent implements OnInit {
 
 
   //----------------------------------------------
-  faEdit = faEdit; faTrashAlt = faTrashAlt
+  //Font awesome
+  faEdit = faEdit; faTrashAlt = faTrashAlt; faSyncAlt = faSyncAlt; faUsers = faUsers;
   //---------------------------------------------
 
   //------------------------------------------

@@ -12,7 +12,6 @@ import { AngularmaterialModule } from 'src/app/shared/modules/angular-material/a
 @NgModule({
   declarations: [LoginComponent],
   imports: [
-
     ReactiveFormsModule,
     FormsModule,
     FontAwesomeModule,

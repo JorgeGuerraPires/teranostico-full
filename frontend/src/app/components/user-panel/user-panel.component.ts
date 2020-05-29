@@ -4,19 +4,29 @@ import { UtilService } from 'src/app/shared/services/util.service';
 import { map, tap } from 'rxjs/operators';
 import { User } from 'src/app/shared/interfaces/user';
 
+
+import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
+
+
 @Component({
   selector: 'ter-user-panel',
   templateUrl: './user-panel.component.html',
   styleUrls: ['./user-panel.component.scss']
 })
 export class UserPanelComponent implements OnInit {
+  //-----------------------------------------
+  //Font Awesome
+  faExclamation = faExclamationTriangle;
+  //----------------------------------------
+
+
   selectedUser: User = {
     _id: "",
     email: "",
     name: "",
     level: "",
     lastLogin: "",
-    failedLogin: "",
+    //failedLogin: "",
     typeOfAccount: "",
     resetpassword: ""
   };
@@ -33,7 +43,7 @@ export class UserPanelComponent implements OnInit {
   readonly breakpointsToColumnsNumber = new Map([
     ['xs', 1],
     ['sm', 1],
-    ['md', 2],
+    ['md', 1],
     ['lg', 2],
     ['xl', 2],
   ]);

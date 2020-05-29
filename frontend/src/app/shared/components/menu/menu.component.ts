@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { MediaObserver, MediaChange } from '@angular/flex-layout';
-import { faDna, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faDna, faUser, faUsers } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
 import { AuthenticationService } from '../../services/authentication.service';
 
@@ -16,7 +16,9 @@ export class MenuComponent implements OnInit {
   //-------------------------
   //Font Awesome
   faDna = faDna;
-  faUser = faUser
+  faUser = faUser;
+  faUsers = faUsers;
+
   //-------------------------
 
   //---------------------------------

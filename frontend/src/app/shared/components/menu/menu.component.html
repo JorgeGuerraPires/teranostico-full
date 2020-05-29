@@ -5,7 +5,9 @@
 
     <mat-menu #menu="matMenu">
         <button mat-menu-item routerLink="userpanel"
-            *ngIf="this.authenticationService.getCurrentUser().level==='admin'">User Administration</button>
+            *ngIf="this.authenticationService.getCurrentUser().level==='admin'">
+            <fa-icon [icon]="faUsers"></fa-icon>TeranósticoUser Administration
+        </button>
     </mat-menu>
 
     <div class="toolbar__logo-title-group" fxLayout fxLayoutAlign="center center" *ngIf="showLogo">

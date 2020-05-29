@@ -19,9 +19,11 @@ router.post('/resetpassword', ctrlUsers.resetpassword);
 //api/users/refreshtoken
 router.post("/refreshtoken", ctrlUsers.refreshtoken);
 
+//---------------------------------------------------------------------------------
+//Keep the routes with parameters last
 router.post("/resetpasswordwithtoken/:jwt", ctrlUsers.resetpasswordWithToken);
-
 router.get("/verify/:jwt", ctrlUsers.verifyToken);
+//------------------------------------------------------------------------------
 
 
 module.exports = router;

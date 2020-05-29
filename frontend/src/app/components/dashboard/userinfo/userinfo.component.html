@@ -1,0 +1,38 @@
+<table mat-table [dataSource]="dataSource">
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="information">
+        <th mat-header-cell *matHeaderCellDef>Information</th>
+        <td mat-cell *matCellDef="let element">{{ element.tag }}</td>
+
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="value">
+        <th mat-header-cell *matHeaderCellDef>Value</th>
+        <td mat-cell *matCellDef="let element">
+            <ng-container *ngIf="element.tag ==='Last Login'">{{ element.info | date: 'dd/MM/yyyy'}}</ng-container>
+            <ng-container *ngIf="element.tag !=='Last Login'"> {{ element.info }}</ng-container>
+        </td>
+
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="obs.">
+        <th mat-header-cell *matHeaderCellDef>Obs.</th>
+        <td mat-cell *matCellDef="let element">
+            <div *ngIf="element.buttonName.length > 0">
+                <button (click)="onClick(element.method)" mat-raised-button color="warn"
+                    *ngIf="element.buttonName === 'clean all' && element.info?.length > 0">
+                    {{ element.buttonName }}
+                </button>
+            </div>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+
+
+</table>

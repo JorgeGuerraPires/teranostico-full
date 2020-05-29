@@ -5,12 +5,15 @@
                 Account information
             </mat-panel-title>
             <mat-panel-description *ngIf="showOnSmallDevice">
-                Find here some security tips in order to keep safe your account and
-                information you have stored in our dataset <mat-icon>info</mat-icon>
+                Find here information about your account <mat-icon>info</mat-icon>
             </mat-panel-description>
         </mat-expansion-panel-header>
+        <!-- Main content here! -->
+        <div class="userinfo">
+            <ter-userinfo></ter-userinfo>
+        </div>
+        <!--  -->
 
-        <h1>enter content here!</h1>
         <mat-action-row>
             <button mat-button color="primary" (click)="nextStep()">Next</button>
         </mat-action-row>

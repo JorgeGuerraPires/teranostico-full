@@ -37,7 +37,7 @@ const routes: Routes = [
   {
     path: "dashboard",
     loadChildren: './components/dashboard/dashboard.module#DashboardModule',
-    canActivate: [ProtectedGuard],
+    //canActivate: [ProtectedGuard],
     canLoad: [ProtectedGuard],
   },
   //------------------------------------------------------

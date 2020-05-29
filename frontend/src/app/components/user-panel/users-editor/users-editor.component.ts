@@ -6,7 +6,7 @@ import { UsersService } from 'src/app/shared/services/users.service';
 import { UtilService } from 'src/app/shared/services/util.service';
 //--------------------------------------------------------------------------
 
-import { faCopy } from '@fortawesome/free-solid-svg-icons';
+import { faCopy, faUser } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -16,7 +16,10 @@ import { faCopy } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./users-editor.component.scss']
 })
 export class UsersEditorComponent implements OnInit {
-  faCopy = faCopy;
+  //--------------------------------------------
+  //Font Awesome
+  faCopy = faCopy; faUser = faUser;
+  //--------------------------------------------
 
   @Input() selectedUser: User;
 
@@ -45,16 +48,49 @@ export class UsersEditorComponent implements OnInit {
       name: "",
       level: "",
       lastLogin: "",
-      failedLogin: "",
       typeOfAccount: "",
     };
   }
 
   resetpassword() {
-
     this.usersService.resetpassword(this.selectedUser._id).subscribe((res) => console.log(res))
+  }
 
+  activeUser() {
+    // console.log(this.selectedUser);
+    this.usersService.switchUserState(this.selectedUser._id)
+      .subscribe((res) =>
+        this.utilService.openSnackBar(res.success_msg, "x"))
+  }
+
+  deactiveUser() {
+
+    if (confirm("Are you sure? the user will no longer be able to login.")) {
+      this.usersService.switchUserState(this.selectedUser._id)
+        .subscribe((res) =>
+          this.utilService.openSnackBar(res.success_msg, "x"))
+
+    }
+  }
+
+  setasadmin() {
+    // console.log(this.selectedUser);
+    this.usersService.setasadmin(this.selectedUser._id)
+      .subscribe((res) =>
+        this.utilService.openSnackBar(res.success_msg, "x"))
   }
 
 
+  unsetasadmin() {
+    console.log(this.selectedUser);
+    this.usersService.unsetasadmin(this.selectedUser._id)
+      .subscribe((res) =>
+        this.utilService.openSnackBar(res.success_msg, "x"))
+  }
+
+
+
 }
+
+
+

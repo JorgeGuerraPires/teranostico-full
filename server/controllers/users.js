@@ -215,8 +215,6 @@ const verifyToken = function (req, res) {
         util.sendJSONresponse(res, 400, { msg: err.message })
     }
     //---------------------------------------------------------------
-
-
-
 }
+
 module.exports = { login, refreshtoken, register, resetpassword, resetpasswordWithToken, verifyToken }
