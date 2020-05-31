@@ -9,7 +9,6 @@ import { UtilService } from 'src/app/shared/services/util.service';
 //------------------------------------------------------------------
 export interface Userinfo {
   info: string;
-  //position: number;
   tag: string;
   method: string;
   buttonName: string;
@@ -121,8 +120,9 @@ export class UserinfoComponent implements OnInit {
   //Supporters
   private fromDatesToString(dates: string[]): string {
     let output = ""
-
-    dates.forEach(element => output += String(new Date(element)) + " || ")
+    if (dates) {
+      dates.forEach(element => output += String(new Date(element)) + " || ")
+    }
 
     return output;
   }
