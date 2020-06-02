@@ -1,0 +1,133 @@
+<section ngClass.gt-md="card-content">
+    <div class="parent" fxLayout="row" fxLayout.lt-md="column" fxFlexFill fxLayoutAlign="center center">
+
+        <div fxFlex="50%">
+            <mat-card [class.mat-elevation-z2]="!isActive" [class.mat-elevation-z8]="isActive">
+                <!--  Header-->
+                <mat-card-header>
+                    <mat-card-title>
+                        <h2>
+                            <fa-icon [icon]="faHospitalUser"></fa-icon>Patient Internal Code
+                        </h2>
+                    </mat-card-title>
+                </mat-card-header>
+                <!--  -->
+                <mat-card-content class="text-block">
+
+                    <form [formGroup]="fields">
+
+                        <!-- Email of the responsible -->
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Email do responsável</mat-label>
+                            <input matInput placeholder="e.g., drhouse@awesome.com" formControlName="emaildr">
+                            <!-- This is error and validation form section. This section make sure the input fields
+                            respective their respective demands -->
+                            <!-- This will make sure the field is fulfiled -->
+                            <mat-error *ngIf="!fields.controls['emaildr'].dirty && fields.controls['emaildr'].touched">
+                                Required
+                            </mat-error>
+                            <!--  -->
+                            <!--  This will make sure the field is fulfiled properly-->
+                            <mat-error *ngIf="fields.controls['emaildr'].invalid && fields.controls['emaildr'].dirty">
+                                Envalid email
+                            </mat-error>
+                            <!--  -->
+                            <!-- end of error and field validations -->
+                        </mat-form-field>
+                        <!-- end of Email of the responsible -->
+
+                        <!-- Email of the Patient id -->
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Patient id</mat-label>
+                            <input matInput placeholder="e.g., drhouse@awesome.com" formControlName="patientid"
+                                type="text">
+                            <!-- This is error and validation form section. This section make sure the input fields
+                                                    respective their respective demands -->
+                            <!-- This will make sure the field is fulfiled -->
+                            <mat-error
+                                *ngIf="!fields.controls['patientid'].dirty && fields.controls['patientid'].touched">
+                                Required
+                            </mat-error>
+                            <!--  -->
+                            <!--  This will make sure the field is fulfiled properly-->
+                            <mat-error *ngIf="fields.controls['patientid'].dirty">The patient id is at least 10
+                                character long</mat-error>
+                            <!--  -->
+                            <!-- end of error and field validations -->
+                        </mat-form-field>
+                        <!-- end of Patient id -->
+
+                        <!-- Email of the Patient id -->
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Patient secret</mat-label>
+                            <input matInput placeholder="e.g., drhouse@awesome.com" formControlName="patientidSecret"
+                                type="password">
+                            <!-- This is error and validation form section. This section make sure the input fields
+                                                                            respective their respective demands -->
+
+                            <!--  This will make sure the field is fulfiled properly-->
+                            <mat-error *ngIf="fields.controls['patientidSecret'].dirty">The patient secret is at least
+                                10
+                                character long</mat-error>
+                            <!--  -->
+                            <!-- end of error and field validations -->
+                        </mat-form-field>
+                        <small id="passwordHelpBlock" class="form-text text-muted">
+                            Optional. This is used instead of our own secret. It may increase security since
+                            just you have access to it.
+                        </small>
+                        <!-- end of Patient id -->
+
+
+
+
+                        <mat-label>Nível de privacidade</mat-label>
+
+                        <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+                            formControlName="levelofprivacy">
+                            <mat-radio-button class="example-radio-button" *ngFor="let option of privacyoption"
+                                [value]="option">
+                                {{ option }}
+                            </mat-radio-button>
+                        </mat-radio-group>
+                        <div *ngIf="this.fields.value.levelofprivacy" class="messaging">
+                            Your level of privacy: "{{ this.fields.value.levelofprivacy }}"
+                        </div>
+
+
+                        <mat-checkbox formControlName="serverConsent">I am aware of that my information will be stored
+                            in a server
+                            cuidados</mat-checkbox>
+
+                        <div *ngIf="this.fields.value.serverConsent" class="messaging">
+                            "Server consent: I am aware of that my information will be stored in a server"
+                        </div>
+                    </form>
+
+                </mat-card-content>
+
+                <mat-card-actions>
+
+                    <button mat-button (click)="next()"
+                        [disabled]="fields.invalid || !this.fields.value.serverConsent">Next</button>
+
+
+                    <button mat-button (click)="next()"
+                        [disabled]="fields.invalid || !this.fields.value.serverConsent">Save</button>
+
+
+                    <button [disabled]="!this.fields.value.patientid" mat-button (click)="next()"
+                        matTooltip="Load information from database">Load</button>
+
+
+                </mat-card-actions>
+
+
+                <mat-card-footer>
+                    <ter-progressbar></ter-progressbar>
+                </mat-card-footer>
+
+            </mat-card>
+        </div>
+    </div>
+</section>

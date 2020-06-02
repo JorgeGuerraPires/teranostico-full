@@ -33,6 +33,7 @@
                             <mat-error *ngIf="formModel.controls['name'].hasError('required')"> Required.</mat-error>
                         </mat-form-field>
 
+
                         <mat-form-field class="example-full-width" appearance="fill">
                             <mat-label>Email</mat-label>
                             <input matInput placeholder="meuemail@email.com" formControlName="email" type="email">
@@ -50,6 +51,7 @@
                                 invalid Email
                             </mat-error>
                             <!--  -->
+
                         </mat-form-field>
 
                         <div formGroupName="passwordsGroup">

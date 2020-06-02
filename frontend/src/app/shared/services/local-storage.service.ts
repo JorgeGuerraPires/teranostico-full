@@ -1,5 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { BROWSER_STORAGE } from '../miscellaneous/storage';
+import { Formid } from '../interfaces/patientForm';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,25 @@ export class LocalStorageService {
 
   ) { }
 
+  //-------------------------------------------------------
+  //Related to Patient form
+  public saveJSON(item, name) {
+    this.storage.setItem(name, JSON.stringify(item));
+  }
 
+  public getFormid(): Formid {
+    return JSON.parse(this.storage.getItem("formid")) as Formid;
+  }
+
+  public delete(item: string) {
+    this.storage.removeItem(item);
+  }
+
+  //----------------------------------------------------
+
+
+  //------------------------------------------------
+  //Toke related storage
   public getToken(): string {
     //Creates the getToken function
     return this.storage.getItem("theranostic-token");

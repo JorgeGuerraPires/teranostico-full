@@ -34,6 +34,7 @@ require("./config/passport")(passport); //Require the strategy config.
 const indexRouter = require('./routes/admin.routes');
 const usersRouter = require('./routes/users');
 const userRouter = require('./routes/user.routes');
+const formPatientRouter = require('./routes/formPatient.routes');
 //---------------------------------------------------
 
 app.use(logger('dev'));
@@ -56,6 +57,12 @@ app.use(
   '/api/user', passport.authenticate("jwt", { session: false }), jwt({ secret: process.env.JWT_SECRET }), //this will double check the jwt(e.g., validity)
   userRouter);
 //------------------------------------------------------------
+//--------------------------------------------------------
+
+app.use('/api/patient/form', formPatientRouter);
+
+//-------------------------------------------------------
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

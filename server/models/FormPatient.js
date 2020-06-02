@@ -49,6 +49,30 @@ const sampleSendingDetailsSchema = new mongoose.Schema({
     email: String,
 });
 //---------------------------------------------
+//---------------------------------------------
+const FormidSchema = new mongoose.Schema({
+    //new mongoose schema
+    // emaildr: {
+    //   type: String,
+    //   required: true,
+    // },
+
+    patient: { type: mongoose.SchemaTypes.ObjectId, ref: "Patient" },
+    // patientid: {
+    //   type: String,
+    //   required: true,
+    //   unique: true
+    // },
+    submissionDay: {
+        type: String,
+        //default: Date.now
+    },
+    privacy: privacySchema,
+});
+
+//---------------------------------------------
+
+
 
 //---------------------------------------------
 const Form1Schema = new mongoose.Schema({
@@ -285,11 +309,9 @@ function decryption(value) {
 }
 //--------------------------------------------------
 
-
-
 //-----------------------------------------------
 //Everything is arranged into Form and exported
-const Form = mongoose.model("Form", FormSchema);
+const Form = mongoose.model("FormPatient", FormSchema);
 module.exports = Form;
 //-----------------------------------------------
 

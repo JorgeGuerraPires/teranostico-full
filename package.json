@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/JorgeGuerraPires/Teranostico-v.-4.0.0-v4#readme",
   "dependencies": {
-    "@angular/flex-layout": "^7.0.0-beta.19"
+    "@angular/flex-layout": "^7.0.0-beta.19",
+    "crypto-js": "^4.0.0"
   }
 }

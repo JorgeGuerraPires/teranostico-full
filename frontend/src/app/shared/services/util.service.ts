@@ -72,4 +72,11 @@ export class UtilService {
   }
   //---------------------------------------------
 
+
+  withoutEmptyValues(object: any): any {
+    return Object.keys(object).reduce((queryParams: any, key) => {
+      if (object[key]) { queryParams[key] = object[key]; }
+      return queryParams;
+    }, {});
+  }
 }

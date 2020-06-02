@@ -1,0 +1,73 @@
+.card-content {
+    padding-top: 1rem;
+    
+   }
+
+.text-block{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+
+  .section-title-xs-margin {
+    margin-right: 5%;
+    margin-left: 5%;
+    margin-bottom: 10%;
+    // margin-top: 5%;
+  }
+
+  .error {color: red;}
+
+
+  .hasError {
+    border: 1px solid red;
+  }
+
+
+  //
+  .example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+
+
+  .example-h2 {
+    margin: 10px;
+  }
+
+  .example-section {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 60px;
+  }
+
+  //Check boxes
+
+  .example-radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+  }
+  
+  .example-radio-button {
+    margin: 5px;
+  }
+  
+  .mat-checkbox {
+    margin: 5px;
+  }
+  .messaging {
+    margin: 5px;
+    margin-bottom: 3rem;
+  }
+  
+
+
+  //

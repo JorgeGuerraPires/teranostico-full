@@ -4,6 +4,7 @@ import { ProtectedGuard } from './shared/guards/protected.guard';
 import { LoginGuard } from './shared/guards/login.guard';
 import { AdminGuard } from './shared/guards/admin.guard';
 import { GuardGuard } from './components/resetpasswordwithtoken/guards/guard.guard';
+import { UnsavedChangesGuard } from './shared/guards/unsaved-changes.guard';
 
 
 const routes: Routes = [
@@ -70,6 +71,17 @@ const routes: Routes = [
     loadChildren: './components/user-panel/user-panel.module#UserPanelModule',
     canActivate: [ProtectedGuard, AdminGuard],
     canLoad: [ProtectedGuard, AdminGuard],
+  },
+  //------------------------------------------------------
+
+  //------------------------------------------------------
+  //Patient main form
+  {
+    path: "patientform",
+    loadChildren: './components/patientform/patientform.module#PatientformModule',
+    canLoad: [ProtectedGuard],
+
+
   },
   //------------------------------------------------------
 

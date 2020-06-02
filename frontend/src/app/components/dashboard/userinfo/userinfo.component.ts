@@ -81,7 +81,7 @@ export class UserinfoComponent implements OnInit {
     //1. get the user object
     const user: User = this.authenticationService.getCurrentUser();
     //2. return the user information
-    console.log(user);
+
     return user ? user.lastLogin : "";
   }
 
@@ -96,8 +96,6 @@ export class UserinfoComponent implements OnInit {
 
   public clearAllFailedLogin() {
     const user: User = this.authenticationService.getCurrentUser();
-
-    console.log(user)
 
     this.usersService
       .clearAllFailedLogin(user._id).subscribe(() => {
@@ -114,16 +112,11 @@ export class UserinfoComponent implements OnInit {
     this[method]();
   }
   //----------------------------------------------------------------------------------------------
-
-
   //------------------------------------------------------------------
   //Supporters
   private fromDatesToString(dates: string[]): string {
     let output = ""
-    if (dates) {
-      dates.forEach(element => output += String(new Date(element)) + " || ")
-    }
-
+    dates.forEach(element => output += String(new Date(element)) + " || ")
     return output;
   }
 

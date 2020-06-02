@@ -19,11 +19,13 @@
 
             <mat-form-field class="example-full-width" *ngIf="selectedUser.resetpassword">
                 <mat-label>Link for Password Reset</mat-label>
-                <textarea matInput value="http://localhost:4200/#/resetpasswordwithtoken/{{selectedUser.resetpassword}}"
+                <textarea matInput
+                    value="http://teranostico.cdts.fiocruz.br/#/resetpasswordwithtoken/{{selectedUser.resetpassword}}"
                     disabled name="resetpassword" rows="5"></textarea>
             </mat-form-field>
 
-            <a ngxClipboard [cbContent]="'http://localhost:4200/#/resetpasswordwithtoken/' + selectedUser.resetpassword"
+            <a ngxClipboard
+                [cbContent]="'http://teranostico.cdts.fiocruz.br/#/resetpasswordwithtoken/' + selectedUser.resetpassword"
                 *ngIf="selectedUser.resetpassword" fxLayoutAlign="end">
                 <fa-icon [icon]="faCopy"></fa-icon>
             </a>
