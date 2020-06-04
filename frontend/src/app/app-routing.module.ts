@@ -4,7 +4,7 @@ import { ProtectedGuard } from './shared/guards/protected.guard';
 import { LoginGuard } from './shared/guards/login.guard';
 import { AdminGuard } from './shared/guards/admin.guard';
 import { GuardGuard } from './components/resetpasswordwithtoken/guards/guard.guard';
-import { UnsavedChangesGuard } from './shared/guards/unsaved-changes.guard';
+import { UnsavedChangesGuard } from './components/patientform/formid/unsaved-changes.guard';
 
 
 const routes: Routes = [

@@ -48,8 +48,8 @@ export class AuthenticationService {
             return throwError(error);
           }
         })
-
       )//end of pipe
+
   }//end of login
 
   register(user: User) {

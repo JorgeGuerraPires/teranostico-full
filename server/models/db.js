@@ -72,5 +72,7 @@ connect();
 
 //----------------------------
 require("./User");
+require("./Doctor");
+require("./Patient");
 require("./FormPatient");
 //---------------------------

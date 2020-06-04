@@ -17,7 +17,7 @@
                     <form [formGroup]="fields">
 
                         <!-- Email of the responsible -->
-                        <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-form-field class="example-full-width">
                             <mat-label>Email do responsável</mat-label>
                             <input matInput placeholder="e.g., drhouse@awesome.com" formControlName="emaildr">
                             <!-- This is error and validation form section. This section make sure the input fields
@@ -28,10 +28,14 @@
                             </mat-error>
                             <!--  -->
                             <!--  This will make sure the field is fulfiled properly-->
-                            <mat-error *ngIf="fields.controls['emaildr'].invalid && fields.controls['emaildr'].dirty">
+                            <mat-error
+                                *ngIf=" !fields.hasError('res', 'emaildr') && fields.controls['emaildr'].invalid && fields.controls['emaildr'].dirty">
                                 Envalid email
                             </mat-error>
-                            <!--  -->
+
+                            <mat-error *ngIf="fields.hasError('res', 'emaildr') && fields.controls['emaildr'].dirty">
+                                {{fields.get('emaildr').errors.res}}
+                            </mat-error>
                             <!-- end of error and field validations -->
                         </mat-form-field>
                         <!-- end of Email of the responsible -->
@@ -78,9 +82,6 @@
                         </small>
                         <!-- end of Patient id -->
 
-
-
-
                         <mat-label>Nível de privacidade</mat-label>
 
                         <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
@@ -107,19 +108,16 @@
                 </mat-card-content>
 
                 <mat-card-actions>
+                    <button mat-button routerLink="/patientform/form1"
+                        [disabled]="fields.invalid || !this.fields.value.serverConsent"
+                        matTooltip="Next page, please!">Next</button>
 
-                    <button mat-button (click)="next()"
-                        [disabled]="fields.invalid || !this.fields.value.serverConsent">Next</button>
+                    <button mat-button (click)="save()" [disabled]="fields.invalid || !this.fields.value.serverConsent"
+                        matTooltip="you can save to databse and come back later.">Save</button>
 
-
-                    <button mat-button (click)="next()"
-                        [disabled]="fields.invalid || !this.fields.value.serverConsent">Save</button>
-
-
-                    <button [disabled]="!this.fields.value.patientid" mat-button (click)="next()"
+                    <!-- <button [disabled]="!this.fields.value.patientid" mat-button (click)="next()"
                         matTooltip="Load information from database">Load</button>
-
-
+                         -->
                 </mat-card-actions>
 
 

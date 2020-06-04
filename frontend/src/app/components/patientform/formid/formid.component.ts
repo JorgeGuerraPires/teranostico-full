@@ -4,6 +4,9 @@ import { faHospitalUser } from '@fortawesome/free-solid-svg-icons';
 import { LocalStorageService } from 'src/app/shared/services/local-storage.service';
 import { ErrorStateMatcher } from '@angular/material';
 import { UtilService } from 'src/app/shared/services/util.service';
+import { FormsService } from '../services/forms.service';
+import { EmaildrValidatorService } from '../services/emaildr-validator.service';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'ter-formid',
@@ -11,6 +14,12 @@ import { UtilService } from 'src/app/shared/services/util.service';
   styleUrls: ['./formid.component.scss']
 })
 export class FormidComponent implements OnInit {
+
+  isActive = false;
+
+  //-----------------------------
+  savedToDatabase = false;
+  //---------------------------------
 
 
   //--------------------------------------------
@@ -34,11 +43,13 @@ export class FormidComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private localStorageService: LocalStorageService,
-    private utilService: UtilService
+    private utilService: UtilService,
+    private formsService: FormsService,
+    private emaildrValidatorService: EmaildrValidatorService
 
   ) {
     this.fields = fb.group({
-      emaildr: ["", [Validators.required, Validators.email]],
+      emaildr: ["", [Validators.required, Validators.email], emaildrValidatorService.checkDoctorEmail.bind(emaildrValidatorService)],
       patientid: ["", [Validators.required, Validators.minLength(10)]],
       levelofprivacy: ["", [Validators.required]],
       serverConsent: ["", [Validators.required]],
@@ -49,6 +60,18 @@ export class FormidComponent implements OnInit {
   //-------------------------------------------------------------------------------------------------------------------------------
 
   ngOnInit() {
+    //------------------------------------------------------------------
+    const emaildrcheck = this.fields.get("emaildr");
+    emaildrcheck.valueChanges.subscribe(res => this.fields.setErrors(res))
+    //-----------------------------------------------------------------
+
+    //-----------------------------------------------------------------
+    const patientcheck = this.fields.get("patientid");
+    patientcheck.valueChanges
+      .pipe(debounceTime(200))
+      .subscribe(res => console.log(res))
+    //---------------------------------------------------------------
+
   }
 
 
@@ -56,7 +79,24 @@ export class FormidComponent implements OnInit {
     this.localStorageService.saveJSON(this.utilService.withoutEmptyValues(this.fields.value), "formid")
   }
 
+  save() {
+
+
+    this.formsService.submitFormid(this.utilService.withoutEmptyValues(this.fields.value))
+      .subscribe(res => {
+        this.savedToDatabase = true;
+        this.utilService.openSnackBar(res.success_msg, "x");
+
+      });
+
+  }
 
 }
 
 
+// // /** Error when either control or the form is invalid. */
+export class ShowOnFormInvalidStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | null): boolean {
+    return !!((control && control.invalid) || (form && form.hasError('res')));
+  }
+}

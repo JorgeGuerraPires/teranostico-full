@@ -8,22 +8,42 @@ const mongoose = require("mongoose");
 const FormPatient = mongoose.model("FormPatient");
 //-------------------------------------------------------
 
+//-------------------------------------------------------
+const util = require("../utils/utils");
+const authUtils = require("../config/auth");
+//------------------------------------------------------
+
+//-----------------------------------------------------
+const Patient = mongoose.model("Patient");
+const Doctor = mongoose.model("Doctor");
+//----------------------------------------------------
+
+//------------------------------------------------------
+const formVariable = {}; //global variables
+//--------------------------------------------------
+
 //------------------------------------------------------
 
 //------------------------------------------------------------
 //Form id, this is the first part of the form
 const formidSave = function (req, res, next) {
+
+    // util.sendJSONresponse(res, 200, { success_msg: "okay" });
+    // console.log(req.body)
+
     // console.log("here on formidSave ")
     // let errors = [];
 
-    // const {
-    //     emaildr,
-    //     patientid,
-    //     levelofprivacy,
-    //     serverConsent,
-    //     patientidSecret,
-    // } = req.body;
-
+    //-----------------------------------
+    //1. take from req.body the values to be saved
+    const {
+        emaildr,
+        patientid,
+        levelofprivacy,
+        serverConsent,
+        patientidSecret,
+    } = req.body;
+    //--------------------------------
     // //-----------------------------------Entered info check------------
     // //check required fields
     // if (!emaildr) {
@@ -46,96 +66,106 @@ const formidSave = function (req, res, next) {
     // if (errors.length > 0) {
     //     return util.sendJSONresponse(res, 400, errors);
     // } else {
+
     //     /**if we arrive here, it means we double-checked all the issues,
     //      * and everything is set, just save the patient info */
-    //     let secret;
-    //     if (patientidSecret.length > 0) secret = patientidSecret;
-    //     else secret = process.env.encryption_sensitive_patient_information;
 
-    //     const hashedPatientId = authUtils.hashPassword(patientid, secret); //hash the patient id
+    //---------------------------------------------------------------
+    //Here we see if the user provided a personalized secret
+    let secret;
+    if (patientidSecret) secret = patientidSecret;
+    else secret = process.env.encryption_sensitive_patient_information;
+    //------------------------------------------------------------
+
+    const hashedPatientId = authUtils.hashPassword(patientid, secret); //hash the patient id
 
     //     //-------------------------------------------------------
     //     //try to find the patient, if not, create a new one
-    //     Patient.findOne({ patientID: hashedPatientId })
-    //         .populate("informationForm")
-    //         .then(async (patient) => {
-    //             if (patient) {
-    //                 //see if the patient already exists. If patient exists, add this form to his history
+    Patient.findOne({ patientID: hashedPatientId })
+        .populate("informationForm")
+        .then(async (patient) => {
+            if (patient) {
+                //see if the patient already exists. If patient exists, add this form to his history
 
-    //                 /**if patient already exists, no need to create a Doctor,
-    //                  * since it is created when the patient is created */
+                /**if patient already exists, no need to create a Doctor,
+                 * since it is created when the patient is created */
 
-    //                 patient.informationForm.push(
-    //                     //-------------------------------------
-    //                     await Form.create({
-    //                         formid: {
-    //                             patient: patient._id, //save the patient id in the just created formid
-    //                             privacy: { levelofprivacy, serverConsent },
-    //                         },
-    //                     })
-    //                         .then((formCreated) => {
-    //                             formVariable.id = formCreated._id; //this is the first method to access the form, so it creates the form and stores locally the id for later access!
+                patient.informationForm.push(
+                    //-------------------------------------
+                    await FormPatient.create({
+                        formid: {
+                            patient: patient._id, //save the patient id in the just created formid
+                            privacy: { levelofprivacy, serverConsent },
+                        },
+                    })
+                        .then((formCreated) => {
+                            formVariable.id = formCreated._id; //this is the first method to access the form, so it creates the form and stores locally the id for later access!
 
-    //                             return formCreated._id;
-    //                         })
-    //                         .catch((err) => {
-    //                             console.log(err);
-    //                             //return util.sendJSONresponse(res, 400, err);
-    //                         })
-    //                     //-----------------------------------------
-    //                 );
+                            return formCreated._id;
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                            //return util.sendJSONresponse(res, 400, err);
+                        })
+                    //-----------------------------------------
+                );
 
-    //                 //----------------------------------------------------------
-    //                 /**When the patient already exists, no need to insert the doctor, it is already inserted when created
-    //                  * Further, when created, it is also added to the doctors list
-    //                  */
+                //----------------------------------------------------------
+                /**When the patient already exists, no need to insert the doctor, it is already inserted when created
+                 * Further, when created, it is also added to the doctors list
+                 */
 
-    //                 //-----------------------------------------------------------
+                //-----------------------------------------------------------
 
-    //                 patient
-    //                     .save()
-    //                     .then(() => {
-    //                         return util.sendJSONresponse(res, 200, {
-    //                             success_msg: `We spot the patient with id ${patientid} in our database. We will add this new form to his history!`,
-    //                         });
-    //                     })
-    //                     .catch((err) => console.log(err));
-    //             } else {
-    //                 //if no patient, creates a new one, and add the form to his forms history
-    //                 Patient.create({
-    //                     patientID: hashedPatientId,
-    //                     informationForm: [],
-    //                 }).then((created) => {
-    //                     Form.create({
-    //                         formid: {
-    //                             //emaildr,
-    //                             patient: created._id,
-    //                             privacy: { levelofprivacy, serverConsent },
-    //                         },
-    //                     })
-    //                         .then((formCreated) => {
-    //                             formVariable.id = formCreated._id; //this is the first method to access the form, so it creates the form!
-    //                             created.informationForm.push(formCreated._id); //save the form id, as so we can use populate later
+                patient
+                    .save()
+                    .then(() => {
+                        return util.sendJSONresponse(res, 200, {
+                            success_msg: `We spot the patient with id ${patientid} in our database. We will add this new form to his history!`,
+                        });
+                    })
+                    .catch((err) => console.log(err));
+            }//end of patient found 
+            else {
+                //if no patient, creates a new one, and add the form to his forms history
+                Patient.create({
+                    patientID: hashedPatientId,
+                    informationForm: [],
+                }).then((created) => {
+                    FormPatient.create({
+                        formid: {
+                            patient: created._id,
+                            privacy: { levelofprivacy, serverConsent },
+                        },
+                    })
+                        .then(async formCreated => {
+                            formVariable.id = formCreated._id; //this is the first method to access the form, so it creates the form!
+                            created.informationForm.push(formCreated._id); //save the form id, as so we can use populate later
 
-    //                             //------------------------------------------------
-    //                             Doctor.insertPatient(emaildr, created);
-    //                             //----------------------------------------------------
+                            //------------------------------------------------
+                            /**I am making sure in the frontend that the user cannot send a doctor email equal a user
+                             * already in our database! 
+                             */
+                            Doctor.insertPatient(emaildr, created);
+                            //----------------------------------------------------
 
-    //                             return util.sendJSONresponse(res, 200, {
-    //                                 success_msg: `Form salved to patient with id ${patientid}!`,
-    //                             });
-    //                         })
-    //                         .catch((err) => {
-    //                             console.log(err);
-    //                             //return util.sendJSONresponse(res, 400, err);
-    //                         });
-    //                 });
-    //                 //-----------------------------------------------
-    //             } //end of else
+                            return util.sendJSONresponse(res, 200, {
+                                success_msg: `Form salved to patient with id ${patientid}!`,
+                            });
 
-    //             //-----------------------------------------------
-    //         }) //end of patient found
-    //         .catch((err) => console.log(err));
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                            //return util.sendJSONresponse(res, 400, err);
+                        });
+                });
+                // //-----------------------------------------------
+
+            } //end of else
+
+            //-----------------------------------------------
+        }) //end of patient found
+        .catch((err) => console.log(err));
 
     //     //------------------------------------------------------
     // } //end of else that no error was found

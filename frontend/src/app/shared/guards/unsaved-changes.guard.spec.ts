@@ -1,6 +1,6 @@
 import { TestBed, async, inject } from '@angular/core/testing';
 
-import { UnsavedChangesGuard } from './unsaved-changes.guard';
+import { UnsavedChangesGuard } from '../../components/patientform/formid/unsaved-changes.guard';
 
 describe('UnsavedChangesGuard', () => {
   beforeEach(() => {

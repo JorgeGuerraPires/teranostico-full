@@ -312,6 +312,6 @@ function decryption(value) {
 //-----------------------------------------------
 //Everything is arranged into Form and exported
 const Form = mongoose.model("FormPatient", FormSchema);
-module.exports = Form;
+// module.exports = Form;
 //-----------------------------------------------
 

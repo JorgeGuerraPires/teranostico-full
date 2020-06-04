@@ -35,6 +35,8 @@ const indexRouter = require('./routes/admin.routes');
 const usersRouter = require('./routes/users');
 const userRouter = require('./routes/user.routes');
 const formPatientRouter = require('./routes/formPatient.routes');
+const patientRouter = require('./routes/patient.routes');
+const doctorsRouter = require('./routes/doctor.routes');
 //---------------------------------------------------
 
 app.use(logger('dev'));
@@ -60,6 +62,9 @@ app.use(
 //--------------------------------------------------------
 
 app.use('/api/patient/form', formPatientRouter);
+
+app.use('/api/patients', patientRouter);
+app.use('/api/doctors', doctorsRouter);
 
 //-------------------------------------------------------
 

@@ -25,5 +25,8 @@ router.post("/resetpasswordwithtoken/:jwt", ctrlUsers.resetpasswordWithToken);
 router.get("/verify/:jwt", ctrlUsers.verifyToken);
 //------------------------------------------------------------------------------
 
+// --------------------------------------------------
+router.post("/checkemail", ctrlUsers.checkemail);
+// --------------------------------------------------
 
 module.exports = router;

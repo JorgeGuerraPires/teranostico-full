@@ -6,9 +6,20 @@
     <mat-menu #menu="matMenu">
         <button mat-menu-item routerLink="userpanel"
             *ngIf="this.authenticationService.getCurrentUser().level==='admin'">
-            <fa-icon [icon]="faUsers"></fa-icon>TeranósticoUser Administration
+            <fa-icon [icon]="faUsers"></fa-icon> User Administration
+        </button>
+        <button mat-menu-item [matMenuTriggerFor]="patientforms">
+            <fa-icon [icon]="faCheckSquare"></fa-icon> Patient form
         </button>
     </mat-menu>
+
+    <mat-menu #patientforms="matMenu">
+        <button mat-menu-item routerLink="patientform/formid">
+            <fa-icon [icon]="faHospitalUser"></fa-icon>Patient form
+        </button>
+    </mat-menu>
+
+
 
     <div class="toolbar__logo-title-group" fxLayout fxLayoutAlign="center center" *ngIf="showLogo">
         <a class="toolbar__title" routerLink="/dashboard">

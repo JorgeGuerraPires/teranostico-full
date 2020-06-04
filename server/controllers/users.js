@@ -6,7 +6,7 @@ const util = require("../utils/utils");
 const mongoose = require("mongoose");
 const User = mongoose.model("User");
 const bcrypt = require("bcryptjs"); //used to encrypt the password
-const jwtdecoder = require("jwt-decode")
+// const jwtdecoder = require("jwt-decode")
 const jwt = require('jsonwebtoken');
 //-------------------------------------------
 
@@ -217,4 +217,17 @@ const verifyToken = function (req, res) {
     //---------------------------------------------------------------
 }
 
-module.exports = { login, refreshtoken, register, resetpassword, resetpasswordWithToken, verifyToken }
+
+//----------------------------------------------------------------------
+const checkemail = function (req, res) {
+    User.findOne({ email: req.body.email })
+        .then(user => {
+            if (user)
+                util.sendJSONresponse(res, 200, { res: "Email already in use by a no-doctor user" })
+            else util.sendJSONresponse(res, 200, null)
+        })
+}
+//---------------------------------------------------------------------
+
+
+module.exports = { login, refreshtoken, register, resetpassword, resetpasswordWithToken, verifyToken, checkemail }
