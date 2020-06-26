@@ -28,12 +28,6 @@ const formVariable = {}; //global variables
 //Form id, this is the first part of the form
 const formidSave = function (req, res, next) {
 
-    // util.sendJSONresponse(res, 200, { success_msg: "okay" });
-    // console.log(req.body)
-
-    // console.log("here on formidSave ")
-    // let errors = [];
-
     //-----------------------------------
     //1. take from req.body the values to be saved
     const {
@@ -43,30 +37,6 @@ const formidSave = function (req, res, next) {
         serverConsent,
         patientidSecret,
     } = req.body;
-    //--------------------------------
-    // //-----------------------------------Entered info check------------
-    // //check required fields
-    // if (!emaildr) {
-    //     errors.push({
-    //         msg: "Your form was not salve. Please enter an email for the responsible",
-    //     });
-    // }
-
-    // if (!patientid) {
-    //     errors.push({
-    //         msg:
-    //             "Your form was not salve. Please enter an id for the patient. It should be at least 6 characters long",
-    //     });
-    // } else if (patientid.length < 6) {
-    //     errors.push({
-    //         msg: "Your form was not salve. patient id must be at least 6 characters",
-    //     });
-    // }
-    // //-----------------------------------------------------------------------------------
-    // if (errors.length > 0) {
-    //     return util.sendJSONresponse(res, 400, errors);
-    // } else {
-
     //     /**if we arrive here, it means we double-checked all the issues,
     //      * and everything is set, just save the patient info */
 
@@ -172,6 +142,36 @@ const formidSave = function (req, res, next) {
 }; //end of formidSave
 //-----------------------------------------------------
 
+//----------------------------------------------------
+const formPage1Save = function (req, res, next) {
+
+    //------------------------------------------
+    /**
+     * The frontend supposes to avoid this, but just to make sure!  
+    */
+    if (!formVariable.id)
+        util.sendJSONresponse(res, 400, { error: "you must submit a patient id first" })
+    //-------------------------------------------
+
+    //---------------------------------------------
+    FormPatient.updateOne(
+        { _id: formVariable.id },
+        {
+            $set: { form1: req.body },
+        },
+        (err) => {
+            if (err) return util.sendJSONresponse(res, 500, errors);
+            else {
+                formVariable.form1 = true;
+                //console.log("okay");
+                util.sendJSONresponse(res, 200, { success_msg: "Form salved!" });
+            }
+        }
+    );
+    //----------------------------------------------
+}//end of  formPage1Save
+
+//---------------------------------------------------
 
 //-------------------------------------------
 //salving the address details for send the samples
@@ -236,4 +236,86 @@ const sampleSendingDetails = function (req, res, next) {
 //-------------------------------------------
 
 
-module.exports = { sampleSendingDetails, formidSave }
+//--------------------------------------------------
+/**@description this is the second page of the patient form */
+const formPage2Save = function (req, res, next) {
+    FormPatient.updateOne({ _id: formVariable.id },
+        { $set: { form2: req.body } },
+        (err) => {
+            if (err) return util.sendJSONresponse(res, 500, { error_msg: "Something went wrong" });
+            else util.sendJSONresponse(res, 200, { success_msg: "Form salved!" });
+        })
+}
+//--------------------------------------------------
+
+const formPage3Save = function (req, res, next) {
+
+    FormPatient.updateOne({ _id: formVariable.id },
+        { $set: { form3: req.body } },
+        (err) => {
+            if (err) {
+                console.log(err)
+                return util.sendJSONresponse(res, 500, err);
+            }
+            else util.sendJSONresponse(res, 200, { success_msg: "Form salved!" });
+        })
+}
+
+const formPage4Save = function (req, res, next) {
+
+    FormPatient.updateOne({ _id: formVariable.id },
+        { $set: { form4: req.body } },
+        (err) => {
+            if (err) {
+                console.log(err)
+                return util.sendJSONresponse(res, 500, err);
+            }
+            else util.sendJSONresponse(res, 200, { success_msg: "Form salved!" });
+        })
+}
+
+const formPage5Save = function (req, res, next) {
+
+    // console.log(req.body)
+
+    FormPatient.updateOne({ _id: formVariable.id },
+        { $set: { form5: req.body } },
+        (err) => {
+            if (err) {
+                console.log(err)
+                return util.sendJSONresponse(res, 500, err);
+            }
+            else util.sendJSONresponse(res, 200, { success_msg: "Form salved!" });
+        })
+}
+
+const finalizeSubmission = function (req, res, next) {
+
+    // console.log(req.body)
+
+    if (formVariable.id) {
+        util.sendJSONresponse(res, 200, { success_msg: `${formVariable.id}` });
+    }
+    else return util.sendJSONresponse(res, 400, { error_msg: `we have no form id` });
+}
+
+//-----------------------------------------------------------
+const getformbyid = function (req, res, next) {
+
+    FormPatient.findOne({ _id: req.params.id })
+        .populate({
+            path: "formid.patient",
+            // model: "employee",
+            populate: { path: "doctor" }
+        })
+
+        .then((form) => {
+            util.sendJSONresponse(res, 200, form);
+        }).catch(err => util.sendJSONresponse(res, 400, err))
+}
+//-------------------------------------------------------
+
+module.exports = {
+    sampleSendingDetails, formidSave, formPage1Save, formPage2Save, formPage3Save, formPage4Save, formPage5Save,
+    finalizeSubmission, getformbyid
+}

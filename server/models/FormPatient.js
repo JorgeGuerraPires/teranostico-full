@@ -51,35 +51,21 @@ const sampleSendingDetailsSchema = new mongoose.Schema({
 //---------------------------------------------
 //---------------------------------------------
 const FormidSchema = new mongoose.Schema({
-    //new mongoose schema
-    // emaildr: {
-    //   type: String,
-    //   required: true,
-    // },
 
     patient: { type: mongoose.SchemaTypes.ObjectId, ref: "Patient" },
-    // patientid: {
-    //   type: String,
-    //   required: true,
-    //   unique: true
-    // },
+
     submissionDay: {
         type: String,
-        //default: Date.now
     },
     privacy: privacySchema,
 });
-
 //---------------------------------------------
-
-
-
 //---------------------------------------------
 const Form1Schema = new mongoose.Schema({
     sampleDate: {
         type: String,
     },
-    collector: {
+    collectorName: {
         type: String,
     },
     institution: {
@@ -108,13 +94,6 @@ const Form1Schema = new mongoose.Schema({
 //----------------------------------------------
 
 
-//---------------------------------------------
-/**Note (30/05/2020): I am not sure why I had to set this, but I believe it has to do with 
- * the virtual I am using to avoid using populate
- */
-Form1Schema.set("toObject", { getters: true });
-Form1Schema.set("toJSON", { getters: true });
-//---------------------------------------------
 
 
 //------------------------------------------------
@@ -128,10 +107,12 @@ const Form2Schema = new mongoose.Schema({
         type: String,
         //required: true
     },
+
     height: {
-        type: String,
-        //required: true
+        meter: Number,
+        centimeter: Number
     },
+
     familyhistory: {
         type: String,
         //required: true
@@ -158,11 +139,11 @@ const Form3Schema = new mongoose.Schema({
         type: String,
         //required: true
     },
-    typeofcancer: {
+    selectedTumorType: {
         type: String,
         //required: true
     },
-    Linfonodos: {
+    linfonodos: {
         type: String,
         //required: true
     },
@@ -174,21 +155,22 @@ const Form3Schema = new mongoose.Schema({
         type: String,
         //required: true
     },
-    TNM: {
+
+    ESTADIAMENTO: {
+        TNM: {
+            type: String,
+        },
+        pTpNM: {
+            type: String,
+        },
+    },
+    infiltration: {
         type: String,
         //required: true
     },
-    pTpNM: {
-        type: String,
-        //required: true
-    },
-    Infiltration: {
-        type: String,
-        //required: true
-    },
-    IMHQSelected: {
-        type: String,
-        //required: true
+    IMHQ: {
+        option: String,
+        detail: String,
     },
     tumorsize: {
         type: Number,
@@ -199,82 +181,96 @@ const Form3Schema = new mongoose.Schema({
 //-------------------------------------------
 //4th form 
 const Form4Schema = new mongoose.Schema({
-    //QUIMIOTERAPIA  NEOADJUVANTE
     QUIMIOTERAPIA_NEOADJUVANTE: {
-        startingDate: Date, //I am using string instead of Date type, I may need to use Date type in the future
-        completionDate: Date,
-        protocolo: String,
+        startingDate: String,
+        completionDate: String,
         execution_place: String,
+        protocolo: String,
     },
-    //HORMONIOTERAPIA NEOADJUVANTE
+
     HORMONIOTERAPIA_NEOADJUVANTE: {
-        startingDate: Date, //I am using string instead of Date type, I may need to use Date type in the future
-        completionDate: Date,
-        protocolo: String,
+        startingDate: String,
+        completionDate: String,
         execution_place: String,
+        protocolo: String,
     },
-    //CIRURGIA INICIAL
     CIRURGIA_INICIAL: {
         tipo: String,
         axila: String,
         data: String,
     },
-    //RADIOTERAPIA ADJUVANTE
-    RADIOTERAPIA_ADJUVANTE: {
-        //treatment 1
-        startingDate_treatment1: Date,
-        completionDate_treatment1: Date,
-        protocolo_treatment1: String,
-        execution_place_treatment1: String,
-        //treatment 2
-        startingDate_treatment2: Date,
-        completionDate_treatment2: Date,
-        protocolo_treatment2: String,
-        execution_place_treatment2: String,
-        //treatment 3
-        startingDate_treatment3: Date,
-        completionDate_treatment3: Date,
-        protocolo_treatment3: String,
-        execution_place_treatment3: String,
+    RADIOTERAPIA_ADJUVANTE:
+    {
+        treatment1: {
+            startingDate: String,
+            completionDate: String,
+            execution_place: String,
+            protocolo: String,
+        },
+        treatment2: {
+            startingDate: String,
+            completionDate: String,
+            execution_place: String,
+            protocolo: String,
+        },
+        treatment3: {
+            startingDate: String,
+            completionDate: String,
+            execution_place: String,
+            protocolo: String,
+        },
     },
-    //QUIMIOTERAPIA ADJUVANTE
-    QUIMIOTERAPIA_ADJUVANTE: {
-        //treatment 1
-        startingDate_treatment1: Date,
-        completionDate_treatment1: Date,
-        protocolo_treatment1: String,
-        execution_place_treatment1: String,
-        //treatment 2
-        startingDate_treatment2: Date,
-        completionDate_treatment2: Date,
-        protocolo_treatment2: String,
-        execution_place_treatment2: String,
-        //treatment 3
-        startingDate_treatment3: Date,
-        completionDate_treatment3: Date,
-        protocolo_treatment3: String,
-        execution_place_treatment3: String,
+    QUIMIOTERAPIA_ADJUVANTE:
+    {
+        treatment1: {
+            startingDate: String,
+            completionDate: String,
+            execution_place: String,
+            protocolo: String,
+        },
+        treatment2: {
+            startingDate: String,
+            completionDate: String,
+            execution_place: String,
+            protocolo: String,
+        },
+        treatment3: {
+            startingDate: String,
+            completionDate: String,
+            execution_place: String,
+            protocolo: String,
+        },
     },
-    //HORMONIOTERAPIA ADJUVANTE
-    HORMONIOTERAPIA_ADJUVANTE: {
-        //treatment 1
-        startingDate_treatment1: Date,
-        completionDate_treatment1: Date,
-        protocolo_treatment1: String,
-        execution_place_treatment1: String,
-        //treatment 2
-        startingDate_treatment2: Date,
-        completionDate_treatment2: Date,
-        protocolo_treatment2: String,
-        execution_place_treatment2: String,
-        //treatment 3
-        startingDate_treatment3: Date,
-        completionDate_treatment3: Date,
-        protocolo_treatment3: String,
-        execution_place_treatment3: String,
-    },
+    HORMONIOTERAPIA_ADJUVANTE:
+    {
+        treatment1: {
+            startingDate: String,
+            completionDate: String,
+            execution_place: String,
+            protocolo: String,
+        },
+        treatment2: {
+            startingDate: String,
+            completionDate: String,
+            execution_place: String,
+            protocolo: String,
+        },
+        treatment3: {
+            startingDate: String,
+            completionDate: String,
+            execution_place: String,
+            protocolo: String,
+        }
+    }
+
 });
 //---------------------------------------------
+
+//-------------------------------------------
+//4th form 
+const Form5Schema = new mongoose.Schema({
+    outcoming: String
+})
 
 //-------------------------------------------------
 //Organizing all the form pages into a single form in Mongo
@@ -285,6 +281,7 @@ const FormSchema = new mongoose.Schema({
     form2: Form2Schema,
     form3: Form3Schema,
     form4: Form4Schema,
+    form5: Form5Schema,
     sampleSendingDetails: sampleSendingDetailsSchema,
     geneticRequestPanel: geneticRequestPanelSchema,
 });
@@ -295,6 +292,7 @@ const FormSchema = new mongoose.Schema({
 /**Herein one can find the methods that support on the path manipulations */
 /**@description encrypt a information */
 function encryption(value) {
+    console.log("here on encryption");
     return CryptoJS.AES.encrypt(
         value,
         process.env.encryption_sensitive_patient_information
@@ -302,6 +300,7 @@ function encryption(value) {
 }
 /**@description decrypt a information */
 function decryption(value) {
+    console.log("here on decryption");
     return CryptoJS.AES.decrypt(
         value,
         process.env.encryption_sensitive_patient_information
@@ -309,9 +308,21 @@ function decryption(value) {
 }
 //--------------------------------------------------
 
+//---------------------------------------------
+/**This is needed for the encrypted information, I need to declare for both the parent and child document, otherwise 
+ * it does not work. 
+ */
+FormSchema.set("toObject", { getters: true });
+FormSchema.set("toJSON", { getters: true });
+
+Form1Schema.set("toObject", { getters: true });
+Form1Schema.set("toJSON", { getters: true });
+//---------------------------------------------
+
+
 //-----------------------------------------------
 //Everything is arranged into Form and exported
-const Form = mongoose.model("FormPatient", FormSchema);
+mongoose.model("FormPatient", FormSchema);
 // module.exports = Form;
 //-----------------------------------------------
 

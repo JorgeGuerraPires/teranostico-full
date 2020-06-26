@@ -6,6 +6,7 @@ import { ErrorStateMatcher } from '@angular/material';
 import { UtilService } from 'src/app/shared/services/util.service';
 import { FormsService } from '../services/forms.service';
 import { EmaildrValidatorService } from '../services/emaildr-validator.service';
+import { PatientIDCheckerService } from "../services/patientID-checker.service"
 import { debounceTime } from 'rxjs/operators';
 
 @Component({
@@ -20,7 +21,6 @@ export class FormidComponent implements OnInit {
   //-----------------------------
   savedToDatabase = false;
   //---------------------------------
-
 
   //--------------------------------------------
   fields: FormGroup;
@@ -45,7 +45,8 @@ export class FormidComponent implements OnInit {
     private localStorageService: LocalStorageService,
     private utilService: UtilService,
     private formsService: FormsService,
-    private emaildrValidatorService: EmaildrValidatorService
+    private emaildrValidatorService: EmaildrValidatorService,
+    // private patientIDCheckerService: PatientIDCheckerService
 
   ) {
     this.fields = fb.group({
@@ -62,8 +63,13 @@ export class FormidComponent implements OnInit {
   ngOnInit() {
     //------------------------------------------------------------------
     const emaildrcheck = this.fields.get("emaildr");
-    emaildrcheck.valueChanges.subscribe(res => this.fields.setErrors(res))
+    emaildrcheck.valueChanges.subscribe(res => this.fields.setErrors(res));
     //-----------------------------------------------------------------
+
+    // //-------------------------------------------------------------
+    // const patientIDchecker = this.fields.get("patientid");
+    // patientIDchecker.valueChanges.subscribe(res => this.fields.setErrors(res));
+    // //--------------------------------------------------------------
 
     //-----------------------------------------------------------------
     const patientcheck = this.fields.get("patientid");
@@ -76,19 +82,19 @@ export class FormidComponent implements OnInit {
 
 
   next() {
+    //------------------------------------------------------------------------------------------------
+    //This will save a local version of the form page
     this.localStorageService.saveJSON(this.utilService.withoutEmptyValues(this.fields.value), "formid")
+    //-------------------------------------------------------------------------------------------
   }
 
   save() {
-
-
     this.formsService.submitFormid(this.utilService.withoutEmptyValues(this.fields.value))
       .subscribe(res => {
         this.savedToDatabase = true;
         this.utilService.openSnackBar(res.success_msg, "x");
 
       });
-
   }
 
 }

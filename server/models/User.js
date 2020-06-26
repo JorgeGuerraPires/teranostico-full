@@ -11,7 +11,7 @@ var options = { discriminatorKey: "kind" };
 var randtoken = require("rand-token");
 //--------------------------------------------
 
-const bcrypt = require("bcryptjs"); //used to encrypt the password
+// const bcrypt = require("bcryptjs"); //used to encrypt the password
 
 
 //------------------------------------------------------------

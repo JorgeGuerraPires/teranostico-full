@@ -73,7 +73,6 @@ export class RegisterComponent implements OnInit {
 
 }
 
-
 //--------------------------------------------------------
 //Support functions
 function equalValidator({ value }: FormGroup): { [key: string]: any } {

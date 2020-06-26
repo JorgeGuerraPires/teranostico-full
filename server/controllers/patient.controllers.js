@@ -8,8 +8,11 @@ const Patient = mongoose.model("Patient");
 
 //-------------------------------------
 const util = require("../utils/utils");
-
 //-------------------------------------
+
+//---------------------------------------
+const authUtils = require("../config/auth");
+//----------------------------------------
 
 const findAllPatients = async function (req, res) {
 
@@ -34,7 +37,7 @@ const findAllPatients = async function (req, res) {
 };
 
 const findPatientById = function (req, res) {
-    console.log(req.params);
+    //console.log(req.params);
 
     Patient.findById(req.params.id)
         .populate("doctor", "name")
@@ -49,7 +52,7 @@ const findPatientById = function (req, res) {
         });
 };
 
-
+//-----------------------------------------------------------------------------
 const findPatientByPatientId = function (req, res) {
 
     Patient.findOne({ patientID: req.params.id })
@@ -59,4 +62,35 @@ const findPatientByPatientId = function (req, res) {
 }
 //------------------------------------------------------------------------
 
-module.exports = { findAllPatients, findPatientById, findPatientByPatientId };
+//------------------------------------------------------------------------
+const checkByPatientId = function (req, res) {
+
+    console.log(req.body)
+
+    const { patientidSecret } = req.body;
+
+    //---------------------------------------------------------------
+    //Here we see if the user provided a personalized secret
+    let secret;
+    if (patientidSecret) secret = patientidSecret;
+    else secret = process.env.encryption_sensitive_patient_information;
+    //------------------------------------------------------------
+
+    const hashedPatientId = authUtils.hashPassword(req.params.id, secret); //hash the patient id
+
+
+
+    Patient.findOne({ patientID: hashedPatientId })
+        .then((patient) => {
+            if (patient)
+                util.sendJSONresponse(res, 200, { res: "Patient already in our system :). We shall add this form to his history!" })
+            else util.sendJSONresponse(res, 200, null)
+
+        })
+        .catch((err) => console.log(err))
+
+
+}
+//----------------------------------------------------------------
+
+module.exports = { findAllPatients, findPatientById, findPatientByPatientId, checkByPatientId };

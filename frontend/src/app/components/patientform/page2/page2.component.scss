@@ -1,0 +1,47 @@
+//------------------------------------------------------
+/**For the card*/
+.card-content {//for big devices
+    padding-top: 1rem;
+    
+   }
+
+.card-content-xs{ //for small devices
+    padding-top: 1rem;
+
+   }
+//----------------------------------------------
+   
+
+.text-block{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .example-section {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 60px;
+  }
+  
+  .example-margin {
+    margin: 0 10px;
+  }
+
+  .same-line-fields{
+    margin-left: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .example-full-width {
+    width: 100%;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .height{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 1rem;
+  }

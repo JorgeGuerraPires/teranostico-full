@@ -1,0 +1,43 @@
+<section ngClass.gt-md="card-content" ngClass.lt-md="card-content-xs">
+    <div class="parent" fxLayout="row" fxFlexFill fxLayoutAlign="center center">
+
+        <div fxFlex="50%" fxFlex.lt-md="90%">
+            <mat-card [class.mat-elevation-z2]="!isActive" [class.mat-elevation-z8]="isActive">
+                <!--  Header-->
+                <mat-card-header>
+                    <mat-card-title>
+                        <h2>
+                            <fa-icon [icon]="faHospitalUser"></fa-icon>DESFECHO
+                        </h2>
+                    </mat-card-title>
+                </mat-card-header>
+                <!--  -->
+                <mat-card-content class="text-block">
+
+                    <form [formGroup]="fields">
+
+                        <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+                            formControlName="outcoming">
+                            <mat-radio-button class="example-radio-button" *ngFor="let outcoming of outcomings"
+                                [value]="outcoming">
+                                {{ outcoming }}
+                            </mat-radio-button>
+                        </mat-radio-group>
+                    </form>
+
+                </mat-card-content>
+
+                <mat-card-actions>
+                    <button mat-button (click)="save()"
+                        matTooltip="you can save to databse and come back later.">Save</button>
+                    <button mat-button (click)="finalize()" matTooltip="Next page, please!">Finalize</button>
+                </mat-card-actions>
+
+                <mat-card-footer>
+                    <ter-progressbar [value]="100"></ter-progressbar>
+                </mat-card-footer>
+
+            </mat-card>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,51 @@
+<div class="receipt">
+    <h4>Thanks for the submission</h4>
+    <p> Below you can find information you may want to save</p>
+
+    <table>
+        <h4>Who submitted?</h4>
+
+        <tr>
+            <td class="font-weight-bold">Submission date: </td>
+            <td>{{this.date}} </td>
+        </tr>
+        <tr>
+            <td class="font-weight-bold">Submitted by : </td>
+            <td>{{this.authenticationService.getCurrentUser().name}} </td>
+        </tr>
+        <tr>
+            <td class="font-weight-bold">E-mail : </td>
+            <td>{{this.authenticationService.getCurrentUser().email}} </td>
+        </tr>
+
+        <h4>Form information</h4>
+        <tr>
+            <td class="font-weight-bold">patient id: </td>
+            <td>{{this.formid.patientid}}<sup>*</sup> </td>
+        </tr>
+        <tr>
+            <td class="font-weight-bold">Doctor's email: </td>
+            <td>{{this.formid.emaildr}} </td>
+        </tr>
+        <tr *ngIf="this.mongo_id">
+            <td class="font-weight-bold">Internal form id: </td>
+            <td>{{this.mongo_id}}<sup>**</sup></td>
+        </tr>
+    </table>
+</div>
+
+
+<div class="foot_notes">
+    <p>
+        <sup>*</sup> We do not keep this information. It is shown here for your convenience. Remember, it is your
+        responsability to keep it save.
+    </p>
+
+    <p>
+        <sup>**</sup> This is a unique id we use to save the form. You can use it, for instance, to find your form since
+        we do not save
+        the patient id.
+    </p>
+
+
+</div>

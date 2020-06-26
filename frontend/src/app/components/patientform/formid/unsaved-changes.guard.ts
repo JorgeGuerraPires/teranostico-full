@@ -14,7 +14,7 @@ export class UnsavedChangesGuard implements CanDeactivate<FormidComponent> {
   canDeactivate(component: FormidComponent) {
 
 
-    if (component.fields.value && !component.savedToDatabase) {
+    if (component.fields.dirty && !component.savedToDatabase) {
       const confirm = window.confirm("You have unsaved changes. Still want to leave?");
       if (confirm)
         this.localStorageService.delete("formid");

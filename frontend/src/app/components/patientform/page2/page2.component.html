@@ -1,0 +1,124 @@
+<section ngClass.gt-md="card-content" ngClass.lt-md="card-content-xs">
+
+    <div fxLayoutAlign="center center">
+
+        <div fxFlex="50%" fxFlex.lt-md="90%">
+
+            <mat-card [class.mat-elevation-z2]="!isActive" [class.mat-elevation-z8]="isActive">
+
+                <!--  Header-->
+                <mat-card-header>
+                    <mat-card-title>
+                        <h2>FICHA DE COLETA INICIAL</h2>
+                        <h3>Página #2: INFORMAÇÕES GERAIS</h3>
+                    </mat-card-title>
+                </mat-card-header>
+                <!--  -->
+
+
+                <mat-card-content class="text-block">
+
+                    <form [formGroup]="fields">
+                        <section class="example-section">
+                            <mat-checkbox class="example-margin" formControlName="menopause">Menopausa?</mat-checkbox>
+                        </section>
+
+                        <!-- weight input -->
+                        <mat-form-field class="same-line-fields">
+                            <mat-label>Peso:</mat-label>
+                            <input matInput placeholder="e.g., 60,3" formControlName="weight" type="number" step="10">
+                            <!-- Validation messaging checking -->
+                            <mat-error *ngIf="!fields.controls['weight'].dirty && fields.controls['weight'].touched">
+                                Required
+                            </mat-error>
+                            <!--  -->
+                            <mat-hint>Please, enter in kilogram (e.g., 60,3 -> 60 kilogram and 300 grams )</mat-hint>
+                        </mat-form-field>
+                        <!-- end of weight input-->
+                        <br>
+
+                        <div formGroupName="height" class="height">
+                            <mat-label>Altura:</mat-label>
+
+                            <mat-form-field class="same-line-fields">
+                                <mat-label>meters:</mat-label>
+                                <input matInput placeholder="e.g., 60" formControlName="meter" type="number" step="10">
+
+                                <mat-error> Required and it should not be negative or decimal </mat-error>
+
+                            </mat-form-field>
+
+                            <mat-form-field class="same-line-fields">
+                                <mat-label>Centimeters:</mat-label>
+                                <input matInput placeholder="e.g., 60" formControlName="centimeter" type="number"
+                                    step="10">
+                                <mat-error> Required and it should not be negative or decimal </mat-error>
+                            </mat-form-field>
+                        </div>
+
+                        <mat-form-field [style.fontSize]="10" class="example-full-width">
+                            <mat-label>História familiar:</mat-label>
+                            <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+                                cdkAutosizeMinRows="1" cdkAutosizeMaxRows="10"
+                                formControlName="familyhistory"></textarea>
+
+                            <mat-error
+                                *ngIf="!fields.controls['familyhistory'].dirty && fields.controls['familyhistory'].touched">
+                                Required
+                            </mat-error>
+
+                        </mat-form-field>
+
+                        <mat-form-field [style.fontSize]="10" class="example-full-width">
+                            <mat-label>Doenças associadas:</mat-label>
+                            <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+                                cdkAutosizeMinRows="1" cdkAutosizeMaxRows="10"
+                                formControlName="relateddiseases"></textarea>
+                            <!-- Validation messaging checking -->
+                            <mat-error
+                                *ngIf="!fields.controls['relateddiseases'].dirty && fields.controls['relateddiseases'].touched">
+                                Required
+                            </mat-error>
+                            <!--  -->
+
+                        </mat-form-field>
+
+                        <mat-form-field [style.fontSize]="10" class="example-full-width">
+                            <mat-label>outros cânceres:</mat-label>
+                            <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize"
+                                cdkAutosizeMinRows="1" cdkAutosizeMaxRows="10"
+                                formControlName="previouscancers"></textarea>
+                            <!-- Validation messaging checking -->
+                            <mat-error
+                                *ngIf="!fields.controls['previouscancers'].dirty && fields.controls['previouscancers'].touched">
+                                Required
+                            </mat-error>
+                            <!--  -->
+                        </mat-form-field>
+                    </form>
+                </mat-card-content>
+
+                <mat-card-actions>
+                    <button mat-button routerLink="/patientform/form3" [disabled]="fields.invalid "
+                        matTooltip="Next page, please!" (click)="next()">Next</button>
+
+                    <button mat-button (click)="save()" matTooltip="you can save to databse and come back later."
+                        [disabled]="fields.invalid ">Save</button>
+
+                </mat-card-actions>
+
+
+                <mat-card-footer>
+                    <ter-progressbar [value]="20"></ter-progressbar>
+                </mat-card-footer>
+
+
+            </mat-card>
+
+        </div>
+
+
+    </div>
+
+
+</section>

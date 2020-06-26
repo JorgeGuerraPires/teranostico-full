@@ -12,11 +12,6 @@ export class EmaildrValidatorService {
   constructor(private http: HttpClient) { }
 
   checkDoctorEmail(field: AbstractControl): Observable<ValidationErrors | null> {
-
-    // in the real world you'd make an HTTP call to server to check if the value is valid
-
-    // return of(field.value.indexOf('123') >= 0 ? null : { work: " you're not authorized to work" });
-    // return of(field.value.indexOf('jorge') >= 0 ? null : { work: " you're not authorized to work" });
     return this.http.post(`${this.BASE_URL}/api/users/checkemail`, { email: field.value })
   }
 

@@ -1,1 +1,148 @@
-<p>page1 works!</p>
+<section ngClass.gt-md="card-content" ngClass.lt-md="card-content-xs">
+
+    <div fxLayoutAlign="center center">
+
+        <div fxFlex="50%" fxFlex.lt-md="90%">
+
+            <mat-card [class.mat-elevation-z2]="!isActive" [class.mat-elevation-z8]="isActive">
+                <!--  Header-->
+                <mat-card-header>
+                    <mat-card-title>
+                        <h2>FICHA DE COLETA INICIAL</h2>
+                        <h3>Página #1: IDENTIFICAÇÃO</h3>
+                    </mat-card-title>
+                </mat-card-header>
+                <!--  -->
+
+                <mat-card-content class="text-block">
+
+                    <form [formGroup]="fields">
+                        <mat-form-field>
+                            <mat-label>Data da coleta:</mat-label>
+                            <input matInput [matDatepicker]="picker" formControlName="sampleDate">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                            <!-- Validation messaging checking -->
+                            <mat-error
+                                *ngIf="!fields.controls['sampleDate'].dirty && fields.controls['sampleDate'].touched">
+                                Required
+                            </mat-error>
+                            <!--  -->
+                        </mat-form-field>
+
+                        <!-- collector name input -->
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Coletor</mat-label>
+                            <input matInput placeholder="e.g., Pedro Cabral" formControlName="collectorName"
+                                type="text">
+                            <!-- Validation messaging checking -->
+                            <mat-error
+                                *ngIf="!fields.controls['collectorName'].dirty && fields.controls['collectorName'].touched">
+                                Required
+                            </mat-error>
+                            <!--  -->
+                        </mat-form-field>
+                        <!-- end of collector name-->
+
+
+                        <!-- collector name input -->
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Instituição:</mat-label>
+                            <input matInput placeholder="e.g., Pedro Cabral" formControlName="institution" type="text">
+                            <!-- Validation messaging checking -->
+                            <mat-error
+                                *ngIf="!fields.controls['institution'].dirty && fields.controls['institution'].touched">
+                                Required
+                            </mat-error>
+                            <!--  -->
+                        </mat-form-field>
+                        <!-- end of collector name-->
+
+                        <!--  Prontuário input -->
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Prontuário:</mat-label>
+                            <input matInput placeholder="e.g., Pedro Cabral" formControlName="medicalrecord"
+                                type="text">
+                            <!-- Validation messaging checking -->
+                            <mat-error
+                                *ngIf="!fields.controls['medicalrecord'].dirty && fields.controls['medicalrecord'].touched">
+                                Required
+                            </mat-error>
+                            <!--  -->
+                        </mat-form-field>
+                        <!-- end of Prontuário-->
+
+                        <!--  Prontuário input -->
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Nome:</mat-label>
+                            <input matInput placeholder="e.g., Pedro Cabral" formControlName="name" type="text">
+                            <!-- Validation messaging checking -->
+                            <mat-error *ngIf="!fields.controls['name'].dirty && fields.controls['name'].touched">
+                                Required
+                            </mat-error>
+                            <!--  -->
+                            <!-- Tips -->
+                            <mat-hint>This information will be encrypted: we do not keep it in our servers.
+                                We will need the patient id submitted to decrypt it later;
+                                and if you provided a personalized secret, we need it too</mat-hint>
+                            <!--  -->
+                        </mat-form-field>
+                        <!-- end of Prontuário-->
+
+                        <!--  Prontuário input -->
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Nome da mãe:</mat-label>
+                            <input matInput placeholder="e.g., Pedro Cabral" formControlName="mothername" type="text">
+                            <!-- Validation messaging checking -->
+                            <mat-error
+                                *ngIf="!fields.controls['mothername'].dirty && fields.controls['mothername'].touched">
+                                Required
+                            </mat-error>
+                            <!--  -->
+                            <!-- Tips -->
+                            <mat-hint>This information will be encrypted: we do not keep it in our servers.
+                                We will need the patient id submitted to decrypt it later;
+                                and if you provided a personalized secret, we need it too</mat-hint>
+                            <!--  -->
+                        </mat-form-field>
+                        <!-- end of Prontuário-->
+
+
+                        <!--  -->
+                        <mat-form-field>
+                            <mat-label>Data Nascimento:</mat-label>
+                            <input matInput [matDatepicker]="birthday_picker" formControlName="birthday">
+                            <mat-datepicker-toggle matSuffix [for]="birthday_picker"></mat-datepicker-toggle>
+                            <mat-datepicker #birthday_picker></mat-datepicker>
+                            <!-- Validation messaging checking -->
+                            <mat-error
+                                *ngIf="!fields.controls['birthday'].dirty && fields.controls['birthday'].touched">
+                                Required
+                            </mat-error>
+                            <!--  -->
+                        </mat-form-field>
+                        <!--  -->
+                    </form>
+
+                </mat-card-content>
+
+                <mat-card-actions>
+                    <button mat-button routerLink="/patientform/form2" [disabled]="fields.invalid " (click)="next()"
+                        matTooltip="Next page, please!">Next</button>
+
+                    <button mat-button (click)="save()" matTooltip="you can save to databse and come back later."
+                        [disabled]="fields.invalid ">Save</button>
+
+                </mat-card-actions>
+
+
+                <mat-card-footer>
+                    <ter-progressbar [value]="10"></ter-progressbar>
+                </mat-card-footer>
+
+            </mat-card>
+        </div>
+
+    </div>
+
+</section>

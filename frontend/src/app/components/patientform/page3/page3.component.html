@@ -1,0 +1,224 @@
+<section ngClass.gt-md="card-content" ngClass.lt-md="card-content-xs">
+
+    <div fxLayoutAlign="center center">
+
+        <div fxFlex="50%" fxFlex.lt-md="90%">
+
+            <mat-card class="mat-elevation-z8">
+
+                <!--  Header-->
+                <mat-card-header>
+                    <mat-card-title>
+                        <h2>FICHA DE COLETA INICIAL</h2>
+                        <h3>Página #3: DIAGNÓSTICO</h3>
+                        <h4>LAUDO Histopatológico</h4>
+                    </mat-card-title>
+                </mat-card-header>
+                <!--  -->
+
+                <!-- card content  -->
+                <mat-card-content class="text-block">
+
+                    <form [formGroup]="fields">
+
+                        <!--  -->
+                        <mat-form-field class="full-width-field">
+                            <mat-label>Identificação do laudo (local de realização e nº):</mat-label>
+                            <input matInput placeholder="e.g., xxxxx.xxxxxxxxxxx.xxxxxx" formControlName="reportid"
+                                type="text">
+
+                            <!-- Validation messaging checking -->
+                            <mat-error
+                                *ngIf="!fields.controls['reportid'].dirty && fields.controls['reportid'].touched">
+                                Required
+                            </mat-error>
+                            <!--  -->
+
+                        </mat-form-field>
+                        <!--  -->
+
+                        <!--  -->
+                        <mat-form-field>
+                            <mat-label>Data Nascimento:</mat-label>
+                            <input matInput [matDatepicker]="birthday_picker" formControlName="examdate">
+                            <mat-datepicker-toggle matSuffix [for]="birthday_picker"></mat-datepicker-toggle>
+                            <mat-datepicker #birthday_picker></mat-datepicker>
+                            <!-- Validation messaging checking -->
+                            <mat-error
+                                *ngIf="!fields.controls['examdate'].dirty && fields.controls['examdate'].touched">
+                                Required
+                            </mat-error>
+                            <!--  -->
+
+                        </mat-form-field>
+                        <!--  -->
+
+                        <!--  -->
+
+                        <section class="full-width-field">
+                            <label id="example-radio-group-label">Tipo do tumor:</label>
+                            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+                                formControlName="selectedTumorType">
+                                <mat-radio-button class="example-radio-button" *ngFor="let tumor of tumorOptions"
+                                    [value]="tumor">
+                                    {{ tumor }}
+                                </mat-radio-button>
+                            </mat-radio-group>
+
+
+                            <mat-form-field class="example-full-width"
+                                *ngIf="this.fields.value.selectedTumorType === 'outros'">
+                                <!-- <mat-label>Outros</mat-label> -->
+                                <input matInput placeholder="enter here the not listed tumor type"
+                                    formControlName="othertumors" />
+                            </mat-form-field>
+                        </section>
+                        <!--  -->
+
+                        <!--  -->
+                        <mat-form-field>
+                            <mat-label>Tamanho do tumor:</mat-label>
+                            <input matInput placeholder="e.g., 10 mm" formControlName="tumorsize" type="number">
+
+                            <!-- Validation messaging checking -->
+                            <mat-error
+                                *ngIf="!fields.controls['tumorsize'].dirty && fields.controls['tumorsize'].touched">
+                                Required
+                            </mat-error>
+                            <!--  -->
+                            <mat-hint>mm</mat-hint>
+                        </mat-form-field>
+                        <!--  -->
+
+                        <!--  -->
+                        <section class="full-width-field">
+                            <label id="example-radio-group-label">Linfonodos: </label>
+                            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+                                formControlName="linfonodos">
+                                <mat-radio-button class="example-radio-button"
+                                    *ngFor="let condition of LinfonodosCondition" [value]="condition">
+                                    {{ condition }}
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </section>
+                        <!--  -->
+
+                        <!--  -->
+                        <section class="full-width-field">
+                            <label id="example-radio-group-label">Infiltração: </label>
+                            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+                                formControlName="infiltration">
+                                <mat-radio-button class="example-radio-button"
+                                    *ngFor="let condition of infiltrationCondition" [value]="condition">
+                                    {{ condition }}
+                                </mat-radio-button>
+                            </mat-radio-group>
+                        </section>
+                        <!--  -->
+
+                        <!--  -->
+                        <div formGroupName="IMHQ">
+                            <section class="full-width-field">
+                                <label id="example-radio-group-label">IMHQ: </label>
+                                <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+                                    formControlName="option">
+                                    <mat-radio-button class="example-radio-button" *ngFor="let condition of IMHQoptions"
+                                        [value]="condition">
+                                        {{ condition }}
+                                    </mat-radio-button>
+                                </mat-radio-group>
+
+                                <!--  -->
+                                <mat-form-field *ngIf="this.fields.value.IMHQ.option==='ER' || this.fields.value.IMHQ.option==='PR (ALLRED)'
+                                    || this.fields.value.IMHQ.option==='Ki67'">
+                                    <mat-label>Details here:</mat-label>
+                                    <input matInput placeholder="e.g., 10 mm" formControlName="detail" type="number">
+                                    <mat-hint>%</mat-hint>
+                                </mat-form-field>
+                                <!--  -->
+
+                                <!--  -->
+                                <mat-form-field *ngIf="this.fields.value.IMHQ.option==='Outros'">
+                                    <mat-label>Details here:</mat-label>
+                                    <input matInput formControlName="detail" type="text">
+                                    <mat-hint>please, write down an informative note</mat-hint>
+                                </mat-form-field>
+                                <!--  -->
+                            </section>
+                        </div>
+                        <!--  -->
+
+                        <!--  -->
+                        <mat-form-field class="full-width-field">
+                            <mat-label>Classificação:</mat-label>
+                            <input matInput placeholder="e.g., luminal A e B, basal..." formControlName="classification"
+                                type="text">
+
+                            <!-- Validation messaging checking -->
+                            <mat-error
+                                *ngIf="!fields.controls['classification'].dirty && fields.controls['classification'].touched">
+                                Required
+                            </mat-error>
+                            <!--  -->
+                        </mat-form-field>
+                        <!--  -->
+
+                        <!--  -->
+                        <div formGroupName="ESTADIAMENTO">
+
+                            <mat-form-field class="full-width-field">
+                                <mat-label>Clinico TNM:</mat-label>
+                                <input matInput placeholder="e.g., luminal A e B, basal..." formControlName="TNM"
+                                    type="text">
+
+                                <!-- Validation messaging checking -->
+                                <mat-error
+                                    *ngIf="!fields.controls['ESTADIAMENTO'].dirty && fields.controls['ESTADIAMENTO'].touched">
+                                    Required
+                                </mat-error>
+                                <!--  -->
+                            </mat-form-field>
+                            <!--  -->
+                            <!--  -->
+                            <mat-form-field class="full-width-field">
+                                <mat-label>Patológico pTpNM:</mat-label>
+                                <input matInput placeholder="e.g., luminal A e B, basal..." formControlName="pTpNM"
+                                    type="text">
+
+                                <!-- Validation messaging checking -->
+                                <mat-error
+                                    *ngIf="!fields.controls['ESTADIAMENTO'].dirty && fields.controls['ESTADIAMENTO'].touched">
+                                    Required
+                                </mat-error>
+                                <!--  -->
+                            </mat-form-field>
+                            <!--  -->
+                        </div>
+                        <!--  -->
+                    </form>
+                </mat-card-content>
+                <!--  -->
+
+                <!--  -->
+                <mat-card-actions>
+                    <!--  " -->
+                    <button mat-button routerLink="/patientform/form4" (click)="next()" matTooltip="Next page, please!"
+                        [disabled]="fields.invalid">Next</button>
+                    <!-- [disabled]="fields.invalid " -->
+                    <button mat-button (click)="save()" matTooltip="you can save to databse and come back later."
+                        [disabled]="fields.invalid">Save</button>
+
+                </mat-card-actions>
+
+
+                <mat-card-footer>
+                    <ter-progressbar [value]="30"></ter-progressbar>
+                </mat-card-footer>
+                <!--  -->
+            </mat-card>
+
+        </div>
+
+    </div>
+
+</section>

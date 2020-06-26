@@ -26,6 +26,7 @@ export class AboutusComponent implements OnInit {
       .pipe(
         map(mc => <number>this.breakpointsToColumnsNumber.get(mc))
       );
+
     // this.columns$.subscribe((info) => console.log(info))
   }
 

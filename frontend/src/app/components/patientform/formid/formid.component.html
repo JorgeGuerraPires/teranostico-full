@@ -17,7 +17,7 @@
                     <form [formGroup]="fields">
 
                         <!-- Email of the responsible -->
-                        <mat-form-field class="example-full-width">
+                        <mat-form-field class="example-full-width" appearance="fill">
                             <mat-label>Email do responsável</mat-label>
                             <input matInput placeholder="e.g., drhouse@awesome.com" formControlName="emaildr">
                             <!-- This is error and validation form section. This section make sure the input fields
@@ -40,6 +40,7 @@
                         </mat-form-field>
                         <!-- end of Email of the responsible -->
 
+
                         <!-- Email of the Patient id -->
                         <mat-form-field class="example-full-width" appearance="fill">
                             <mat-label>Patient id</mat-label>
@@ -54,9 +55,11 @@
                             </mat-error>
                             <!--  -->
                             <!--  This will make sure the field is fulfiled properly-->
-                            <mat-error *ngIf="fields.controls['patientid'].dirty">The patient id is at least 10
+                            <mat-error *ngIf=" fields.controls['patientid'].dirty">The
+                                patient id is at least 10
                                 character long</mat-error>
                             <!--  -->
+
                             <!-- end of error and field validations -->
                         </mat-form-field>
                         <!-- end of Patient id -->
@@ -108,7 +111,7 @@
                 </mat-card-content>
 
                 <mat-card-actions>
-                    <button mat-button routerLink="/patientform/form1"
+                    <button mat-button routerLink="/patientform/form1" (click)="next()"
                         [disabled]="fields.invalid || !this.fields.value.serverConsent"
                         matTooltip="Next page, please!">Next</button>
 

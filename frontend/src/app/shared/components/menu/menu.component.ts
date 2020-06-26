@@ -55,7 +55,7 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.authenticationService.getCurrentUser().name)
+    // console.log(this.authenticationService.getCurrentUser().name)
   }
 
 }

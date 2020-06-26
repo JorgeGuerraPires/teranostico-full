@@ -1,0 +1,407 @@
+<div ngClass.gt-md="form-page" ngClass.lt-md="form-page-xs" fxFlex.lt-md="90%">
+    <!--  -->
+    <h2>Form Header</h2>
+    <mat-table [dataSource]="dataSourceFormid">
+        <!-- Position Column -->
+        <ng-container matColumnDef="tag">
+            <!-- <mat-header-cell *matHeaderCellDef> No. </mat-header-cell> -->
+            <mat-cell *matCellDef="let element"> {{element.tag}} </mat-cell>
+        </ng-container>
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="value">
+            <!-- <mat-header-cell *matHeaderCellDef> No. </mat-header-cell> -->
+            <mat-cell *matCellDef="let element"> {{element.value}} </mat-cell>
+        </ng-container>
+
+        <!-- <mat-header-row style="display: none;"></mat-header-row> -->
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <!--  -->
+    <!--  -->
+    <h2>FICHA DE COLETA INICIAL</h2>
+    <h3>Página #1: IDENTIFICAÇÃO</h3>
+    <mat-table [dataSource]="dataSourcePage1">
+        <!--  -->
+        <ng-container matColumnDef="tag">
+            <mat-cell *matCellDef="let element"> {{element.tag}} </mat-cell>
+        </ng-container>
+
+        <!-- -->
+        <ng-container matColumnDef="value">
+            <mat-cell *matCellDef="let element">
+                <!-- {{element.tag==='Data da coleta:'?  element.value | date: 'dd/MM/yyyy': element.value}}  -->
+                <ng-container *ngIf="element.tag ==='Data da coleta:' || element.tag ==='Data Nascimento:' ">
+                    {{ element.value | date: 'dd/MM/yyyy'}}
+                </ng-container>
+                <ng-container *ngIf="element.tag !=='Data da coleta:' && element.tag !=='Data Nascimento:'">
+                    {{ element.value }}</ng-container>
+
+            </mat-cell>
+        </ng-container>
+
+        <!-- <mat-header-row style="display: none;"></mat-header-row> -->
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <!--  -->
+
+    <!--  -->
+    <h2>FICHA DE COLETA INICIAL</h2>
+    <h3>Página #2: INFORMAÇÕES GERAIS</h3>
+    <mat-table [dataSource]="dataSourcePage2">
+        <!--  -->
+        <ng-container matColumnDef="tag">
+            <mat-cell *matCellDef="let element"> {{element.tag}} </mat-cell>
+        </ng-container>
+
+        <!-- -->
+        <ng-container matColumnDef="value">
+            <mat-cell *matCellDef="let element">
+                <!-- {{element.tag==='Data da coleta:'?  element.value | date: 'dd/MM/yyyy': element.value}}  -->
+                <ng-container *ngIf="element.tag ==='Data da coleta:' || element.tag ==='Data Nascimento:' ">
+                    {{ element.value | date: 'dd/MM/yyyy'}}
+                </ng-container>
+                <ng-container *ngIf="element.tag !=='Data da coleta:' && element.tag !=='Data Nascimento:'">
+                    {{ element.value }}</ng-container>
+            </mat-cell>
+        </ng-container>
+
+        <!-- <mat-header-row style="display: none;"></mat-header-row> -->
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <!--  -->
+
+    <!--  -->
+    <h2>FICHA DE COLETA INICIAL</h2>
+    <h3>Página #3: DIAGNÓSTICO</h3>
+    <h4>LAUDO Histopatológico</h4>
+
+    <mat-table [dataSource]="dataSourcePage3">
+        <!--  -->
+        <ng-container matColumnDef="tag">
+            <mat-cell *matCellDef="let element"> {{element.tag}} </mat-cell>
+        </ng-container>
+
+        <!-- -->
+        <ng-container matColumnDef="value">
+            <mat-cell *matCellDef="let element">
+
+                <ng-container *ngIf="element.tag ==='Data do exame:' ">
+                    {{ element.value | date: 'dd/MM/yyyy'}}
+                </ng-container>
+                <ng-container *ngIf="element.tag !=='Data do exame:'">
+                    {{ element.value }}</ng-container>
+            </mat-cell>
+        </ng-container>
+
+        <!-- <mat-header-row style="display: none;"></mat-header-row> -->
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <!--  -->
+
+    <h4>QUIMIOTERAPIA NEOADJUVANTE</h4>
+
+    <mat-table [dataSource]="dataSourcePage4_QUIMIOTERAPIA_NEOADJUVANTE">
+        <!--  -->
+        <ng-container matColumnDef="tag">
+            <mat-cell *matCellDef="let element"> {{element.tag}} </mat-cell>
+        </ng-container>
+
+        <!-- -->
+        <ng-container matColumnDef="value">
+            <mat-cell *matCellDef="let element">
+                <ng-container *ngIf="element.tag ==='Data início:' || element.tag ==='término:' ">
+                    {{ element.value | date: 'dd/MM/yyyy'}}
+                </ng-container>
+                <ng-container *ngIf="element.tag !=='Data início:' && element.tag !=='término:'">
+                    {{ element.value }}</ng-container>
+            </mat-cell>
+        </ng-container>
+
+        <!-- <mat-header-row style="display: none;"></mat-header-row> -->
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <!--  -->
+
+    <h4>HORMONIOTERAPIA NEOADJUVANTE</h4>
+
+    <mat-table [dataSource]="dataSourcePage4_HORMONIOTERAPIA_NEOADJUVANTE">
+        <!--  -->
+        <ng-container matColumnDef="tag">
+            <mat-cell *matCellDef="let element"> {{element.tag}} </mat-cell>
+        </ng-container>
+
+        <!-- -->
+        <ng-container matColumnDef="value">
+            <mat-cell *matCellDef="let element">
+                <ng-container *ngIf="element.tag ==='Data início:' || element.tag ==='término:' ">
+                    {{ element.value | date: 'dd/MM/yyyy'}}
+                </ng-container>
+                <ng-container *ngIf="element.tag !=='Data início:' && element.tag !=='término:'">
+                    {{ element.value }}</ng-container>
+            </mat-cell>
+        </ng-container>
+
+        <!-- <mat-header-row style="display: none;"></mat-header-row> -->
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <!--  -->
+
+
+    <h4>CIRURGIA INICIAL</h4>
+
+    <mat-table [dataSource]="dataSourcePage4_CIRURGIA_INICIAL">
+        <!--  -->
+        <ng-container matColumnDef="tag">
+            <mat-cell *matCellDef="let element"> {{element.tag}} </mat-cell>
+        </ng-container>
+
+        <!-- -->
+        <ng-container matColumnDef="value">
+            <mat-cell *matCellDef="let element">
+                <ng-container *ngIf="element.tag ==='Data:' ">
+                    {{ element.value | date: 'dd/MM/yyyy'}}
+                </ng-container>
+                <ng-container *ngIf="element.tag !=='Data:' ">
+                    {{ element.value }}</ng-container>
+            </mat-cell>
+        </ng-container>
+
+        <!-- <mat-header-row style="display: none;"></mat-header-row> -->
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <!--  -->
+
+    <h4>RADIOTERAPIA ADJUVANTE</h4>
+    <!--  -->
+    <h5>1º tratamento</h5>
+    <mat-table [dataSource]="dataSourcePage4_RADIOTERAPIA_ADJUVANTE_treatment1">
+        <!--  -->
+        <ng-container matColumnDef="tag">
+            <mat-cell *matCellDef="let element"> {{element.tag}} </mat-cell>
+        </ng-container>
+
+        <!-- -->
+        <ng-container matColumnDef="value">
+            <mat-cell *matCellDef="let element">
+                <ng-container *ngIf="element.tag ==='Data início:' || element.tag ==='término:' ">
+                    {{ element.value | date: 'dd/MM/yyyy'}}
+                </ng-container>
+                <ng-container *ngIf="element.tag !=='Data início:' && element.tag !=='término:'">
+                    {{ element.value }}</ng-container>
+            </mat-cell>
+        </ng-container>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <!--  -->
+    <!--  -->
+
+    <!--  -->
+    <h5>2º tratamento</h5>
+    <mat-table [dataSource]="dataSourcePage4_RADIOTERAPIA_ADJUVANTE_treatment2">
+        <!--  -->
+        <ng-container matColumnDef="tag">
+            <mat-cell *matCellDef="let element"> {{element.tag}} </mat-cell>
+        </ng-container>
+
+        <!-- -->
+        <ng-container matColumnDef="value">
+            <mat-cell *matCellDef="let element">
+                <ng-container *ngIf="element.tag ==='Data início:' || element.tag ==='término:' ">
+                    {{ element.value | date: 'dd/MM/yyyy'}}
+                </ng-container>
+                <ng-container *ngIf="element.tag !=='Data início:' && element.tag !=='término:'">
+                    {{ element.value }}</ng-container>
+            </mat-cell>
+        </ng-container>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <!--  -->
+    <!--  -->
+
+    <!--  -->
+    <h5>3º tratamento</h5>
+    <mat-table [dataSource]="dataSourcePage4_RADIOTERAPIA_ADJUVANTE_treatment3">
+        <!--  -->
+        <ng-container matColumnDef="tag">
+            <mat-cell *matCellDef="let element"> {{element.tag}} </mat-cell>
+        </ng-container>
+
+        <!-- -->
+        <ng-container matColumnDef="value">
+            <mat-cell *matCellDef="let element">
+                <ng-container *ngIf="element.tag ==='Data início:' || element.tag ==='término:' ">
+                    {{ element.value | date: 'dd/MM/yyyy'}}
+                </ng-container>
+                <ng-container *ngIf="element.tag !=='Data início:' && element.tag !=='término:'">
+                    {{ element.value }}</ng-container>
+            </mat-cell>
+        </ng-container>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <!--  -->
+    <!--  -->
+    <!--  -->
+    <h4>QUIMIOTERAPIA ADJUVANTE</h4>
+    <!--  -->
+    <h5>1º tratamento</h5>
+    <mat-table [dataSource]="dataSourcePage4_QUIMIOTERAPIA_ADJUVANTE_treatment1">
+        <!--  -->
+        <ng-container matColumnDef="tag">
+            <mat-cell *matCellDef="let element"> {{element.tag}} </mat-cell>
+        </ng-container>
+
+        <!-- -->
+        <ng-container matColumnDef="value">
+            <mat-cell *matCellDef="let element">
+                <ng-container *ngIf="element.tag ==='Data início:' || element.tag ==='término:' ">
+                    {{ element.value | date: 'dd/MM/yyyy'}}
+                </ng-container>
+                <ng-container *ngIf="element.tag !=='Data início:' && element.tag !=='término:'">
+                    {{ element.value }}</ng-container>
+            </mat-cell>
+        </ng-container>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <!--  -->
+    <!--  -->
+
+    <!--  -->
+    <h5>2º tratamento</h5>
+    <mat-table [dataSource]="dataSourcePage4_QUIMIOTERAPIA_ADJUVANTE_treatment2">
+        <!--  -->
+        <ng-container matColumnDef="tag">
+            <mat-cell *matCellDef="let element"> {{element.tag}} </mat-cell>
+        </ng-container>
+
+        <!-- -->
+        <ng-container matColumnDef="value">
+            <mat-cell *matCellDef="let element">
+                <ng-container *ngIf="element.tag ==='Data início:' || element.tag ==='término:' ">
+                    {{ element.value | date: 'dd/MM/yyyy'}}
+                </ng-container>
+                <ng-container *ngIf="element.tag !=='Data início:' && element.tag !=='término:'">
+                    {{ element.value }}</ng-container>
+            </mat-cell>
+        </ng-container>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <!--  -->
+    <!--  -->
+
+    <!--  -->
+    <h5>3º tratamento</h5>
+    <mat-table [dataSource]="dataSourcePage4_QUIMIOTERAPIA_ADJUVANTE_treatment3">
+        <!--  -->
+        <ng-container matColumnDef="tag">
+            <mat-cell *matCellDef="let element"> {{element.tag}} </mat-cell>
+        </ng-container>
+
+        <!-- -->
+        <ng-container matColumnDef="value">
+            <mat-cell *matCellDef="let element">
+                <ng-container *ngIf="element.tag ==='Data início:' || element.tag ==='término:' ">
+                    {{ element.value | date: 'dd/MM/yyyy'}}
+                </ng-container>
+                <ng-container *ngIf="element.tag !=='Data início:' && element.tag !=='término:'">
+                    {{ element.value }}</ng-container>
+            </mat-cell>
+        </ng-container>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <!--  -->
+    <!--  -->
+    <!--  -->
+    <!--  -->
+    <h4>HORMONIOTERAPIA ADJUVANTE</h4>
+    <!--  -->
+    <h5>1º tratamento</h5>
+    <mat-table [dataSource]="dataSourcePage4_HORMONIOTERAPIA_ADJUVANTE_treatment1">
+        <!--  -->
+        <ng-container matColumnDef="tag">
+            <mat-cell *matCellDef="let element"> {{element.tag}} </mat-cell>
+        </ng-container>
+
+        <!-- -->
+        <ng-container matColumnDef="value">
+            <mat-cell *matCellDef="let element">
+                <ng-container *ngIf="element.tag ==='Data início:' || element.tag ==='término:' ">
+                    {{ element.value | date: 'dd/MM/yyyy'}}
+                </ng-container>
+                <ng-container *ngIf="element.tag !=='Data início:' && element.tag !=='término:'">
+                    {{ element.value }}</ng-container>
+            </mat-cell>
+        </ng-container>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <!--  -->
+    <!--  -->
+
+    <!--  -->
+    <h5>2º tratamento</h5>
+    <mat-table [dataSource]="dataSourcePage4_HORMONIOTERAPIA_ADJUVANTE_treatment2">
+        <!--  -->
+        <ng-container matColumnDef="tag">
+            <mat-cell *matCellDef="let element"> {{element.tag}} </mat-cell>
+        </ng-container>
+
+        <!-- -->
+        <ng-container matColumnDef="value">
+            <mat-cell *matCellDef="let element">
+                <ng-container *ngIf="element.tag ==='Data início:' || element.tag ==='término:' ">
+                    {{ element.value | date: 'dd/MM/yyyy'}}
+                </ng-container>
+                <ng-container *ngIf="element.tag !=='Data início:' && element.tag !=='término:'">
+                    {{ element.value }}</ng-container>
+            </mat-cell>
+        </ng-container>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <!--  -->
+    <!--  -->
+
+    <!--  -->
+    <h5>3º tratamento</h5>
+    <mat-table [dataSource]="dataSourcePage4_HORMONIOTERAPIA_ADJUVANTE_treatment3">
+        <!--  -->
+        <ng-container matColumnDef="tag">
+            <mat-cell *matCellDef="let element"> {{element.tag}} </mat-cell>
+        </ng-container>
+
+        <!-- -->
+        <ng-container matColumnDef="value">
+            <mat-cell *matCellDef="let element">
+                <ng-container *ngIf="element.tag ==='Data início:' || element.tag ==='término:' ">
+                    {{ element.value | date: 'dd/MM/yyyy'}}
+                </ng-container>
+                <ng-container *ngIf="element.tag !=='Data início:' && element.tag !=='término:'">
+                    {{ element.value }}</ng-container>
+            </mat-cell>
+        </ng-container>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <!--  -->
+    <!--  -->
+    <!--  -->
+
+    <h4>DESFECHO</h4>
+
+    <mat-table [dataSource]="dataSourcePage5">
+        <!--  -->
+        <ng-container matColumnDef="tag">
+            <mat-cell *matCellDef="let element"> {{element.tag}} </mat-cell>
+        </ng-container>
+
+        <!-- -->
+        <ng-container matColumnDef="value">
+            <mat-cell *matCellDef="let element">
+                <ng-container *ngIf="element.tag ==='Data início:' || element.tag ==='término:' ">
+                    {{ element.value | date: 'dd/MM/yyyy'}}
+                </ng-container>
+                <ng-container *ngIf="element.tag !=='Data início:' && element.tag !=='término:'">
+                    {{ element.value }}</ng-container>
+            </mat-cell>
+        </ng-container>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>

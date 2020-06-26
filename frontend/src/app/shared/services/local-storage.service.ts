@@ -18,9 +18,14 @@ export class LocalStorageService {
     this.storage.setItem(name, JSON.stringify(item));
   }
 
-  public getFormid(): Formid {
-    return JSON.parse(this.storage.getItem("formid")) as Formid;
+  public getJSON(name) {
+    return this.storage.getItem(name);
   }
+
+
+  // public getFormid(): Formid {
+  //   return JSON.parse(this.storage.getItem("formid")) as Formid;
+  // }
 
   public delete(item: string) {
     this.storage.removeItem(item);

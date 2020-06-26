@@ -1,0 +1,766 @@
+<section ngClass.gt-md="card-content" ngClass.lt-md="card-content-xs">
+
+    <div fxLayoutAlign="center center">
+
+        <div fxFlex="70%" fxFlex.lt-md="90%">
+
+            <mat-card class="mat-elevation-z8">
+
+                <!--  Header-->
+                <mat-card-header>
+                    <mat-card-title>
+                        <h2>FICHA DE COLETA INICIAL</h2>
+                        <h3>Página #4</h3>
+                        <h4>LAUDO Histopatológico</h4>
+                    </mat-card-title>
+                </mat-card-header>
+                <!--  -->
+
+                <!-- card content  -->
+                <mat-card-content class="text-block">
+                    <form [formGroup]="fields">
+                        <mat-divider></mat-divider>
+                        <section fxLayout.xs="column">
+                            <h4 class="section-title">QUIMIOTERAPIA NEOADJUVANTE</h4>
+                            <div formGroupName="QUIMIOTERAPIA_NEOADJUVANTE">
+
+                                <mat-grid-list [cols]="columns$ | async" rowHeight="60px">
+                                    <mat-grid-tile>
+                                        <p>Treatment starting date</p>
+                                    </mat-grid-tile>
+                                    <!-- startingDate -->
+                                    <mat-grid-tile>
+                                        <mat-form-field>
+                                            <input name="startingDate" matInput [matDatepicker]="startingDate"
+                                                placeholder="Starting date" formControlName="startingDate" />
+                                            <mat-datepicker-toggle matSuffix [for]="startingDate">
+                                            </mat-datepicker-toggle>
+                                            <mat-datepicker #startingDate></mat-datepicker>
+
+                                            <!-- Validation messaging checking -->
+                                            <mat-error
+                                                *ngIf="!fields.controls['QUIMIOTERAPIA_NEOADJUVANTE'].dirty && fields.controls['QUIMIOTERAPIA_NEOADJUVANTE'].touched">
+                                                Required
+                                            </mat-error>
+                                            <!--  -->
+
+                                        </mat-form-field>
+                                    </mat-grid-tile>
+                                    <!-- ---------- -->
+                                    <!-- <mat-grid-tile> <p>e</p></mat-grid-tile> -->
+                                    <mat-grid-tile>
+                                        <p>treatment completion date</p>
+                                    </mat-grid-tile>
+                                    <!-- ---------- -->
+                                    <mat-grid-tile>
+                                        <mat-form-field>
+                                            <input name="completionDate" matInput [matDatepicker]="picker2"
+                                                placeholder="Completion Day" formControlName="completionDate" />
+                                            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker2></mat-datepicker>
+
+                                            <!-- Validation messaging checking -->
+                                            <mat-error
+                                                *ngIf="!fields.controls['QUIMIOTERAPIA_NEOADJUVANTE'].dirty && fields.controls['QUIMIOTERAPIA_NEOADJUVANTE'].touched">
+                                                Required
+                                            </mat-error>
+                                            <!--  -->
+
+                                        </mat-form-field>
+                                    </mat-grid-tile>
+                                    <!-- ---------- -->
+                                </mat-grid-list>
+
+                                <!--  -->
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Protocolo" name="protocolo"
+                                        formControlName="protocolo" />
+                                    <!-- Validation messaging checking -->
+                                    <mat-error
+                                        *ngIf="!fields.controls['QUIMIOTERAPIA_NEOADJUVANTE'].dirty && fields.controls['QUIMIOTERAPIA_NEOADJUVANTE'].touched">
+                                        Required
+                                    </mat-error>
+                                    <!--  -->
+                                </mat-form-field>
+
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Local  de execução" name="executionPlace"
+                                        formControlName="execution_place" />
+                                    <!-- Validation messaging checking -->
+                                    <mat-error
+                                        *ngIf="!fields.controls['QUIMIOTERAPIA_NEOADJUVANTE'].dirty && fields.controls['QUIMIOTERAPIA_NEOADJUVANTE'].touched">
+                                        Required
+                                    </mat-error>
+                                    <!--  -->
+                                </mat-form-field>
+                                <!--  -->
+                            </div>
+                        </section>
+                        <mat-divider></mat-divider>
+
+
+                        <mat-divider></mat-divider>
+                        <section fxLayout.xs="column">
+                            <h4 class="section-title">HORMONIOTERAPIA NEOADJUVANTE</h4>
+                            <div formGroupName="HORMONIOTERAPIA_NEOADJUVANTE">
+                                <mat-grid-list [cols]="columns$ | async" rowHeight="60px">
+                                    <mat-grid-tile>
+                                        <p>Treatment starting date</p>
+                                    </mat-grid-tile>
+                                    <!-- startingDate -->
+                                    <mat-grid-tile>
+                                        <mat-form-field>
+                                            <input name="startingDate2" matInput [matDatepicker]="startingDate2"
+                                                placeholder="Starting date" formControlName="startingDate" />
+                                            <mat-datepicker-toggle matSuffix [for]="startingDate2">
+                                            </mat-datepicker-toggle>
+                                            <mat-datepicker #startingDate2></mat-datepicker>
+
+                                            <!-- Validation messaging checking -->
+                                            <mat-error
+                                                *ngIf="!fields.controls['HORMONIOTERAPIA_NEOADJUVANTE'].dirty && fields.controls['HORMONIOTERAPIA_NEOADJUVANTE'].touched">
+                                                Required
+                                            </mat-error>
+                                            <!--  -->
+
+                                        </mat-form-field>
+                                    </mat-grid-tile>
+                                    <!-- ---------- -->
+                                    <!-- <mat-grid-tile> <p>e</p></mat-grid-tile> -->
+                                    <mat-grid-tile>
+                                        <p>treatment completion date</p>
+                                    </mat-grid-tile>
+                                    <!-- ---------- -->
+                                    <mat-grid-tile>
+                                        <mat-form-field>
+                                            <input name="completionDate" matInput [matDatepicker]="picker3"
+                                                placeholder="Completion Day" formControlName="completionDate" />
+                                            <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                                            <mat-datepicker #picker3></mat-datepicker>
+
+                                            <!-- Validation messaging checking -->
+                                            <mat-error
+                                                *ngIf="!fields.controls['HORMONIOTERAPIA_NEOADJUVANTE'].dirty && fields.controls['HORMONIOTERAPIA_NEOADJUVANTE'].touched">
+                                                Required
+                                            </mat-error>
+                                            <!--  -->
+                                        </mat-form-field>
+                                    </mat-grid-tile>
+                                    <!-- ---------- -->
+                                </mat-grid-list>
+
+                                <!--  -->
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Protocolo" name="protocolo"
+                                        formControlName="protocolo" />
+                                    <!-- Validation messaging checking -->
+                                    <mat-error
+                                        *ngIf="!fields.controls['HORMONIOTERAPIA_NEOADJUVANTE'].dirty && fields.controls['HORMONIOTERAPIA_NEOADJUVANTE'].touched">
+                                        Required
+                                    </mat-error>
+                                    <!--  -->
+                                </mat-form-field>
+
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Local  de execução" name="executionPlace"
+                                        formControlName="execution_place" />
+                                    <!-- Validation messaging checking -->
+                                    <mat-error
+                                        *ngIf="!fields.controls['HORMONIOTERAPIA_NEOADJUVANTE'].dirty && fields.controls['HORMONIOTERAPIA_NEOADJUVANTE'].touched">
+                                        Required
+                                    </mat-error>
+                                    <!--  -->
+                                </mat-form-field>
+                                <!--  -->
+                            </div>
+                        </section>
+                        <mat-divider></mat-divider>
+                        <!-- ------------------------------------------------------------ -->
+                        <div formGroupName="CIRURGIA_INICIAL">
+                            <h4 class="section-title">CIRURGIA INICIAL</h4>
+                            <mat-grid-list cols="2" rowHeight="100px">
+                                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                                    <label class="tile__content">Tipo: </label>
+                                </mat-grid-tile>
+                                <mat-grid-tile [colspan]="1" [rowspan]="1">
+                                    <mat-radio-group aria-label="Select an option" name="tipo" class="tile__content"
+                                        formControlName="tipo">
+                                        <mat-radio-button value="Radical">Radical</mat-radio-button>
+                                        <mat-radio-button value="Conservadora">Conservadora</mat-radio-button>
+                                        <mat-radio-button value="Reconstrução">Reconstrução</mat-radio-button>
+                                    </mat-radio-group>
+                                </mat-grid-tile>
+                            </mat-grid-list>
+
+                            <div class="container">
+                                <mat-grid-list cols="2" rowHeight="100px">
+                                    <mat-grid-tile [colspan]="1" [rowspan]="1">
+                                        <label class="tile__content">Axila: </label>
+                                    </mat-grid-tile>
+                                    <mat-grid-tile [colspan]="1" [rowspan]="1">
+                                        <mat-radio-group aria-label="Select an option" name="axila"
+                                            class="tile__content" formControlName="axila">
+                                            <mat-radio-button value="Linfadenectomia">Linfadenectomia</mat-radio-button>
+                                            <mat-radio-button value="LS">LS</mat-radio-button>
+                                        </mat-radio-group>
+                                    </mat-grid-tile>
+                                </mat-grid-list>
+                            </div>
+
+                            <div class="container">
+                                <mat-grid-list cols="2" rowHeight="100px">
+                                    <mat-grid-tile [colspan]="1" [rowspan]="1">
+                                        <label class="tile__content">Data: </label>
+                                    </mat-grid-tile>
+                                    <mat-grid-tile [colspan]="1" [rowspan]="1">
+                                        <mat-form-field class="tile__content">
+                                            <input name="completionDate" matInput
+                                                [matDatepicker]="fieldsCIRURGIAINICIALdata" placeholder="Surgery Day"
+                                                formControlName="data" />
+                                            <mat-datepicker-toggle matSuffix [for]="fieldsCIRURGIAINICIALdata">
+                                            </mat-datepicker-toggle>
+                                            <mat-datepicker #fieldsCIRURGIAINICIALdata></mat-datepicker>
+                                        </mat-form-field>
+                                    </mat-grid-tile>
+                                </mat-grid-list>
+                            </div>
+
+                        </div>
+                        <mat-divider></mat-divider>
+
+                        <h4 class="section-title">RADIOTERAPIA ADJUVANTE</h4>
+                        <div formGroupName="RADIOTERAPIA_ADJUVANTE">
+                            <div formGroupName="treatment1">
+
+                                <section fxLayout.xs="column">
+
+                                    <h6>1º tratamento</h6>
+
+                                    <mat-grid-list [cols]="columns$ | async" rowHeight="60px">
+                                        <mat-grid-tile>
+                                            <p>Treatment starting date</p>
+                                        </mat-grid-tile>
+                                        <!-- startingDate -->
+                                        <mat-grid-tile>
+                                            <mat-form-field>
+                                                <input name="startingDate2" matInput [matDatepicker]="startingDate3"
+                                                    placeholder="Starting date" formControlName="startingDate" />
+                                                <mat-datepicker-toggle matSuffix [for]="startingDate3">
+                                                </mat-datepicker-toggle>
+                                                <mat-datepicker #startingDate3></mat-datepicker>
+
+
+                                            </mat-form-field>
+                                        </mat-grid-tile>
+                                        <!-- ---------- -->
+                                        <!-- <mat-grid-tile> <p>e</p></mat-grid-tile> -->
+                                        <mat-grid-tile>
+                                            <p>treatment completion date</p>
+                                        </mat-grid-tile>
+                                        <!-- ---------- -->
+                                        <mat-grid-tile>
+                                            <mat-form-field>
+                                                <input name="completionDate" matInput [matDatepicker]="picker4"
+                                                    placeholder="Completion Day" formControlName="completionDate" />
+                                                <mat-datepicker-toggle matSuffix [for]="picker4">
+                                                </mat-datepicker-toggle>
+                                                <mat-datepicker #picker4></mat-datepicker>
+
+
+                                            </mat-form-field>
+                                        </mat-grid-tile>
+                                        <!-- ---------- -->
+                                    </mat-grid-list>
+
+                                    <!--  -->
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Protocolo" name="protocolo"
+                                            formControlName="protocolo" />
+
+                                    </mat-form-field>
+
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Local  de execução" name="executionPlace"
+                                            formControlName="execution_place" />
+
+                                    </mat-form-field>
+                                    <!--  -->
+
+                                </section>
+                                <mat-divider></mat-divider>
+
+                            </div>
+
+                        </div>
+                        <h6>2º tratamento</h6>
+
+                        <div formGroupName="RADIOTERAPIA_ADJUVANTE">
+                            <div formGroupName="treatment2">
+                                <mat-divider></mat-divider>
+                                <section fxLayout.xs="column">
+
+                                    <mat-grid-list [cols]="columns$ | async" rowHeight="60px">
+                                        <mat-grid-tile>
+                                            <p>Treatment starting date</p>
+                                        </mat-grid-tile>
+                                        <!-- startingDate -->
+                                        <mat-grid-tile>
+                                            <mat-form-field>
+                                                <input name="startingDate2" matInput [matDatepicker]="startingDate4"
+                                                    placeholder="Starting date" formControlName="startingDate" />
+                                                <mat-datepicker-toggle matSuffix [for]="startingDate4">
+                                                </mat-datepicker-toggle>
+                                                <mat-datepicker #startingDate4></mat-datepicker>
+
+
+                                            </mat-form-field>
+                                        </mat-grid-tile>
+                                        <!-- ---------- -->
+                                        <!-- <mat-grid-tile> <p>e</p></mat-grid-tile> -->
+                                        <mat-grid-tile>
+                                            <p>treatment completion date</p>
+                                        </mat-grid-tile>
+                                        <!-- ---------- -->
+                                        <mat-grid-tile>
+                                            <mat-form-field>
+                                                <input name="completionDate" matInput [matDatepicker]="picker5"
+                                                    placeholder="Completion Day" formControlName="completionDate" />
+                                                <mat-datepicker-toggle matSuffix [for]="picker5">
+                                                </mat-datepicker-toggle>
+                                                <mat-datepicker #picker5></mat-datepicker>
+
+
+                                            </mat-form-field>
+                                        </mat-grid-tile>
+                                        <!-- ---------- -->
+                                    </mat-grid-list>
+
+                                    <!--  -->
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Protocolo" name="protocolo"
+                                            formControlName="protocolo" />
+
+                                    </mat-form-field>
+
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Local  de execução" name="executionPlace"
+                                            formControlName="execution_place" />
+
+                                    </mat-form-field>
+                                    <!--  -->
+                                </section>
+                                <mat-divider></mat-divider>
+
+                            </div>
+                        </div>
+
+                        <h6>3º tratamento</h6>
+
+                        <div formGroupName="RADIOTERAPIA_ADJUVANTE">
+                            <div formGroupName="treatment3">
+                                <mat-divider></mat-divider>
+                                <section fxLayout.xs="column">
+
+                                    <mat-grid-list [cols]="columns$ | async" rowHeight="60px">
+                                        <mat-grid-tile>
+                                            <p>Treatment starting date</p>
+                                        </mat-grid-tile>
+                                        <!-- startingDate -->
+                                        <mat-grid-tile>
+                                            <mat-form-field>
+                                                <input name="startingDate2" matInput [matDatepicker]="startingDate5"
+                                                    placeholder="Starting date" formControlName="startingDate" />
+                                                <mat-datepicker-toggle matSuffix [for]="startingDate5">
+                                                </mat-datepicker-toggle>
+                                                <mat-datepicker #startingDate5></mat-datepicker>
+
+
+                                            </mat-form-field>
+                                        </mat-grid-tile>
+                                        <!-- ---------- -->
+                                        <!-- <mat-grid-tile> <p>e</p></mat-grid-tile> -->
+                                        <mat-grid-tile>
+                                            <p>treatment completion date</p>
+                                        </mat-grid-tile>
+                                        <!-- ---------- -->
+                                        <mat-grid-tile>
+                                            <mat-form-field>
+                                                <input name="completionDate" matInput [matDatepicker]="picker6"
+                                                    placeholder="Completion Day" formControlName="completionDate" />
+                                                <mat-datepicker-toggle matSuffix [for]="picker6">
+                                                </mat-datepicker-toggle>
+                                                <mat-datepicker #picker6></mat-datepicker>
+                                            </mat-form-field>
+                                        </mat-grid-tile>
+                                        <!-- ---------- -->
+                                    </mat-grid-list>
+                                    <!--  -->
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Protocolo" name="protocolo"
+                                            formControlName="protocolo" />
+
+                                    </mat-form-field>
+
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Local  de execução" name="executionPlace"
+                                            formControlName="execution_place" />
+
+                                    </mat-form-field>
+                                    <!--  -->
+
+                                </section>
+                                <mat-divider></mat-divider>
+
+                            </div>
+                        </div>
+
+                        <div formGroupName="QUIMIOTERAPIA_ADJUVANTE">
+                            <mat-divider></mat-divider>
+                            <h4 class="section-title">QUIMIOTERAPIA ADJUVANTE</h4>
+
+                            <div formGroupName="treatment1">
+                                <section fxLayout.xs="column">
+                                    <h6>1º tratamento</h6>
+                                    <mat-grid-list [cols]="columns$ | async" rowHeight="60px">
+                                        <mat-grid-tile>
+                                            <p>Treatment starting date</p>
+                                        </mat-grid-tile>
+                                        <!-- startingDate -->
+                                        <mat-grid-tile>
+                                            <mat-form-field>
+                                                <input name="startingDate5" matInput [matDatepicker]="startingDate8"
+                                                    placeholder="Starting date" formControlName="startingDate" />
+                                                <mat-datepicker-toggle matSuffix [for]="startingDate8">
+                                                </mat-datepicker-toggle>
+                                                <mat-datepicker #startingDate8></mat-datepicker>
+                                            </mat-form-field>
+                                        </mat-grid-tile>
+                                        <!-- ---------- -->
+                                        <!-- <mat-grid-tile> <p>e</p></mat-grid-tile> -->
+                                        <mat-grid-tile>
+                                            <p>treatment completion date</p>
+                                        </mat-grid-tile>
+                                        <!-- ---------- -->
+                                        <mat-grid-tile>
+                                            <mat-form-field>
+                                                <input name="completionDate" matInput [matDatepicker]="picker7"
+                                                    placeholder="Completion Day" formControlName="completionDate" />
+                                                <mat-datepicker-toggle matSuffix [for]="picker7">
+                                                </mat-datepicker-toggle>
+                                                <mat-datepicker #picker7></mat-datepicker>
+                                            </mat-form-field>
+                                        </mat-grid-tile>
+                                        <!-- ---------- -->
+                                    </mat-grid-list>
+
+                                    <!--  -->
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Protocolo" name="protocolo"
+                                            formControlName="protocolo" />
+
+                                    </mat-form-field>
+
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Local  de execução" name="executionPlace"
+                                            formControlName="execution_place" />
+
+                                    </mat-form-field>
+                                    <!--  -->
+                                </section>
+                                <mat-divider></mat-divider>
+                            </div>
+
+                            <div formGroupName="treatment2">
+                                <section fxLayout.xs="column">
+                                    <h6>2º tratamento</h6>
+                                    <mat-grid-list [cols]="columns$ | async" rowHeight="60px">
+                                        <mat-grid-tile>
+                                            <p>Treatment starting date</p>
+                                        </mat-grid-tile>
+                                        <!-- startingDate -->
+                                        <mat-grid-tile>
+                                            <mat-form-field>
+                                                <input name="startingDate5" matInput [matDatepicker]="startingDate9"
+                                                    placeholder="Starting date" formControlName="startingDate" />
+                                                <mat-datepicker-toggle matSuffix [for]="startingDate9">
+                                                </mat-datepicker-toggle>
+                                                <mat-datepicker #startingDate9></mat-datepicker>
+                                            </mat-form-field>
+                                        </mat-grid-tile>
+                                        <!-- ---------- -->
+                                        <!-- <mat-grid-tile> <p>e</p></mat-grid-tile> -->
+                                        <mat-grid-tile>
+                                            <p>treatment completion date</p>
+                                        </mat-grid-tile>
+                                        <!-- ---------- -->
+                                        <mat-grid-tile>
+                                            <mat-form-field>
+                                                <input name="completionDate" matInput [matDatepicker]="picker8"
+                                                    placeholder="Completion Day" formControlName="completionDate" />
+                                                <mat-datepicker-toggle matSuffix [for]="picker8">
+                                                </mat-datepicker-toggle>
+                                                <mat-datepicker #picker8></mat-datepicker>
+                                            </mat-form-field>
+                                        </mat-grid-tile>
+                                        <!-- ---------- -->
+                                    </mat-grid-list>
+
+                                    <!--  -->
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Protocolo" name="protocolo"
+                                            formControlName="protocolo" />
+
+                                    </mat-form-field>
+
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Local  de execução" name="executionPlace"
+                                            formControlName="execution_place" />
+
+                                    </mat-form-field>
+                                    <!--  -->
+                                </section>
+                                <mat-divider></mat-divider>
+                            </div>
+
+                            <div formGroupName="treatment3">
+                                <section fxLayout.xs="column">
+                                    <h6>3º tratamento</h6>
+                                    <mat-grid-list [cols]="columns$ | async" rowHeight="60px">
+                                        <mat-grid-tile>
+                                            <p>Treatment starting date</p>
+                                        </mat-grid-tile>
+                                        <!-- startingDate -->
+                                        <mat-grid-tile>
+                                            <mat-form-field>
+                                                <input name="startingDate5" matInput [matDatepicker]="startingDate10"
+                                                    placeholder="Starting date" formControlName="startingDate" />
+                                                <mat-datepicker-toggle matSuffix [for]="startingDate10">
+                                                </mat-datepicker-toggle>
+                                                <mat-datepicker #startingDate10></mat-datepicker>
+                                            </mat-form-field>
+                                        </mat-grid-tile>
+                                        <!-- ---------- -->
+                                        <!-- <mat-grid-tile> <p>e</p></mat-grid-tile> -->
+                                        <mat-grid-tile>
+                                            <p>treatment completion date</p>
+                                        </mat-grid-tile>
+                                        <!-- ---------- -->
+                                        <mat-grid-tile>
+                                            <mat-form-field>
+                                                <input name="completionDate" matInput [matDatepicker]="picker10"
+                                                    placeholder="Completion Day" formControlName="completionDate" />
+                                                <mat-datepicker-toggle matSuffix [for]="picker10">
+                                                </mat-datepicker-toggle>
+                                                <mat-datepicker #picker10></mat-datepicker>
+                                            </mat-form-field>
+                                        </mat-grid-tile>
+                                        <!-- ---------- -->
+                                    </mat-grid-list>
+
+                                    <!--  -->
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Protocolo" name="protocolo"
+                                            formControlName="protocolo" />
+
+                                    </mat-form-field>
+
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Local  de execução" name="executionPlace"
+                                            formControlName="execution_place" />
+
+                                    </mat-form-field>
+                                    <!--  -->
+                                </section>
+                                <mat-divider></mat-divider>
+                            </div>
+
+
+                        </div>
+
+
+                        <div formGroupName="HORMONIOTERAPIA_ADJUVANTE">
+                            <mat-divider></mat-divider>
+                            <h4 class="section-title">HORMONIOTERAPIA ADJUVANTE</h4>
+
+                            <div formGroupName="treatment1">
+                                <section fxLayout.xs="column">
+                                    <h6>1º tratamento</h6>
+                                    <mat-grid-list [cols]="columns$ | async" rowHeight="60px">
+                                        <mat-grid-tile>
+                                            <p>Treatment starting date</p>
+                                        </mat-grid-tile>
+                                        <!-- startingDate -->
+                                        <mat-grid-tile>
+                                            <mat-form-field>
+                                                <input name="startingDate5" matInput [matDatepicker]="startingDate150"
+                                                    placeholder="Starting date" formControlName="startingDate" />
+                                                <mat-datepicker-toggle matSuffix [for]="startingDate150">
+                                                </mat-datepicker-toggle>
+                                                <mat-datepicker #startingDate150></mat-datepicker>
+                                            </mat-form-field>
+                                        </mat-grid-tile>
+                                        <!-- ---------- -->
+                                        <!-- <mat-grid-tile> <p>e</p></mat-grid-tile> -->
+                                        <mat-grid-tile>
+                                            <p>treatment completion date</p>
+                                        </mat-grid-tile>
+                                        <!-- ---------- -->
+                                        <mat-grid-tile>
+                                            <mat-form-field>
+                                                <input name="completionDate" matInput [matDatepicker]="picker100"
+                                                    placeholder="Completion Day" formControlName="completionDate" />
+                                                <mat-datepicker-toggle matSuffix [for]="picker100">
+                                                </mat-datepicker-toggle>
+                                                <mat-datepicker #picker100></mat-datepicker>
+                                            </mat-form-field>
+                                        </mat-grid-tile>
+                                        <!-- ---------- -->
+                                    </mat-grid-list>
+
+                                    <!--  -->
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Protocolo" name="protocolo"
+                                            formControlName="protocolo" />
+
+                                    </mat-form-field>
+
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Local  de execução" name="executionPlace"
+                                            formControlName="execution_place" />
+
+                                    </mat-form-field>
+                                    <!--  -->
+                                </section>
+                                <mat-divider></mat-divider>
+                            </div>
+
+                            <div formGroupName="treatment2">
+                                <section fxLayout.xs="column">
+                                    <h6>2º tratamento</h6>
+                                    <mat-grid-list [cols]="columns$ | async" rowHeight="60px">
+                                        <mat-grid-tile>
+                                            <p>Treatment starting date</p>
+                                        </mat-grid-tile>
+                                        <!-- startingDate -->
+                                        <mat-grid-tile>
+                                            <mat-form-field>
+                                                <input name="startingDate5" matInput [matDatepicker]="startingDate11"
+                                                    placeholder="Starting date" formControlName="startingDate" />
+                                                <mat-datepicker-toggle matSuffix [for]="startingDate11">
+                                                </mat-datepicker-toggle>
+                                                <mat-datepicker #startingDate11></mat-datepicker>
+                                            </mat-form-field>
+                                        </mat-grid-tile>
+                                        <!-- ---------- -->
+                                        <!-- <mat-grid-tile> <p>e</p></mat-grid-tile> -->
+                                        <mat-grid-tile>
+                                            <p>treatment completion date</p>
+                                        </mat-grid-tile>
+                                        <!-- ---------- -->
+                                        <mat-grid-tile>
+                                            <mat-form-field>
+                                                <input name="completionDate" matInput [matDatepicker]="picker11"
+                                                    placeholder="Completion Day" formControlName="completionDate" />
+                                                <mat-datepicker-toggle matSuffix [for]="picker11">
+                                                </mat-datepicker-toggle>
+                                                <mat-datepicker #picker11></mat-datepicker>
+                                            </mat-form-field>
+                                        </mat-grid-tile>
+                                        <!-- ---------- -->
+                                    </mat-grid-list>
+
+                                    <!--  -->
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Protocolo" name="protocolo"
+                                            formControlName="protocolo" />
+
+                                    </mat-form-field>
+
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Local  de execução" name="executionPlace"
+                                            formControlName="execution_place" />
+
+                                    </mat-form-field>
+                                    <!--  -->
+                                </section>
+                                <mat-divider></mat-divider>
+                            </div>
+
+                            <div formGroupName="treatment3">
+                                <section fxLayout.xs="column">
+                                    <h6>3º tratamento</h6>
+                                    <mat-grid-list [cols]="columns$ | async" rowHeight="60px">
+                                        <mat-grid-tile>
+                                            <p>Treatment starting date</p>
+                                        </mat-grid-tile>
+                                        <!-- startingDate -->
+                                        <mat-grid-tile>
+                                            <mat-form-field>
+                                                <input name="startingDate5" matInput [matDatepicker]="startingDate110"
+                                                    placeholder="Starting date" formControlName="startingDate" />
+                                                <mat-datepicker-toggle matSuffix [for]="startingDate110">
+                                                </mat-datepicker-toggle>
+                                                <mat-datepicker #startingDate110></mat-datepicker>
+                                            </mat-form-field>
+                                        </mat-grid-tile>
+                                        <!-- ---------- -->
+                                        <!-- <mat-grid-tile> <p>e</p></mat-grid-tile> -->
+                                        <mat-grid-tile>
+                                            <p>treatment completion date</p>
+                                        </mat-grid-tile>
+                                        <!-- ---------- -->
+                                        <mat-grid-tile>
+                                            <mat-form-field>
+                                                <input name="completionDate" matInput [matDatepicker]="picker12"
+                                                    placeholder="Completion Day" formControlName="completionDate" />
+                                                <mat-datepicker-toggle matSuffix [for]="picker12">
+                                                </mat-datepicker-toggle>
+                                                <mat-datepicker #picker12></mat-datepicker>
+                                            </mat-form-field>
+                                        </mat-grid-tile>
+                                        <!-- ---------- -->
+                                    </mat-grid-list>
+
+                                    <!--  -->
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Protocolo" name="protocolo"
+                                            formControlName="protocolo" />
+
+                                    </mat-form-field>
+
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Local  de execução" name="executionPlace"
+                                            formControlName="execution_place" />
+
+                                    </mat-form-field>
+                                    <!--  -->
+                                </section>
+                                <mat-divider></mat-divider>
+                            </div>
+                        </div>
+                    </form>
+                </mat-card-content>
+                <!--  -->
+
+                <!--  -->
+                <mat-card-actions>
+                    <!--  " -->
+                    <!-- [disabled]="fields.invalid" -->
+                    <button mat-button routerLink="/patientform/form5" (click)="next()"
+                        matTooltip="Next page, please!">Next</button>
+                    <!-- [disabled]="fields.invalid " -->
+                    <button mat-button (click)="save()"
+                        matTooltip="you can save to databse and come back later.">Save</button>
+                </mat-card-actions>
+
+                <mat-card-footer>
+                    <ter-progressbar [value]="40"></ter-progressbar>
+                </mat-card-footer>
+                <!--  -->
+            </mat-card>
+
+        </div>
+
+    </div>
+
+</section>
