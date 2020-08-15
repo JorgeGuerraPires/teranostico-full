@@ -12,12 +12,32 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ProtectedModule } from './shared/modules/protected/protected.module';
 import { UserSideBarMenuComponent } from './shared/components/user-side-bar-menu/user-side-bar-menu.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { WelcomeModule } from './components/welcome/welcome.module';
+import { LoginModule } from './components/login/login.module';
+import { RegisterModule } from './components/register/register.module';
+import { DashboardModule } from './components/dashboard/dashboard.module';
+import { AboutusModule } from './components/aboutus/aboutus.module';
+import { ResetpasswordModule } from './components/resetpassword/resetpassword.module';
+import { ResetpasswordwithtokenModule } from './components/resetpasswordwithtoken/resetpasswordwithtoken.module';
+import { UserPanelModule } from './components/user-panel/user-panel.module';
 
 
 
 @NgModule({
   declarations: [LayoutComponent, MenuComponent, UserSideBarMenuComponent],
   imports: [
+    //----------------------------------
+    WelcomeModule,
+    LoginModule,
+    RegisterModule,
+    DashboardModule,
+    AboutusModule,
+    ResetpasswordModule,
+    ResetpasswordwithtokenModule,
+    UserPanelModule,
+    //-----------------------------------
+
+
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

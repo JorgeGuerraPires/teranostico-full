@@ -1,9 +1,17 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { ProtectedGuard } from './shared/guards/protected.guard';
 import { LoginGuard } from './shared/guards/login.guard';
 import { AdminGuard } from './shared/guards/admin.guard';
 import { GuardGuard } from './components/resetpasswordwithtoken/guards/guard.guard';
+import { WelcomeComponent } from './components/welcome/welcome.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { AboutusComponent } from './components/aboutus/aboutus.component';
+import { ResetpasswordComponent } from './components/resetpassword/resetpassword.component';
+import { ResetpasswordwithtokenComponent } from './components/resetpasswordwithtoken/resetpasswordwithtoken.component';
+import { UserPanelComponent } from './components/user-panel/user-panel.component';
 // import { UnsavedChangesGuard } from './components/patientform/formid/unsaved-changes.guard';
 
 
@@ -12,7 +20,8 @@ const routes: Routes = [
   //Welcome!
   {
     path: "",
-    loadChildren: './components/welcome/welcome.module#WelcomeModule',
+    // loadChildren: './components/welcome/welcome.module#WelcomeModule',
+    component: WelcomeComponent,
     canActivate: [LoginGuard]//this will make the user be redirected to dashboard in case of loggedin
   },
   //------------------------------------------------------
@@ -21,6 +30,7 @@ const routes: Routes = [
   {
     path: "login",
     loadChildren: './components/login/login.module#LoginModule',
+    component: LoginComponent,
     canActivate: [LoginGuard]//this will make the user be redirected to dashboard in case of loggedin
   },
   //------------------------------------------------------
@@ -29,7 +39,8 @@ const routes: Routes = [
   //Login
   {
     path: "register",
-    loadChildren: './components/register/register.module#RegisterModule',
+    // loadChildren: './components/register/register.module#RegisterModule',
+    component: RegisterComponent,
     canActivate: [LoginGuard]//this will make the user be redirected to dashboard in case of loggedin
   },
   //------------------------------------------------------
@@ -37,7 +48,8 @@ const routes: Routes = [
   //Dashboard
   {
     path: "dashboard",
-    loadChildren: './components/dashboard/dashboard.module#DashboardModule',
+    // loadChildren: './components/dashboard/dashboard.module#DashboardModule',
+    component: DashboardComponent,
     //canActivate: [ProtectedGuard],
     canLoad: [ProtectedGuard],
   },
@@ -46,7 +58,8 @@ const routes: Routes = [
   //About us
   {
     path: "aboutus",
-    loadChildren: './components/aboutus/aboutus.module#AboutusModule',
+    // loadChildren: './components/aboutus/aboutus.module#AboutusModule',
+    component: AboutusComponent,
   },
   //------------------------------------------------------
 
@@ -55,20 +68,23 @@ const routes: Routes = [
   //Reset password
   {
     path: "resetpassword",
-    loadChildren: './components/resetpassword/resetpassword.module#ResetpasswordModule',
+    // loadChildren: './components/resetpassword/resetpassword.module#ResetpasswordModule',
+    component: ResetpasswordComponent,
     canActivate: [ProtectedGuard],
     canLoad: [ProtectedGuard],
   },
   {
     path: "resetpasswordwithtoken/:jwt",
-    loadChildren: './components/resetpasswordwithtoken/resetpasswordwithtoken.module#ResetpasswordwithtokenModule',
+    // loadChildren: './components/resetpasswordwithtoken/resetpasswordwithtoken.module#ResetpasswordwithtokenModule',
+    component: ResetpasswordwithtokenComponent,
     canActivate: [GuardGuard],
   },
   //------------------------------------------------------
   //user panel, administration
   {
     path: "userpanel",
-    loadChildren: './components/user-panel/user-panel.module#UserPanelModule',
+    // loadChildren: './components/user-panel/user-panel.module#UserPanelModule',
+    component: UserPanelComponent,
     canActivate: [ProtectedGuard, AdminGuard],
     canLoad: [ProtectedGuard, AdminGuard],
   },
