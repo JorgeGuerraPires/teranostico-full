@@ -1,6 +1,6 @@
 <div ngClass.gt-md="form-page" ngClass.lt-md="form-page-xs" fxFlex.lt-md="90%">
     <!--  -->
-    <h2>Form Header</h2>
+    <h2 *ngIf="dataSourceFormid">Form Header</h2>
     <mat-table [dataSource]="dataSourceFormid">
         <!-- Position Column -->
         <ng-container matColumnDef="tag">
@@ -19,8 +19,8 @@
     </mat-table>
     <!--  -->
     <!--  -->
-    <h2>FICHA DE COLETA INICIAL</h2>
-    <h3>Página #1: IDENTIFICAÇÃO</h3>
+    <h2 *ngIf="dataSourcePage1">FICHA DE COLETA INICIAL</h2>
+    <h3 *ngIf="dataSourcePage1">Página #1: IDENTIFICAÇÃO</h3>
     <mat-table [dataSource]="dataSourcePage1">
         <!--  -->
         <ng-container matColumnDef="tag">
@@ -46,8 +46,8 @@
     <!--  -->
 
     <!--  -->
-    <h2>FICHA DE COLETA INICIAL</h2>
-    <h3>Página #2: INFORMAÇÕES GERAIS</h3>
+    <h2 *ngIf="dataSourcePage2">FICHA DE COLETA INICIAL</h2>
+    <h3 *ngIf="dataSourcePage2">Página #2: INFORMAÇÕES GERAIS</h3>
     <mat-table [dataSource]="dataSourcePage2">
         <!--  -->
         <ng-container matColumnDef="tag">
@@ -72,9 +72,9 @@
     <!--  -->
 
     <!--  -->
-    <h2>FICHA DE COLETA INICIAL</h2>
-    <h3>Página #3: DIAGNÓSTICO</h3>
-    <h4>LAUDO Histopatológico</h4>
+    <h2 *ngIf="dataSourcePage3">FICHA DE COLETA INICIAL</h2>
+    <h3 *ngIf="dataSourcePage3">Página #3: DIAGNÓSTICO</h3>
+    <h4 *ngIf="dataSourcePage3">LAUDO Histopatológico</h4>
 
     <mat-table [dataSource]="dataSourcePage3">
         <!--  -->
@@ -99,7 +99,7 @@
     </mat-table>
     <!--  -->
 
-    <h4>QUIMIOTERAPIA NEOADJUVANTE</h4>
+    <h4 *ngIf="dataSourcePage4_QUIMIOTERAPIA_NEOADJUVANTE">QUIMIOTERAPIA NEOADJUVANTE</h4>
 
     <mat-table [dataSource]="dataSourcePage4_QUIMIOTERAPIA_NEOADJUVANTE">
         <!--  -->
@@ -123,7 +123,7 @@
     </mat-table>
     <!--  -->
 
-    <h4>HORMONIOTERAPIA NEOADJUVANTE</h4>
+    <h4 *ngIf="dataSourcePage4_HORMONIOTERAPIA_NEOADJUVANTE"> HORMONIOTERAPIA NEOADJUVANTE</h4>
 
     <mat-table [dataSource]="dataSourcePage4_HORMONIOTERAPIA_NEOADJUVANTE">
         <!--  -->
@@ -148,7 +148,7 @@
     <!--  -->
 
 
-    <h4>CIRURGIA INICIAL</h4>
+    <h4 *ngIf="dataSourcePage4_CIRURGIA_INICIAL">CIRURGIA INICIAL</h4>
 
     <mat-table [dataSource]="dataSourcePage4_CIRURGIA_INICIAL">
         <!--  -->
@@ -172,9 +172,11 @@
     </mat-table>
     <!--  -->
 
-    <h4>RADIOTERAPIA ADJUVANTE</h4>
+    <h4
+        *ngIf="dataSourcePage4_RADIOTERAPIA_ADJUVANTE_treatment3 || dataSourcePage4_RADIOTERAPIA_ADJUVANTE_treatment2 || dataSourcePage4_RADIOTERAPIA_ADJUVANTE_treatment1">
+        RADIOTERAPIA ADJUVANTE</h4>
     <!--  -->
-    <h5>1º tratamento</h5>
+    <h5 *ngIf="dataSourcePage4_RADIOTERAPIA_ADJUVANTE_treatment1">1º tratamento</h5>
     <mat-table [dataSource]="dataSourcePage4_RADIOTERAPIA_ADJUVANTE_treatment1">
         <!--  -->
         <ng-container matColumnDef="tag">
@@ -197,7 +199,7 @@
     <!--  -->
 
     <!--  -->
-    <h5>2º tratamento</h5>
+    <h5 *ngIf="dataSourcePage4_RADIOTERAPIA_ADJUVANTE_treatment2">2º tratamento</h5>
     <mat-table [dataSource]="dataSourcePage4_RADIOTERAPIA_ADJUVANTE_treatment2">
         <!--  -->
         <ng-container matColumnDef="tag">
@@ -220,7 +222,7 @@
     <!--  -->
 
     <!--  -->
-    <h5>3º tratamento</h5>
+    <h5 *ngIf="dataSourcePage4_RADIOTERAPIA_ADJUVANTE_treatment3">3º tratamento</h5>
     <mat-table [dataSource]="dataSourcePage4_RADIOTERAPIA_ADJUVANTE_treatment3">
         <!--  -->
         <ng-container matColumnDef="tag">
@@ -242,9 +244,11 @@
     <!--  -->
     <!--  -->
     <!--  -->
-    <h4>QUIMIOTERAPIA ADJUVANTE</h4>
+    <h4
+        *ngIf="dataSourcePage4_QUIMIOTERAPIA_ADJUVANTE_treatment3 || dataSourcePage4_QUIMIOTERAPIA_ADJUVANTE_treatment2 || dataSourcePage4_QUIMIOTERAPIA_ADJUVANTE_treatment1 ">
+        QUIMIOTERAPIA ADJUVANTE</h4>
     <!--  -->
-    <h5>1º tratamento</h5>
+    <h5 *ngIf="dataSourcePage4_QUIMIOTERAPIA_ADJUVANTE_treatment1">1º tratamento</h5>
     <mat-table [dataSource]="dataSourcePage4_QUIMIOTERAPIA_ADJUVANTE_treatment1">
         <!--  -->
         <ng-container matColumnDef="tag">
@@ -267,7 +271,7 @@
     <!--  -->
 
     <!--  -->
-    <h5>2º tratamento</h5>
+    <h5 *ngIf="dataSourcePage4_QUIMIOTERAPIA_ADJUVANTE_treatment2">2º tratamento</h5>
     <mat-table [dataSource]="dataSourcePage4_QUIMIOTERAPIA_ADJUVANTE_treatment2">
         <!--  -->
         <ng-container matColumnDef="tag">
@@ -290,7 +294,7 @@
     <!--  -->
 
     <!--  -->
-    <h5>3º tratamento</h5>
+    <h5 *ngIf="dataSourcePage4_QUIMIOTERAPIA_ADJUVANTE_treatment3">3º tratamento</h5>
     <mat-table [dataSource]="dataSourcePage4_QUIMIOTERAPIA_ADJUVANTE_treatment3">
         <!--  -->
         <ng-container matColumnDef="tag">
@@ -313,9 +317,9 @@
     <!--  -->
     <!--  -->
     <!--  -->
-    <h4>HORMONIOTERAPIA ADJUVANTE</h4>
+    <h4 *ngIf="dataSourcePage4_HORMONIOTERAPIA_ADJUVANTE_treatment1">HORMONIOTERAPIA ADJUVANTE</h4>
     <!--  -->
-    <h5>1º tratamento</h5>
+    <h5 *ngIf="dataSourcePage4_HORMONIOTERAPIA_ADJUVANTE_treatment1">1º tratamento</h5>
     <mat-table [dataSource]="dataSourcePage4_HORMONIOTERAPIA_ADJUVANTE_treatment1">
         <!--  -->
         <ng-container matColumnDef="tag">
@@ -338,7 +342,7 @@
     <!--  -->
 
     <!--  -->
-    <h5>2º tratamento</h5>
+    <h5 *ngIf="dataSourcePage4_HORMONIOTERAPIA_ADJUVANTE_treatment2">2º tratamento</h5>
     <mat-table [dataSource]="dataSourcePage4_HORMONIOTERAPIA_ADJUVANTE_treatment2">
         <!--  -->
         <ng-container matColumnDef="tag">
@@ -361,7 +365,7 @@
     <!--  -->
 
     <!--  -->
-    <h5>3º tratamento</h5>
+    <h5 *ngIf="dataSourcePage4_HORMONIOTERAPIA_ADJUVANTE_treatment3">3º tratamento</h5>
     <mat-table [dataSource]="dataSourcePage4_HORMONIOTERAPIA_ADJUVANTE_treatment3">
         <!--  -->
         <ng-container matColumnDef="tag">
@@ -383,25 +387,27 @@
     <!--  -->
     <!--  -->
     <!--  -->
+    <div *ngIf="dataSourcePage5">
+        <h4>DESFECHO</h4>
 
-    <h4>DESFECHO</h4>
+        <mat-table [dataSource]="dataSourcePage5">
+            <!--  -->
+            <ng-container matColumnDef="tag">
+                <mat-cell *matCellDef="let element"> {{element.tag}} </mat-cell>
+            </ng-container>
 
-    <mat-table [dataSource]="dataSourcePage5">
-        <!--  -->
-        <ng-container matColumnDef="tag">
-            <mat-cell *matCellDef="let element"> {{element.tag}} </mat-cell>
-        </ng-container>
+            <!-- -->
+            <ng-container matColumnDef="value">
+                <mat-cell *matCellDef="let element">
+                    <ng-container *ngIf="element.tag ==='Data início:' || element.tag ==='término:' ">
+                        {{ element.value | date: 'dd/MM/yyyy'}}
+                    </ng-container>
+                    <ng-container *ngIf="element.tag !=='Data início:' && element.tag !=='término:'">
+                        {{ element.value }}</ng-container>
+                </mat-cell>
+            </ng-container>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
 
-        <!-- -->
-        <ng-container matColumnDef="value">
-            <mat-cell *matCellDef="let element">
-                <ng-container *ngIf="element.tag ==='Data início:' || element.tag ==='término:' ">
-                    {{ element.value | date: 'dd/MM/yyyy'}}
-                </ng-container>
-                <ng-container *ngIf="element.tag !=='Data início:' && element.tag !=='término:'">
-                    {{ element.value }}</ng-container>
-            </mat-cell>
-        </ng-container>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
+    </div>
 </div>

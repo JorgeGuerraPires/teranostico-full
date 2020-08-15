@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UtilService } from 'src/app/shared/services/util.service';
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
+import { AuthenticationService } from 'src/app/shared/services/authentication.service';
+import { User } from 'src/app/shared/interfaces/user';
 
 @Component({
   selector: 'ter-info-panel',
@@ -21,7 +23,9 @@ export class InfoPanelComponent implements OnInit {
   watcher: Subscription;
 
 
-  constructor(private utilService: UtilService) {
+  constructor(private utilService: UtilService,
+    public authenticationService: AuthenticationService
+  ) {
 
     this.watcher = this.utilService.createObservableMobile()
       .subscribe(info => {
@@ -33,6 +37,7 @@ export class InfoPanelComponent implements OnInit {
   //life hook
   ngOnInit() {
   }
+
 
   ngOnDestroy() {
     this.watcher.unsubscribe;
@@ -50,6 +55,14 @@ export class InfoPanelComponent implements OnInit {
   prevStep() {
     this.step--;
   }
+
+
+  //----------------------------------------
+  getUserForms() {
+    const user: User = this.authenticationService.getCurrentUser();
+    return user ? user.formSubmitted : [];
+  }
+  //----------------------------------------
 }
 //-----------------------------------------
 

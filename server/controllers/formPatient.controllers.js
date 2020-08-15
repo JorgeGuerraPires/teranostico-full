@@ -11,6 +11,7 @@ const FormPatient = mongoose.model("FormPatient");
 //-------------------------------------------------------
 const util = require("../utils/utils");
 const authUtils = require("../config/auth");
+const User = require("../models/User");
 //------------------------------------------------------
 
 //-----------------------------------------------------
@@ -70,6 +71,10 @@ const formidSave = function (req, res, next) {
                     })
                         .then((formCreated) => {
                             formVariable.id = formCreated._id; //this is the first method to access the form, so it creates the form and stores locally the id for later access!
+                            addFormToUser(req.user._id, formCreated._id);
+
+
+                            // req.user.formSubmitted.push(formCreated._id)//add the form submitted to the user
 
                             return formCreated._id;
                         })
@@ -111,6 +116,7 @@ const formidSave = function (req, res, next) {
                         .then(async formCreated => {
                             formVariable.id = formCreated._id; //this is the first method to access the form, so it creates the form!
                             created.informationForm.push(formCreated._id); //save the form id, as so we can use populate later
+                            addFormToUser(req.user._id, formCreated._id);
 
                             //------------------------------------------------
                             /**I am making sure in the frontend that the user cannot send a doctor email equal a user
@@ -315,6 +321,18 @@ const getformbyid = function (req, res, next) {
 }
 //-------------------------------------------------------
 
+
+//---------------------------------------
+//Usefull function
+const addFormToUser = function (user, formid) {
+    User.findById(user)
+        .then(user => {
+            user.formSubmitted.push(formid);
+            user.save();
+        })
+        .catch(err => console.log(err))
+}
+//----------------------------------------
 module.exports = {
     sampleSendingDetails, formidSave, formPage1Save, formPage2Save, formPage3Save, formPage4Save, formPage5Save,
     finalizeSubmission, getformbyid

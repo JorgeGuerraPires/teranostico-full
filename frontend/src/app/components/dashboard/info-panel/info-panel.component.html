@@ -1,5 +1,5 @@
 <mat-accordion class="example-headers-align">
-    <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+    <mat-expansion-panel (opened)="setStep(0)" hideToggle>
         <mat-expansion-panel-header>
             <mat-panel-title>
                 Account information
@@ -22,15 +22,18 @@
     <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
         <mat-expansion-panel-header>
             <mat-panel-title>
-                placeholder
+                Forms
             </mat-panel-title>
             <mat-panel-description *ngIf="showOnSmallDevice">
-                placeholder
+                Find herein the forms submtted by you
                 <mat-icon>map</mat-icon>
             </mat-panel-description>
         </mat-expansion-panel-header>
-        <h1>enter content here!</h1>
-
+        <!-- <h1>enter content here!</h1> -->
+        <ul>
+            <li *ngFor="let item of getUserForms()"> <a [routerLink]="['/patientform/retriveById', item]"
+                    target="_blank">{{item}}</a> </li>
+        </ul>
 
         <mat-action-row>
             <button mat-button color="warn" (click)="prevStep()">Previous</button>

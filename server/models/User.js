@@ -55,13 +55,14 @@ const UserSchema = new mongoose.Schema(
             default: [],
         },
         refreshToken: String,//this is used to generate new JWT tokens
+        formSubmitted: [{ type: mongoose.SchemaTypes.ObjectId, ref: "FormPatient" }],
     },
     options// this is for the trick of having user groups
 );
 //----------------------------------------------------------
 
 UserSchema.methods.generateJwt = function () {
-    /**Attention! this token is for user loggeding */
+    /**Attention! this token is for user logged in */
     //--------------------------------------------------------------
     //here is where I generate the JWT code
     return jwt.sign(
@@ -72,6 +73,7 @@ UserSchema.methods.generateJwt = function () {
             level: this.level,
             lastLogin: this.lastLogin,
             failedLogin: this.failedLogin,
+            formSubmitted: this.formSubmitted
         },
         process.env.JWT_SECRET,
         { expiresIn: "15m" } //in seconds

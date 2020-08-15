@@ -78,17 +78,13 @@ const checkByPatientId = function (req, res) {
 
     const hashedPatientId = authUtils.hashPassword(req.params.id, secret); //hash the patient id
 
-
-
     Patient.findOne({ patientID: hashedPatientId })
         .then((patient) => {
             if (patient)
                 util.sendJSONresponse(res, 200, { res: "Patient already in our system :). We shall add this form to his history!" })
             else util.sendJSONresponse(res, 200, null)
-
         })
         .catch((err) => console.log(err))
-
 
 }
 //----------------------------------------------------------------

@@ -61,8 +61,12 @@ app.use(
 //------------------------------------------------------------
 //--------------------------------------------------------
 
-app.use('/api/patient/form', formPatientRouter);
-
+app.use('/api/patient/form',
+  //-----------------------
+  //this will double check the jwt(e.g., validity)
+  passport.authenticate("jwt", { session: false }), jwt({ secret: process.env.JWT_SECRET }),
+  formPatientRouter);
+//--------------------
 app.use('/api/patients', patientRouter);
 app.use('/api/doctors', doctorsRouter);
 

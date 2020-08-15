@@ -55,7 +55,8 @@ const FormidSchema = new mongoose.Schema({
     patient: { type: mongoose.SchemaTypes.ObjectId, ref: "Patient" },
 
     submissionDay: {
-        type: String,
+        type: Date,
+        default: Date.now
     },
     privacy: privacySchema,
 });

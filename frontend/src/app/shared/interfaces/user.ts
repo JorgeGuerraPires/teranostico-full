@@ -14,5 +14,6 @@ export interface User {
     typeOfAccount?: string;
     resetpassword?: string;
     status?: boolean
+    formSubmitted?: [String]
     //------------------------
 }
