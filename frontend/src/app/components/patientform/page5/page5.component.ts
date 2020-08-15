@@ -24,6 +24,10 @@ import { Router } from "@angular/router";
 })
 export class Page5Component implements OnInit, OnDestroy {
 
+  //---------------------------
+  isActive = true;
+  //--------------------------
+
   //--------------------------
   outcomings: string[] = [
     "Remissão parcial",
