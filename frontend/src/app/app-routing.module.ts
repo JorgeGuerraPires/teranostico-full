@@ -86,6 +86,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes,
+    //preload all modules, I had to add this on the hope to work well with the server of Fiocruz
     { preloadingStrategy: PreloadAllModules }
   )],
   exports: [RouterModule]

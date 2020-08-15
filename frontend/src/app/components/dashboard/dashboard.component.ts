@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MediaObserver, MediaChange } from '@angular/flex-layout';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
@@ -12,6 +12,11 @@ import { UtilService } from 'src/app/shared/services/util.service';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
+
+  //------------------------------------------------------------
+  @ViewChild("alert", { static: true }) alert: ElementRef;
+  //--------------------------------------------------------------
+
 
   //--------------------------------------
   faSmile = faSmile;
@@ -56,5 +61,11 @@ export class DashboardComponent implements OnInit {
       this.utilService.openSnackBar("Done!", "x");
     });
   }
+
+
+  closeAlert() {
+    this.alert.nativeElement.classList.remove("show");
+  }
+
 
 }
