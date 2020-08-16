@@ -22,14 +22,14 @@ const routes: Routes = [
     path: "",
     // loadChildren: './components/welcome/welcome.module#WelcomeModule',
     component: WelcomeComponent,
-    canActivate: [LoginGuard]//this will make the user be redirected to dashboard in case of loggedin
+    canActivate: [LoginGuard],//this will make the user be redirected to dashboard in case of loggedin    
   },
   //------------------------------------------------------
   //-----------------------------------------------------
   //Login
   {
     path: "login",
-    loadChildren: './components/login/login.module#LoginModule',
+    // loadChildren: './components/login/login.module#LoginModule',
     component: LoginComponent,
     canActivate: [LoginGuard]//this will make the user be redirected to dashboard in case of loggedin
   },
@@ -95,6 +95,7 @@ const routes: Routes = [
   {
     path: "patientform",
     loadChildren: './components/patientform/patientform.module#PatientformModule',
+    canActivate: [ProtectedGuard],
     canLoad: [ProtectedGuard],
   },
   //------------------------------------------------------

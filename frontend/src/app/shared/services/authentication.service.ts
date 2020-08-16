@@ -43,8 +43,14 @@ export class AuthenticationService {
           if (error instanceof HttpErrorResponse && error["error"].message) {
             this.utilService.openSnackBar(error["error"].message, "x")
             return throwError(error);
+          }
+          else if (error instanceof HttpErrorResponse && error.statusText === "Unknown Error") {
+            console.log(error.statusText);
+            this.utilService.openSnackBar("Server problem: please, try again.", "x")
+            return throwError(error);
+          }
 
-          } else {
+          else {
             return throwError(error);
           }
         })

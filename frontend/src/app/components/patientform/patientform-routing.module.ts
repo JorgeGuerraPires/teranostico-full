@@ -21,8 +21,8 @@ import { Page4GuardGuard } from "./page4/guards/page4-guard.guard"
 
 //page 5
 import { Page5Component } from './page5/page5.component';
-import { Page5Guard } from "./page5/guards/page5-guard.guard"
-import { UnsavedChangesPage5Guard } from "./page5/guards/unsaved-changes-page5.guard";
+// import { Page5Guard } from "./page5/guards/page5-guard.guard"
+// import { UnsavedChangesPage5Guard } from "./page5/guards/unsaved-changes-page5.guard";
 //--------
 
 
