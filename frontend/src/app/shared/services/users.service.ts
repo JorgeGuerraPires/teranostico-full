@@ -34,7 +34,7 @@ export class UsersService {
          * does not repond properly. 
          */
         if (error instanceof HttpErrorResponse && error.statusText === "Unknown Error") {
-          this.utilService.openSnackBar("Server problem: please, try again.", "x")
+          this.utilService.openSnackBar("Server problem: please, try again.", "x");
           return throwError(error);
 
         }
@@ -42,7 +42,7 @@ export class UsersService {
 
         //----------------------------------------------------------------
         else if (error instanceof HttpErrorResponse && error.statusText === "Unauthorized") {
-          this.utilService.openSnackBar("Unauthorized: you need to logout and login again.", "x")
+          this.utilService.openSnackBar("Unauthorized: you may need to logout and login again.", "x");
           return throwError(error);
         }
         //----------------------------------------------------------------

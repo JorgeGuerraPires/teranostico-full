@@ -37,6 +37,7 @@ export class TokenInterceptor implements HttpInterceptor {
         request: HttpRequest<any>,
         next: HttpHandler
     ): Observable<HttpEvent<any>> {
+        // console.log("here on intercept http")
         if (this.localStorageService.getToken()) {
             request = this.addToken(request, this.localStorageService.getToken());
         }
@@ -52,9 +53,15 @@ export class TokenInterceptor implements HttpInterceptor {
                     //----------------------------------------------------------------------
                     //handle internally, background, behind the scene
                     if (error instanceof HttpErrorResponse && error.status === 401) {
-                        //console.log("handle401Error");
                         return this.handle401Error(request, next);
-                    } else {
+                    }
+
+                    else if (error instanceof HttpErrorResponse && error.statusText === "Unknown Error") {
+                        this.utilService.openSnackBar("Server problem: please, try again.", "x");
+                        return throwError(error);
+                    }
+
+                    else {
                         return throwError(error);
                     }
                 })//end of catchError
@@ -72,7 +79,7 @@ export class TokenInterceptor implements HttpInterceptor {
 
     /**Reference: https://www.youtube.com/watch?v=F1GUjHPpCLA. accessed on 23 04 2020 */
     private handle401Error(request: HttpRequest<any>, next: HttpHandler) {
-        //console.log("here on handle401Error ");
+        this.utilService.openSnackBar("Unauthorized: we are going to try to refresh your token", "x")
         if (!this.isRefreshing) {
             this.isRefreshing = true;
             this.refreshTokenSubject.next(null);
