@@ -23,7 +23,37 @@ export class UsersService {
 
   public getAllUsers() {
     const url: string = `${this.BASE_URL}/api/admin/getallusers`;
-    return this.http.get<User[]>(url);
+    return this.http.get<User[]>(url).pipe(
+
+      //Catch errors
+      catchError((error) => {
+        //---------------------------------------------------------------
+        /**
+         * Note 16 08 2020. Due to problems at the server of Fiocruz,
+         * I had to set this server related problem. This is for when the server
+         * does not repond properly. 
+         */
+        if (error instanceof HttpErrorResponse && error.statusText === "Unknown Error") {
+          this.utilService.openSnackBar("Server problem: please, try again.", "x")
+          return throwError(error);
+
+        }
+        //---------------------------------------------------------------
+
+        //----------------------------------------------------------------
+        else if (error instanceof HttpErrorResponse && error.statusText === "Unauthorized") {
+          this.utilService.openSnackBar("Unauthorized: you need to logout and login again.", "x")
+          return throwError(error);
+        }
+        //----------------------------------------------------------------
+
+        else {
+          this.utilService.openSnackBar("Sorry, something went wrong :(", "x")
+          return throwError(error);
+        }
+
+      })
+    );
   }
 
   public deleteUserById(_id: string) {

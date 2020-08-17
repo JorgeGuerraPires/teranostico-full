@@ -44,10 +44,17 @@ export class AuthenticationService {
             this.utilService.openSnackBar(error["error"].message, "x")
             return throwError(error);
           }
+          //---------------------------------------------------------------
+          /**
+           * Note 16 08 2020. Due to problems at the server of Fiocruz,
+           * I had to set this server related problem. This is for when the server
+           * does not repond properly. 
+           */
+
           else if (error instanceof HttpErrorResponse && error.statusText === "Unknown Error") {
-            console.log(error.statusText);
             this.utilService.openSnackBar("Server problem: please, try again.", "x")
             return throwError(error);
+            //---------------------------------------------------------------
           }
 
           else {
@@ -67,7 +74,23 @@ export class AuthenticationService {
           if (error instanceof HttpErrorResponse && error.error[0].msg) {
             this.utilService.openSnackBar(error.error[0].msg, "x")
             return throwError(error);
-          } else {
+          }
+
+          //---------------------------------------------------------------
+          /**
+           * Note 16 08 2020. Due to problems at the server of Fiocruz,
+           * I had to set this server related problem. This is for when the server
+           * does not repond properly. 
+           */
+
+          else if (error instanceof HttpErrorResponse && error.statusText === "Unknown Error") {
+            this.utilService.openSnackBar("Server problem: please, try again.", "x")
+            return throwError(error);
+          }
+
+          //------------------------------------------------------------------
+
+          else {
             return throwError(error);
           }
         })
