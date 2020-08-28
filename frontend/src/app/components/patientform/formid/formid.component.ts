@@ -6,7 +6,7 @@ import { ErrorStateMatcher } from '@angular/material';
 import { UtilService } from 'src/app/shared/services/util.service';
 import { FormsService } from '../services/forms.service';
 import { EmaildrValidatorService } from '../services/emaildr-validator.service';
-import { PatientIDCheckerService } from "../services/patientID-checker.service"
+// import { PatientIDCheckerService } from "../services/patientID-checker.service"
 import { debounceTime } from 'rxjs/operators';
 
 @Component({

@@ -1,5 +1,8 @@
 <div ngClass.gt-md="form-page" ngClass.lt-md="form-page-xs" fxFlex.lt-md="90%">
     <!--  -->
+    <h4 *ngIf="this.form._id">Form internal id: <span class="badge badge-success">{{this.form._id}}</span></h4>
+    <!--  -->
+    <!--  -->
     <h2 *ngIf="dataSourceFormid">Form Header</h2>
     <mat-table [dataSource]="dataSourceFormid">
         <!-- Position Column -->
@@ -410,4 +413,18 @@
         </mat-table>
 
     </div>
+
+    <!-- 
+       Note (18 08 2020). In order to implement the delete form functionality:
+       
+                    - Delete the form;
+                    - Clear the form the user that submitted, assuming that the user deleting is the one that submitted
+                    - Consider the possibility to the form who submitted, it could make it easier to clear it from the user
+                    that submitted; 
+     -->
+    <!-- <div>
+        <button mat-raised-button color="accent" (click)="delete()" *ngIf="this.form._id">Delete</button>
+    </div>
+ -->
+
 </div>

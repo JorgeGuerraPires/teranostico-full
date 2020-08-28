@@ -1,0 +1,109 @@
+<!--  -->
+<section class="card-content">
+    <h1>Final Report Header</h1>
+    <div class="grid-list-container">
+        <mat-grid-list [cols]="2">
+            <!-- I am implementing a static column for now, it does not adapt to the screen size -->
+            <mat-grid-tile>
+                <div fxFlex="80%" fxFlexFill>
+                    <mat-card [class.mat-elevation-z2]="true">
+                        <mat-card-header>
+                            <mat-card-title>
+                                <h3>Patient</h3>
+                            </mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content class="text-block">
+
+                            <form [formGroup]="fields">
+
+                                <!-- Disease -->
+                                <mat-form-field class="example-full-width" appearance="fill">
+                                    <mat-label>Disease</mat-label>
+                                    <input matInput placeholder="e.g., drhouse@awesome.com" formControlName="disease">
+                                </mat-form-field>
+
+                                <!-- This is error and validation form section. This section make sure the input fields
+                                     respective their respective demands -->
+                                <!-- This will make sure the field is fulfiled -->
+                                <mat-error
+                                    *ngIf="!fields.controls['disease'].dirty && fields.controls['disease'].touched">
+                                    Required
+                                </mat-error>
+                                <!--  -->
+                                <!--  -->
+
+                                <!-- Name -->
+                                <mat-form-field class="example-full-width" appearance="fill">
+                                    <mat-label>Name</mat-label>
+                                    <input matInput placeholder="e.g., drhouse@awesome.com" formControlName="Name">
+                                </mat-form-field>
+
+                                <!-- This is error and validation form section. This section make sure the input fields
+                                                                     respective their respective demands -->
+                                <!-- This will make sure the field is fulfiled -->
+                                <mat-error *ngIf="!fields.controls['Name'].dirty && fields.controls['Name'].touched">
+                                    Required
+                                </mat-error>
+                                <!--  -->
+                                <!--  -->
+
+
+
+                            </form>
+
+
+
+
+
+                        </mat-card-content>
+
+
+                    </mat-card>
+
+                </div>
+            </mat-grid-tile>
+
+
+            <mat-grid-tile>
+
+            </mat-grid-tile>
+
+        </mat-grid-list>
+    </div>
+
+    <div class="action_buttons">
+        <button mat-button matTooltip="Next page, please!" mat-raised-button color="primary">Next</button>
+
+        <button mat-button (click)="save()" matTooltip="you can save to databse and come back later." mat-raised-button
+            color="primary">Save</button>
+    </div>
+
+</section>
+<!--  -->
+
+<!--  -->
+<section class="card-content">
+    <h1>Some instructions</h1>
+    <ul>
+        <li>
+            <p>Please, make sure to enter the information of the patient and doctor properly, as so we can make the
+                linkage of the final patient report with their respective accounts in our system; as so, they can easily
+                find the information on their accounts
+            </p>
+        </li>
+        <li>
+            <p>
+                Once you enter all the information, it will be available for consulting by the doctor.
+            </p>
+        </li>
+
+        <li>
+            <p>
+                Some information that will be available on the final form will be taken from other sources (e.g., gene
+                targets from simulations and internet).
+            </p>
+        </li>
+
+    </ul>
+</section>
+<!--  -->

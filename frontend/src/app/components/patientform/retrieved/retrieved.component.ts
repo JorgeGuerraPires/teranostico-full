@@ -2,13 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { Form } from 'src/app/shared/interfaces/patientForm';
 import { FormsService } from "../services/forms.service"
-
-// export interface tableElement {
-//   tag: string;
-//   value: string;
-// }
-
-
+import { UtilService } from 'src/app/shared/services/util.service';
 
 @Component({
   selector: 'ter-retrieved',
@@ -51,12 +45,16 @@ export class RetrievedComponent implements OnInit {
   formid: String;
   form: Form;
 
-  constructor(private route: ActivatedRoute, private formsService: FormsService) {
+  constructor(private route: ActivatedRoute, private formsService: FormsService, private utilService: UtilService,) {
     // this.formid = route.snapshot.paramMap.get("id");
     this.formsService.formById(route.snapshot.paramMap.get("id"))
       .subscribe((res) => {
+        if (!res) {
+          this.utilService.openSnackBar("no form found with this id", "x");
+          return;
+        }
+
         this.form = res;
-        console.log(this.form);
 
         this.dataSourceFormid = [
           { tag: "Doctor's email", value: this.form.formid.patient.doctor.email },
@@ -200,5 +198,15 @@ export class RetrievedComponent implements OnInit {
   ngOnInit() {
 
   }
+
+
+  //----------------------------------------------------------
+  //methods
+  delete() {
+    if (confirm("Are you sure you want to delete this form? it cannot be restored."))
+      console.log("here on delete form");
+  }
+
+  //----------------------------------------------------------
 
 }

@@ -79,7 +79,7 @@ export class TokenInterceptor implements HttpInterceptor {
 
     /**Reference: https://www.youtube.com/watch?v=F1GUjHPpCLA. accessed on 23 04 2020 */
     private handle401Error(request: HttpRequest<any>, next: HttpHandler) {
-        this.utilService.openSnackBar("Unauthorized: we are going to try to refresh your token", "x")
+        // this.utilService.openSnackBar("Unauthorized: we are going to try to refresh your token", "x")
         if (!this.isRefreshing) {
             this.isRefreshing = true;
             this.refreshTokenSubject.next(null);

@@ -76,13 +76,11 @@ UserSchema.methods.generateJwt = function () {
             formSubmitted: this.formSubmitted
         },
         process.env.JWT_SECRET,
-        { expiresIn: "15m" } //in seconds
+        // { expiresIn: "15m" } //in seconds, this is the ideal, but the server of Fiocruz i pretty slow to answer
+        { expiresIn: "1d" }
     ); // DO NOT KEEP YOUR SECRET IN THE CODE!
     //--------------------------------------------------------------
 };
-
-
-
 
 UserSchema.methods.generateTokenResetPassword = function () {
     /**Attention! this token is for reset password! */

@@ -12,6 +12,7 @@ import { AboutusComponent } from './components/aboutus/aboutus.component';
 import { ResetpasswordComponent } from './components/resetpassword/resetpassword.component';
 import { ResetpasswordwithtokenComponent } from './components/resetpasswordwithtoken/resetpasswordwithtoken.component';
 import { UserPanelComponent } from './components/user-panel/user-panel.component';
+import { HeaderComponent } from './components/finalreport/header/header.component';
 // import { UnsavedChangesGuard } from './components/patientform/formid/unsaved-changes.guard';
 
 
@@ -99,6 +100,19 @@ const routes: Routes = [
     canLoad: [ProtectedGuard],
   },
   //------------------------------------------------------
+
+
+
+  //--------------------------------------------------------------
+  //Final report related
+  {
+    path: "finalreport/header",
+    component: HeaderComponent,
+    canActivate: [ProtectedGuard],
+  },
+  //----------------------------------------------------------
+
+  //---------------------------------------------------------------
 ];
 
 @NgModule({

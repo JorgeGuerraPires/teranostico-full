@@ -7,7 +7,7 @@
                 <mat-card-header>
                     <mat-card-title>
                         <h2>
-                            <fa-icon [icon]="faHospitalUser"></fa-icon>Patient Internal Code
+                            <fa-icon [icon]="faHospitalUser"></fa-icon>Form Header
                         </h2>
                     </mat-card-title>
                 </mat-card-header>
@@ -112,10 +112,11 @@
 
                 <mat-card-actions>
                     <button mat-button routerLink="/patientform/form1" (click)="next()"
-                        [disabled]="fields.invalid || !this.fields.value.serverConsent"
+                        [disabled]="fields.invalid || !this.fields.value.serverConsent || !savedToDatabase"
                         matTooltip="Next page, please!">Next</button>
 
-                    <button mat-button (click)="save()" [disabled]="fields.invalid || !this.fields.value.serverConsent"
+                    <button mat-button (click)="save()"
+                        [disabled]="fields.invalid || !this.fields.value.serverConsent || savedToDatabase"
                         matTooltip="you can save to databse and come back later.">Save</button>
 
                     <!-- <button [disabled]="!this.fields.value.patientid" mat-button (click)="next()"

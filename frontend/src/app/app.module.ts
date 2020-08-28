@@ -20,11 +20,12 @@ import { AboutusModule } from './components/aboutus/aboutus.module';
 import { ResetpasswordModule } from './components/resetpassword/resetpassword.module';
 import { ResetpasswordwithtokenModule } from './components/resetpasswordwithtoken/resetpasswordwithtoken.module';
 import { UserPanelModule } from './components/user-panel/user-panel.module';
-
+import { HeaderComponent } from './components/finalreport/header/header.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [LayoutComponent, MenuComponent, UserSideBarMenuComponent],
+  declarations: [LayoutComponent, MenuComponent, UserSideBarMenuComponent, HeaderComponent],
   imports: [
     //----------------------------------
     WelcomeModule,
@@ -46,7 +47,13 @@ import { UserPanelModule } from './components/user-panel/user-panel.module';
     AngularmaterialModule,
     FlexLayoutModule,
     FontAwesomeModule,
-    ProtectedModule
+    ProtectedModule,
+
+    //--------------------------------------------------
+    //Form related
+    ReactiveFormsModule,//this is related to the formGroup    
+    //------------------------------------------------
+
   ],
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [LayoutComponent]

@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormidComponent } from './formid/formid.component';
-import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AngularmaterialModule } from 'src/app/shared/modules/angular-material/angular-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ProgressbarComponent } from './progressbar/progressbar.component';
-import { UnsavedChangesGuard } from 'src/app/components/patientform/formid/unsaved-changes.guard';
+// import { UnsavedChangesGuard } from 'src/app/components/patientform/formid/unsaved-changes.guard';
 import { EmaildrValidatorService } from './services/emaildr-validator.service';
 import { PatientIDCheckerService } from './services/patientID-checker.service';
 
