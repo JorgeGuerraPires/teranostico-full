@@ -311,10 +311,8 @@ const getformbyid = function (req, res, next) {
     FormPatient.findOne({ _id: req.params.id })
         .populate({
             path: "formid.patient",
-            // model: "employee",
             populate: { path: "doctor" }
         })
-
         .then((form) => {
             util.sendJSONresponse(res, 200, form);
         }).catch(err => util.sendJSONresponse(res, 400, err))

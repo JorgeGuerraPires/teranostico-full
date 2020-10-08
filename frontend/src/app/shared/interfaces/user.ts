@@ -13,7 +13,8 @@ export interface User {
     failedLogin?: [string];
     typeOfAccount?: string;
     resetpassword?: string;
-    status?: boolean
-    formSubmitted?: [String]
+    status?: boolean;
+    formSubmitted?: [String];
+    finalReport_Submitted?: [String]
     //------------------------
 }

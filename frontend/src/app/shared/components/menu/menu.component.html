@@ -9,14 +9,20 @@
             <fa-icon [icon]="faUsers"></fa-icon> User Administration
         </button>
         <button mat-menu-item [matMenuTriggerFor]="patientforms">
-            <fa-icon [icon]="faCheckSquare"></fa-icon> Patient form
+            <fa-icon [icon]="faCheckSquare"></fa-icon> Submit
         </button>
+
     </mat-menu>
 
     <mat-menu #patientforms="matMenu">
         <button mat-menu-item routerLink="patientform/formid">
             <fa-icon [icon]="faHospitalUser"></fa-icon>Patient form
         </button>
+
+        <button mat-menu-item routerLink="finalreport/header">
+            <fa-icon [icon]="faHospitalUser"></fa-icon> Final patient report
+        </button>
+
     </mat-menu>
 
 

@@ -37,10 +37,10 @@ export class FormsService {
           }
         })
       )//end of pipe
-
   }
-
   //-------------------------------------------------------------
+
+
   submitFormPage1(formPage1: FormPage1) {
     return this.http.post(`${this.BASE_URL}/api/patient/form/formpage1`, formPage1)
       .pipe(

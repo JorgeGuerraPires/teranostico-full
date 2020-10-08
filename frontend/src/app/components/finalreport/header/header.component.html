@@ -2,80 +2,343 @@
 <section class="card-content">
     <h1>Final Report Header</h1>
     <div class="grid-list-container">
-        <mat-grid-list [cols]="2">
+        <!-- (30 08 2020) * rowHeight="xxxx" - controls the distance between the cards, the bigger, the bigger the distance.
+        See that if it is too small, the content will not fit the card -->
+        <!-- (31 08 2020) * if I change it to [cols]="1", it works fine on small devices, make it automatic in the future!
+        Just copy from the other components, using observers -->
+        <mat-grid-list [cols]="2" rowHeight="400px">
             <!-- I am implementing a static column for now, it does not adapt to the screen size -->
             <mat-grid-tile>
-                <div fxFlex="80%" fxFlexFill>
+                <div [fxFlex]="widthCards" fxFlexFill>
                     <mat-card [class.mat-elevation-z2]="true">
                         <mat-card-header>
                             <mat-card-title>
-                                <h3>Patient</h3>
+                                <h3>
+                                    <fa-icon [icon]="faHospitalUser"></fa-icon> Patient
+                                </h3>
                             </mat-card-title>
                         </mat-card-header>
                         <mat-card-content class="text-block">
 
                             <form [formGroup]="fields">
 
-                                <!-- Disease -->
-                                <mat-form-field class="example-full-width" appearance="fill">
-                                    <mat-label>Disease</mat-label>
-                                    <input matInput placeholder="e.g., drhouse@awesome.com" formControlName="disease">
-                                </mat-form-field>
+                                <div formGroupName="patient">
 
-                                <!-- This is error and validation form section. This section make sure the input fields
-                                     respective their respective demands -->
-                                <!-- This will make sure the field is fulfiled -->
-                                <mat-error
-                                    *ngIf="!fields.controls['disease'].dirty && fields.controls['disease'].touched">
-                                    Required
-                                </mat-error>
-                                <!--  -->
-                                <!--  -->
+                                    <!-- Disease -->
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label>Disease</mat-label>
+                                        <input matInput placeholder="e.g., Breast Cancer" formControlName="disease">
+                                        <mat-error *ngIf="!fields.controls['patient'].dirty "> Required </mat-error>
+                                    </mat-form-field>
 
-                                <!-- Name -->
-                                <mat-form-field class="example-full-width" appearance="fill">
-                                    <mat-label>Name</mat-label>
-                                    <input matInput placeholder="e.g., drhouse@awesome.com" formControlName="Name">
-                                </mat-form-field>
+                                    <!--  -->
+                                    <!--  -->
 
-                                <!-- This is error and validation form section. This section make sure the input fields
-                                                                     respective their respective demands -->
-                                <!-- This will make sure the field is fulfiled -->
-                                <mat-error *ngIf="!fields.controls['Name'].dirty && fields.controls['Name'].touched">
-                                    Required
-                                </mat-error>
-                                <!--  -->
-                                <!--  -->
+                                    <!-- Name -->
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label>Name</mat-label>
+                                        <input matInput placeholder="e.g., Pedro de Paula" formControlName="Name">
+                                        <mat-error *ngIf="!fields.controls['patient'].dirty "> Required </mat-error>
+                                    </mat-form-field>
 
+                                    <!--  -->
+                                    <!--  -->
 
+                                    <!-- sex -->
+                                    <mat-form-field appearance="fill">
+                                        <mat-label>Choose an option</mat-label>
+                                        <mat-select [disabled]="fields.sex" formControlName="sex">
+                                            <mat-option value="male">Male</mat-option>
+                                            <mat-option value="female">Female</mat-option>
+                                            <mat-option value="n/a">not available</mat-option>
+                                        </mat-select>
+                                        <mat-error *ngIf="!fields.controls['patient'].dirty "> Required </mat-error>
 
+                                    </mat-form-field>
+                                    <!--  -->
+
+                                    <!-- Name -->
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label>Medical record #</mat-label>
+                                        <input matInput placeholder="e.g., dsfsdfdsrw4543gfdgh"
+                                            formControlName="Medical_record">
+
+                                        <mat-error *ngIf="!fields.controls['patient'].dirty "> Required </mat-error>
+
+                                    </mat-form-field>
+                                    <!--  -->
+                                </div>
+                                <!-- end of patient -->
                             </form>
-
-
-
-
-
                         </mat-card-content>
-
 
                     </mat-card>
 
                 </div>
             </mat-grid-tile>
-
-
+            <!-- end of patient card -->
+            <!-- PHYSICIAN card -->
             <mat-grid-tile>
+                <div [fxFlex]="widthCards" fxFlexFill>
+                    <mat-card [class.mat-elevation-z2]="true">
+                        <mat-card-header>
+                            <mat-card-title>
+                                <h3>
+                                    <fa-icon [icon]="faMedkit"></fa-icon> Physician
+                                </h3>
+                            </mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content class="text-block">
 
+                            <!-- Start of physician -->
+                            <form [formGroup]="fields">
+                                <div formGroupName="physician">
+
+                                    <!-- Ordering physician -->
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label>Ordering physician</mat-label>
+                                        <input matInput placeholder="e.g., Dr. Gregory House"
+                                            formControlName="Ordering_physician">
+                                        <mat-error *ngIf="!fields.controls['physician'].dirty "> Required </mat-error>
+                                    </mat-form-field>
+                                    <!--  -->
+
+                                    <!-- Ordering physician -->
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label>Medical facility</mat-label>
+                                        <input matInput placeholder="e.g., dfdsfsdre"
+                                            formControlName="Medical_facility">
+                                        <mat-error *ngIf="!fields.controls['physician'].dirty "> Required </mat-error>
+                                    </mat-form-field>
+                                    <!--  -->
+
+
+                                    <!-- Additional recipient(s) -->
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label>Additional recipient(s)</mat-label>
+                                        <input matInput placeholder="e.g., dfdsfsdre"
+                                            formControlName="Additional_recipients">
+                                        <mat-error *ngIf="!fields.controls['physician'].dirty "> Required </mat-error>
+                                    </mat-form-field>
+                                    <!--  -->
+
+                                    <!-- Pathologist -->
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label>Pathologist</mat-label>
+                                        <input matInput placeholder="e.g., dfdsfsdre" formControlName="Pathologist">
+                                        <mat-error *ngIf="!fields.controls['physician'].dirty "> Required </mat-error>
+                                    </mat-form-field>
+                                    <!--  -->
+                                </div>
+                                <!-- end of physician -->
+                            </form>
+                        </mat-card-content>
+
+                    </mat-card>
+
+                </div>
             </mat-grid-tile>
+            <!--  -->
+
+            <!-- specimen card -->
+            <mat-grid-tile>
+                <div [fxFlex]="widthCards" fxFlexFill>
+                    <mat-card [class.mat-elevation-z2]="true">
+                        <mat-card-header>
+                            <mat-card-title>
+                                <h3>
+                                    <fa-icon [icon]="faMicroscope"></fa-icon> Specimen
+                                </h3>
+                            </mat-card-title>
+                        </mat-card-header>
+
+                        <mat-card-content class="text-block">
+                            <!-- Start of specimen -->
+                            <form [formGroup]="fields">
+                                <div formGroupName="specimen">
+
+                                    <!-- Specimen site -->
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label>Specimen site</mat-label>
+                                        <input matInput placeholder="e.g., Dr. Gregory House"
+                                            formControlName="Specimen_site">
+                                        <mat-error *ngIf="!fields.controls['specimen'].dirty "> Required </mat-error>
+                                    </mat-form-field>
+                                    <!--  -->
+
+                                    <!-- Specimen id -->
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label>Specimen id</mat-label>
+                                        <input matInput placeholder="e.g., Dr. Gregory House"
+                                            formControlName="Specimen_id">
+                                        <mat-error *ngIf="!fields.controls['specimen'].dirty "> Required </mat-error>
+                                    </mat-form-field>
+                                    <!--  -->
+
+                                    <!-- Specimen type -->
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label>Specimen type</mat-label>
+                                        <input matInput placeholder="e.g., Dr. Gregory House"
+                                            formControlName="Specimen_type">
+                                        <mat-error *ngIf="!fields.controls['specimen'].dirty "> Required </mat-error>
+                                    </mat-form-field>
+                                    <!--  -->
+
+                                    <mat-grid-list cols="2" rowHeight="2:1">
+                                        <mat-grid-tile>
+                                            <div fxFlexFill fxFlex="90%">
+                                                <!-- Date of collection -->
+                                                <mat-form-field color="accent" appearance="fill"
+                                                    class="example-full-width">
+                                                    <mat-label>Date of collection</mat-label>
+                                                    <input matInput [matDatepicker]="picker1"
+                                                        formControlName="Date_of_collection">
+                                                    <mat-datepicker-toggle matSuffix [for]="picker1">
+                                                    </mat-datepicker-toggle>
+                                                    <mat-datepicker #picker1></mat-datepicker>
+                                                    <mat-error *ngIf="!fields.controls['specimen'].dirty"> Required
+                                                    </mat-error>
+                                                </mat-form-field>
+                                                <!--  -->
+                                            </div>
+                                        </mat-grid-tile>
+                                        <mat-grid-tile>
+                                            <div fxFlexFill fxFlex="90%">
+                                                <!-- Date of reception -->
+                                                <mat-form-field color="accent" appearance="fill"
+                                                    class="example-full-width">
+                                                    <mat-label>Date of reception</mat-label>
+                                                    <input matInput [matDatepicker]="picker2"
+                                                        formControlName="Date_of_reception">
+                                                    <mat-datepicker-toggle matSuffix [for]="picker2">
+                                                    </mat-datepicker-toggle>
+                                                    <mat-datepicker #picker2></mat-datepicker>
+                                                    <mat-error *ngIf="!fields.controls['specimen'].dirty "> Required
+                                                    </mat-error>
+                                                </mat-form-field>
+                                                <!--  -->
+                                            </div>
+                                        </mat-grid-tile>
+                                    </mat-grid-list>
+                                </div>
+
+                            </form>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </mat-grid-tile>
+
+            <!--  -->
+            <mat-grid-tile>
+                <div [fxFlex]="widthCards" fxFlexFill>
+                    <mat-card [class.mat-elevation-z2]="true">
+                        <!--  -->
+                        <mat-card-header>
+                            <mat-card-title>
+                                <h3>
+                                    <fa-icon [icon]="faDna"></fa-icon> Analysis type
+                                </h3>
+                            </mat-card-title>
+                        </mat-card-header>
+                        <!--  -->
+
+                        <mat-card-content class="text-block">
+                            <form [formGroup]="fields">
+                                <div formGroupName="analysis_type_RNA_seq"
+                                    *ngIf="!fields.controls['analysis_type_Ampliseq'].dirty">
+                                    <!--  -->
+                                    <table class="example-full-width" cellspacing="0"
+                                        *ngIf="!fields.controls['specimen'].dirty">
+                                        <tr>
+                                            <td>
+                                                <mat-form-field class="example-full-width">
+                                                    <mat-label>RNA-seq</mat-label>
+                                                    <input matInput formControlName="RNA_seq">
+                                                </mat-form-field>
+                                            </td>
+                                            <td>
+                                                <mat-form-field class="example-full-width">
+                                                    <mat-label>Read number</mat-label>
+                                                    <input matInput type="number" formControlName="Read_number_RNA_seq">
+                                                </mat-form-field>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <!--  -->
+                                </div>
+
+                                <div formGroupName="analysis_type_Ampliseq"
+                                    *ngIf="!fields.controls['analysis_type_RNA_seq'].dirty">
+                                    <!--  -->
+                                    <table class="example-full-width" cellspacing="0">
+                                        <tr>
+                                            <td>
+                                                <mat-form-field class="example-full-width">
+                                                    <mat-label>Ampliseq</mat-label>
+                                                    <input matInput formControlName="Ampliseq">
+                                                </mat-form-field>
+                                            </td>
+                                            <td>
+                                                <mat-form-field class="example-full-width">
+                                                    <mat-label>Number of genes</mat-label>
+                                                    <input matInput type="number" formControlName="Number_of_genes">
+                                                </mat-form-field>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <!--  -->
+                                </div>
+
+                                <div formGroupName="Genotyping">
+                                    <!--  -->
+                                    <table class="example-full-width" cellspacing="0">
+                                        <tr>
+                                            <td>
+                                                <mat-form-field class="example-full-width">
+                                                    <mat-label>Genotyping</mat-label>
+                                                    <input matInput formControlName="Genotyping">
+                                                </mat-form-field>
+                                            </td>
+                                            <td>
+                                                <mat-form-field class="example-full-width">
+                                                    <mat-label>Painel type</mat-label>
+                                                    <input matInput formControlName="Painel_type">
+                                                </mat-form-field>
+                                            </td>
+
+                                            <td>
+                                                <mat-form-field class="example-full-width">
+                                                    <mat-label>Customized</mat-label>
+                                                    <input matInput formControlName="Customized">
+                                                </mat-form-field>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <!--  -->
+                                </div>
+                            </form>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </mat-grid-tile>
+            <!--  -->
+
+
+
+
 
         </mat-grid-list>
     </div>
 
     <div class="action_buttons">
-        <button mat-button matTooltip="Next page, please!" mat-raised-button color="primary">Next</button>
+        <button mat-button matTooltip="Next page, please!" mat-raised-button color="primary">
+            Next <fa-icon [icon]="faArrowRight"></fa-icon>
+        </button>
 
         <button mat-button (click)="save()" matTooltip="you can save to databse and come back later." mat-raised-button
-            color="primary">Save</button>
+            color="primary">
+            <fa-icon [icon]="faSave"></fa-icon> Save
+        </button>
     </div>
 
 </section>
@@ -105,5 +368,10 @@
         </li>
 
     </ul>
+    <p><strong>Note from the programmer:</strong> <span class="font-italic"> this version of this form is not
+            small devices friendly, any responsiveness is thanks to Angular! Hence, it is advisable to use a computer
+            for fulfilling this form.</span>
+    </p>
+    <p>Form version: 1.0.0</p>
 </section>
 <!--  -->

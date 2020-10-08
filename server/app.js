@@ -37,6 +37,7 @@ const userRouter = require('./routes/user.routes');
 const formPatientRouter = require('./routes/formPatient.routes');
 const patientRouter = require('./routes/patient.routes');
 const doctorsRouter = require('./routes/doctor.routes');
+const finalReportRouter = require('./routes/finalreport.routes');
 //---------------------------------------------------
 
 app.use(logger('dev'));
@@ -47,6 +48,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "./build/public")));
 
 
+//------------------------------------------------------------------------------------------------
 app.use('/api/admin',
   passport.authenticate("jwt", { session: false }), jwt({ secret: process.env.JWT_SECRET }), //this will double check the jwt(e.g., validity)
   util.isAdmin, //make sure the user has administration level
@@ -67,6 +69,18 @@ app.use('/api/patient/form',
   passport.authenticate("jwt", { session: false }), jwt({ secret: process.env.JWT_SECRET }),
   formPatientRouter);
 //--------------------
+
+//------------------------------
+app.use('/api/finalreport',
+
+  //-----------------------
+  //this will double check the jwt(e.g., validity)
+  passport.authenticate("jwt", { session: false }), jwt({ secret: process.env.JWT_SECRET }),
+  //-----------------------
+
+  finalReportRouter);
+//--------------------------
+
 app.use('/api/patients', patientRouter);
 app.use('/api/doctors', doctorsRouter);
 

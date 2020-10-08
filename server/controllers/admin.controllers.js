@@ -1,6 +1,5 @@
 /**Keep here all the methods that demand administration credentials */
 
-
 //----------------------------------------
 //database related
 const mongoose = require("mongoose");
@@ -10,10 +9,7 @@ const User = mongoose.model("User");
 //------------------------------------------
 //Miscellaneous
 const util = require("../utils/utils");
-
 //----------------------------------------
-
-
 
 /**
  * @description {this function is responsible for providing a list of user currently in our database}
@@ -135,4 +131,5 @@ const unsetasadmin = function (req, res) {
         })
 
 }
+
 module.exports = { getAllUsers, deleteUserById, resetpassword, switchUserState, setasadmin, unsetasadmin }

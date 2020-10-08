@@ -1,13 +1,13 @@
 
 
 import { NgModule } from '@angular/core';
-import { MatCardModule, MatDividerModule, MatButtonModule, MatInputModule, MatIconModule, MatMenuModule, MatToolbarModule, MatExpansionModule, MatDatepickerModule, MatNativeDateModule, MatSidenavModule, MatGridListModule, MatTableModule, MatProgressBarModule, MatRadioModule, MatCheckboxModule, MatTooltipModule } from '@angular/material';
+import { MatSelectModule, MatCardModule, MatDividerModule, MatButtonModule, MatInputModule, MatIconModule, MatMenuModule, MatToolbarModule, MatExpansionModule, MatDatepickerModule, MatNativeDateModule, MatSidenavModule, MatGridListModule, MatTableModule, MatProgressBarModule, MatRadioModule, MatCheckboxModule, MatTooltipModule } from '@angular/material';
 
 //-----------------------------------------------
 const materialComponents = [MatCardModule, MatDividerModule, MatButtonModule, MatInputModule, MatIconModule, MatMenuModule,
   MatToolbarModule, MatExpansionModule, MatDatepickerModule,
   MatNativeDateModule, MatSidenavModule, MatGridListModule, MatTableModule,
-  MatProgressBarModule, MatRadioModule, MatCheckboxModule, MatTooltipModule
+  MatProgressBarModule, MatRadioModule, MatCheckboxModule, MatTooltipModule, MatSelectModule
 ]
 //------------------------------------------------
 

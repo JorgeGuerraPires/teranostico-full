@@ -13,6 +13,7 @@ import { ResetpasswordComponent } from './components/resetpassword/resetpassword
 import { ResetpasswordwithtokenComponent } from './components/resetpasswordwithtoken/resetpasswordwithtoken.component';
 import { UserPanelComponent } from './components/user-panel/user-panel.component';
 import { HeaderComponent } from './components/finalreport/header/header.component';
+import { RetreivedComponent } from './components/finalreport/retreived/retreived.component';
 // import { UnsavedChangesGuard } from './components/patientform/formid/unsaved-changes.guard';
 
 
@@ -109,6 +110,14 @@ const routes: Routes = [
     path: "finalreport/header",
     component: HeaderComponent,
     canActivate: [ProtectedGuard],
+    //note 31/08/2020 -> maybe add a guards for unsaved chances
+  },
+
+  {
+    path: "finalreport/:id",
+    component: RetreivedComponent,
+    canActivate: [ProtectedGuard],
+    //note 31/08/2020 -> maybe add a guards for unsaved chances
   },
   //----------------------------------------------------------
 

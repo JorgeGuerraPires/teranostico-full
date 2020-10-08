@@ -9,7 +9,6 @@ const User = mongoose.model("User");
 
 //-------------------------------------
 const util = require("../utils/utils");
-
 //-------------------------------------
 
 const findAllDoctors = async function (req, res) {

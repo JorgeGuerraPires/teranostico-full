@@ -56,6 +56,7 @@ const UserSchema = new mongoose.Schema(
         },
         refreshToken: String,//this is used to generate new JWT tokens
         formSubmitted: [{ type: mongoose.SchemaTypes.ObjectId, ref: "FormPatient" }],
+        finalReport_Submitted: [{ type: mongoose.SchemaTypes.ObjectId, ref: "FinalReport" }]
     },
     options// this is for the trick of having user groups
 );
@@ -73,7 +74,10 @@ UserSchema.methods.generateJwt = function () {
             level: this.level,
             lastLogin: this.lastLogin,
             failedLogin: this.failedLogin,
-            formSubmitted: this.formSubmitted
+            formSubmitted: this.formSubmitted,
+            finalReport_Submitted: this.finalReport_Submitted
+
+
         },
         process.env.JWT_SECRET,
         // { expiresIn: "15m" } //in seconds, this is the ideal, but the server of Fiocruz i pretty slow to answer

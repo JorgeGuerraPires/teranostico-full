@@ -3,7 +3,7 @@
  */
 const mongoose = require("mongoose"); //bring in mongoose
 const User = mongoose.model("User"); //create a model from our schema
-const util = require("../utils/utils");
+// const util = require("../utils/utils");
 
 
 //------------------------------------------
@@ -17,6 +17,8 @@ const doctorSchema = new mongoose.Schema({
   attachedinfo: String,
 });
 //--------------------------------------------
+
+
 doctorSchema.virtual("patientsAll", {
   ref: "Patient", //this field works in conjuction with foreignField
   localField: "_id", //this is the local field and should be localField===foreignField when values are assigned

@@ -22,10 +22,11 @@ import { ResetpasswordwithtokenModule } from './components/resetpasswordwithtoke
 import { UserPanelModule } from './components/user-panel/user-panel.module';
 import { HeaderComponent } from './components/finalreport/header/header.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RetreivedComponent } from './components/finalreport/retreived/retreived.component';
 
 
 @NgModule({
-  declarations: [LayoutComponent, MenuComponent, UserSideBarMenuComponent, HeaderComponent],
+  declarations: [LayoutComponent, MenuComponent, UserSideBarMenuComponent, HeaderComponent, RetreivedComponent],
   imports: [
     //----------------------------------
     WelcomeModule,

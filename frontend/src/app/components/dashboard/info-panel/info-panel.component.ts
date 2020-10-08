@@ -62,6 +62,11 @@ export class InfoPanelComponent implements OnInit {
     const user: User = this.authenticationService.getCurrentUser();
     return user ? user.formSubmitted : [];
   }
+
+  getUserFinalForms() {
+    const user: User = this.authenticationService.getCurrentUser();
+    return user ? user.finalReport_Submitted : [];
+  }
   //----------------------------------------
 }
 //-----------------------------------------

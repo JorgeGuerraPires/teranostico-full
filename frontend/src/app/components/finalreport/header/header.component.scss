@@ -1,5 +1,11 @@
+// mat-grid-tile{
+//   margin-left: 0.1%;
+//   margin-right: 0.1%;
+// }
+
+
 .grid-list-container {
-    margin: 16px;
+    // margin: 16px;
   }
 
 .card-content {
@@ -19,11 +25,21 @@
 
 }
 
+button{
+  margin-right: 1rem;
+}
+
 .action_buttons{
   margin-left: 3rem;
+  margin-top: 3rem;
 
 }
 
 .example-full-width {
   width: 100%;
+}
+
+
+td {
+  padding-right: 8px;
 }

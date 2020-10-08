@@ -1,0 +1,44 @@
+<div ngClass.gt-md="form-page" ngClass.lt-md="form-page-xs" fxFlex.lt-md="90%">
+    <mat-divider></mat-divider>
+    <h1>Patient final report</h1>
+    <!--  -->
+    <h4 *ngIf="this.finalReport._id"> Patient Final Report internal id: <span
+            class="badge badge-success">{{this.finalReport._id}}</span> </h4>
+    <h4 *ngIf="this.finalReport._id"> submitted by: <span
+            class="badge badge-success">{{this.finalReport.submittedBy}}</span> </h4>
+
+    <!--  -->
+    <mat-divider></mat-divider>
+
+    <!--  -->
+    <!-- I need to do this for each card from the header! -->
+    <h2 *ngIf="patient">Patient</h2>
+    <mat-table [dataSource]="patient">
+        <!-- Position Column -->
+        <ng-container matColumnDef="tag">
+            <!-- <mat-header-cell *matHeaderCellDef> No. </mat-header-cell> -->
+            <mat-cell *matCellDef="let element"> {{element.tag}} </mat-cell>
+        </ng-container>
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="value">
+            <!-- <mat-header-cell *matHeaderCellDef> No. </mat-header-cell> -->
+            <mat-cell *matCellDef="let element"> {{element.value}} </mat-cell>
+        </ng-container>
+
+        <!-- <mat-header-row style="display: none;"></mat-header-row> -->
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <!--  -->
+</div>
+
+<section class="card-content">
+
+    <p><strong>Note from the programmer:</strong> <span class="font-italic"> this version of this report is not
+            small devices friendly, any responsiveness is thanks to Angular! Hence, it is advisable to use a computer
+            for seeing this form.</span>
+    </p>
+    <p>Form version: 1.0.0</p>
+
+</section>
