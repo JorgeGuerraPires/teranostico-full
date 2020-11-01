@@ -10,3 +10,6 @@ git push -u origin master
 …or push an existing repository from the command line
 git remote add origin https://github.com/JorgeGuerraPires/Teranostico-v.-4.0.0-.git
 git push -u origin master
+
+
+The issue of image: one must copy the asset folder from the frontend to the folder build, all the asset folder!

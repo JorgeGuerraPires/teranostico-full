@@ -63,13 +63,13 @@ export class RetrievedComponent implements OnInit {
         ];
 
         this.dataSourcePage1 = [
-          { tag: "Data da coleta:", value: this.form.form1.sampleDate },
-          { tag: "Coletor:", value: this.form.form1.collectorName },
-          { tag: "Instituição:", value: this.form.form1.institution },
-          { tag: "Prontuário:", value: this.form.form1.medicalrecord },
-          { tag: "Nome:", value: this.form.form1.name },
-          { tag: "Nome da mãe:", value: this.form.form1.mothername },
-          { tag: "Data Nascimento:", value: this.form.form1.birthday }
+          { tag: "Collecting date:", value: this.form.form1.sampleDate },
+          { tag: "Who collected?", value: this.form.form1.collectorName },
+          { tag: "Institution:", value: this.form.form1.institution },
+          { tag: "medical record:", value: this.form.form1.medicalrecord },
+          { tag: "Name:", value: this.form.form1.name },
+          { tag: "Mother's name:", value: this.form.form1.mothername },
+          { tag: "Birthday:", value: this.form.form1.birthday }
         ];
 
         this.dataSourcePage2 = [

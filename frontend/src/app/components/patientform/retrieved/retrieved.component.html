@@ -22,8 +22,8 @@
     </mat-table>
     <!--  -->
     <!--  -->
-    <h2 *ngIf="dataSourcePage1">FICHA DE COLETA INICIAL</h2>
-    <h3 *ngIf="dataSourcePage1">Página #1: IDENTIFICAÇÃO</h3>
+    <h2 *ngIf="dataSourcePage1">Initial collecting File</h2>
+    <h3 *ngIf="dataSourcePage1">Page #1: identification</h3>
     <mat-table [dataSource]="dataSourcePage1">
         <!--  -->
         <ng-container matColumnDef="tag">
@@ -34,10 +34,10 @@
         <ng-container matColumnDef="value">
             <mat-cell *matCellDef="let element">
                 <!-- {{element.tag==='Data da coleta:'?  element.value | date: 'dd/MM/yyyy': element.value}}  -->
-                <ng-container *ngIf="element.tag ==='Data da coleta:' || element.tag ==='Data Nascimento:' ">
+                <ng-container *ngIf="element.tag ==='Collecting date:' || element.tag ==='Birthday:' ">
                     {{ element.value | date: 'dd/MM/yyyy'}}
                 </ng-container>
-                <ng-container *ngIf="element.tag !=='Data da coleta:' && element.tag !=='Data Nascimento:'">
+                <ng-container *ngIf="element.tag !=='Collecting date:' && element.tag !=='Birthday:'">
                     {{ element.value }}</ng-container>
 
             </mat-cell>
@@ -61,10 +61,10 @@
         <ng-container matColumnDef="value">
             <mat-cell *matCellDef="let element">
                 <!-- {{element.tag==='Data da coleta:'?  element.value | date: 'dd/MM/yyyy': element.value}}  -->
-                <ng-container *ngIf="element.tag ==='Data da coleta:' || element.tag ==='Data Nascimento:' ">
+                <ng-container *ngIf="element.tag ==='Collecting date:' || element.tag ==='Birthday:' ">
                     {{ element.value | date: 'dd/MM/yyyy'}}
                 </ng-container>
-                <ng-container *ngIf="element.tag !=='Data da coleta:' && element.tag !=='Data Nascimento:'">
+                <ng-container *ngIf="element.tag !=='Collecting date:' && element.tag !=='Birthday:'">
                     {{ element.value }}</ng-container>
             </mat-cell>
         </ng-container>

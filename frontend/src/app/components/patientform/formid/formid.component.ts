@@ -32,9 +32,9 @@ export class FormidComponent implements OnInit {
 
   //----------------------------------------------------
   privacyoption: string[] = [
-    "Todas as informações que possam ser disponibilizadas", // nivel 1
-    "Somente o necessário relacionado ao meu caso", // nivel 2
-    "Somente o Resultado final" // nivel 3
+    "All the information that can be made available", // nivel 1
+    "The minimum necessary", // nivel 2
+    "Just the final result" // nivel 3
   ];
   //-----------------------------------------------------
 

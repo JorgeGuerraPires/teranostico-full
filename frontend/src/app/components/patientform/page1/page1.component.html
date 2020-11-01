@@ -8,8 +8,8 @@
                 <!--  Header-->
                 <mat-card-header>
                     <mat-card-title>
-                        <h2>FICHA DE COLETA INICIAL</h2>
-                        <h3>Página #1: IDENTIFICAÇÃO</h3>
+                        <h2>Initial collecting file</h2>
+                        <h3>Page #1: identification</h3>
                     </mat-card-title>
                 </mat-card-header>
                 <!--  -->
@@ -18,7 +18,7 @@
 
                     <form [formGroup]="fields">
                         <mat-form-field>
-                            <mat-label>Data da coleta:</mat-label>
+                            <mat-label> Collecting date</mat-label>
                             <input matInput [matDatepicker]="picker" formControlName="sampleDate">
                             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                             <mat-datepicker #picker></mat-datepicker>
@@ -32,7 +32,7 @@
 
                         <!-- collector name input -->
                         <mat-form-field class="example-full-width">
-                            <mat-label>Coletor</mat-label>
+                            <mat-label>Who collected?</mat-label>
                             <input matInput placeholder="e.g., Pedro Cabral" formControlName="collectorName"
                                 type="text">
                             <!-- Validation messaging checking -->
@@ -47,7 +47,7 @@
 
                         <!-- collector name input -->
                         <mat-form-field class="example-full-width">
-                            <mat-label>Instituição:</mat-label>
+                            <mat-label> Institution</mat-label>
                             <input matInput placeholder="e.g., Pedro Cabral" formControlName="institution" type="text">
                             <!-- Validation messaging checking -->
                             <mat-error
@@ -60,7 +60,7 @@
 
                         <!--  Prontuário input -->
                         <mat-form-field class="example-full-width">
-                            <mat-label>Prontuário:</mat-label>
+                            <mat-label>medical record</mat-label>
                             <input matInput placeholder="e.g., Pedro Cabral" formControlName="medicalrecord"
                                 type="text">
                             <!-- Validation messaging checking -->
@@ -74,7 +74,7 @@
 
                         <!--  Prontuário input -->
                         <mat-form-field class="example-full-width">
-                            <mat-label>Nome:</mat-label>
+                            <mat-label>name</mat-label>
                             <input matInput placeholder="e.g., Pedro Cabral" formControlName="name" type="text">
                             <!-- Validation messaging checking -->
                             <mat-error *ngIf="!fields.controls['name'].dirty && fields.controls['name'].touched">
@@ -91,7 +91,7 @@
 
                         <!--  Prontuário input -->
                         <mat-form-field class="example-full-width">
-                            <mat-label>Nome da mãe:</mat-label>
+                            <mat-label>Mother's name</mat-label>
                             <input matInput placeholder="e.g., Pedro Cabral" formControlName="mothername" type="text">
                             <!-- Validation messaging checking -->
                             <mat-error
@@ -110,7 +110,7 @@
 
                         <!--  -->
                         <mat-form-field>
-                            <mat-label>Data Nascimento:</mat-label>
+                            <mat-label> Birthday</mat-label>
                             <input matInput [matDatepicker]="birthday_picker" formControlName="birthday">
                             <mat-datepicker-toggle matSuffix [for]="birthday_picker"></mat-datepicker-toggle>
                             <mat-datepicker #birthday_picker></mat-datepicker>

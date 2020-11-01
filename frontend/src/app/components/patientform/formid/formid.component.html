@@ -18,7 +18,7 @@
 
                         <!-- Email of the responsible -->
                         <mat-form-field class="example-full-width" appearance="fill">
-                            <mat-label>Email do responsável</mat-label>
+                            <mat-label>Responsible Email (e.g., Doctor)</mat-label>
                             <input matInput placeholder="e.g., drhouse@awesome.com" formControlName="emaildr">
                             <!-- This is error and validation form section. This section make sure the input fields
                             respective their respective demands -->
@@ -85,7 +85,7 @@
                         </small>
                         <!-- end of Patient id -->
 
-                        <mat-label>Nível de privacidade</mat-label>
+                        <mat-label>privacy level</mat-label>
 
                         <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
                             formControlName="levelofprivacy">
@@ -97,12 +97,9 @@
                         <div *ngIf="this.fields.value.levelofprivacy" class="messaging">
                             Your level of privacy: "{{ this.fields.value.levelofprivacy }}"
                         </div>
-
-
                         <mat-checkbox formControlName="serverConsent">I am aware of that my information will be stored
                             in a server
                             cuidados</mat-checkbox>
-
                         <div *ngIf="this.fields.value.serverConsent" class="messaging">
                             "Server consent: I am aware of that my information will be stored in a server"
                         </div>
