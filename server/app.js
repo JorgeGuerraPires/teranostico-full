@@ -7,9 +7,7 @@ var logger = require('morgan');
 const cors = require("cors"); //we need to cors in order to be able to make calls from different ports
 //----------------------------------------------------
 
-
 var app = express();
-
 
 const util = require("./utils/utils");
 const jwt = require('express-jwt');
@@ -25,6 +23,7 @@ const passport = require("passport"); //Require Passport.
 
 //Connecting and setting database
 require("./models/db");
+require("./controllers/galaxy.controllers");
 
 require("./config/passport")(passport); //Require the strategy config.
 //---------------------------------------
@@ -38,6 +37,8 @@ const formPatientRouter = require('./routes/formPatient.routes');
 const patientRouter = require('./routes/patient.routes');
 const doctorsRouter = require('./routes/doctor.routes');
 const finalReportRouter = require('./routes/finalreport.routes');
+const galaxyRouter = require('./routes/galaxy.routes');
+const miscellaneousRouter = require('./routes/miscellaneous.routes');
 //---------------------------------------------------
 
 app.use(logger('dev'));
@@ -49,6 +50,8 @@ app.use(express.static(path.join(__dirname, "./build/public")));
 
 
 //------------------------------------------------------------------------------------------------
+app.use('/api/miscellaneous', miscellaneousRouter);
+
 app.use('/api/admin',
   passport.authenticate("jwt", { session: false }), jwt({ secret: process.env.JWT_SECRET }), //this will double check the jwt(e.g., validity)
   util.isAdmin, //make sure the user has administration level
@@ -61,6 +64,17 @@ app.use(
   '/api/user', passport.authenticate("jwt", { session: false }), jwt({ secret: process.env.JWT_SECRET }), //this will double check the jwt(e.g., validity)
   userRouter);
 //------------------------------------------------------------
+
+
+//-------------------------------------------------------------
+//passport.authenticate("jwt", { session: false }), jwt({ secret: process.env.JWT_SECRET }),
+app.use(
+  '/api/galaxy',  //this will double check the jwt(e.g., validity)
+  galaxyRouter);
+//------------------------------------------------------------
+
+
+
 //--------------------------------------------------------
 
 app.use('/api/patient/form',

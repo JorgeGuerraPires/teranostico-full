@@ -1,0 +1,60 @@
+<!-- 19 11 20 I have tried to create sorting, I can try again another time -->
+
+<!-- <button mat-button color="primary" (click)="getGeneTargets()">Load gene targets</button> -->
+<!-- <div *ngIf="dataSource.length===0">no target for this patient</div> -->
+
+<section class="table">
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort matSortActive="connections"
+        matSortDisableClear matSortDirection="desc">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="uniprotKB">
+            <th mat-header-cell *matHeaderCellDef> uniprotKB </th>
+            <td mat-cell *matCellDef="let element"> {{element.uniprotKB}}
+                (<a href="https://www.uniprot.org/uniprot/{{element.uniprotKB}}" target="_blank">uniprotKB</a>, <a
+                    href="https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q={{element.uniprotKB}}&btnG="
+                    target="_blank">Google
+                    Scholar</a> )
+            </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="geneSymbol">
+            <th mat-header-cell *matHeaderCellDef> geneSymbol </th>
+            <td mat-cell *matCellDef="let element"> {{element.genesymbol}}
+                (<a href="https://www.genecards.org/Search/Keyword?queryString={{element.genesymbol}}"
+                    target="_blank">GeneCards</a>, <a
+                    href="https://pubmed.ncbi.nlm.nih.gov/?term={{element.genesymbol}}" target="_blank">PubMed</a>,
+                <a href="https://scholar.google.com/scholar?hl=en&as_sdt=0%2C5&q={{element.genesymbol}}&btnG="
+                    target="_blank">Google
+                    Scholar</a> )
+            </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="connections">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear> connections </th>
+            <td mat-cell *matCellDef="let element"> {{element.connections}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20, 100, 1000]" showFirstLastButtons></mat-paginator>
+
+</section>
+
+<section class="notes">
+    <h3>Notes</h3>
+
+    <ul>
+        <li>UniprotKB documentation is a third-party website, we are not responsible for the information</li>
+        <li>The active links forwards you to third-party websites, we are not responsible for the information</li>
+    </ul>
+
+</section>

@@ -54,6 +54,7 @@ export class UsersService {
 
       })
     );
+
   }
 
   public deleteUserById(_id: string) {

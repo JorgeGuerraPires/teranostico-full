@@ -1,9 +1,10 @@
 const mongoose = require("mongoose");
 const host = process.env.DB_HOST || "127.0.0.1";
 // const dbURL = `mongodb://${host}/teranostico-app`;
-const dbURL = 'mongodb+srv://jorge:vk388nii@cluster0.tirpz.mongodb.net/jorge?retryWrites=true&w=majority';
+const dbURL = 'mongodb+srv://jorge:vk388nii@cluster0.tirpz.mongodb.net/blooming-harbor-05321?retryWrites=true&w=majority';
 
 const readLine = require("readline");
+const { model } = require("./User");
 
 const connect = () => {
     //connect to mongo
@@ -79,4 +80,5 @@ require("./Doctor");
 require("./Patient");
 require("./FormPatient");
 require("./FinalReport");
+require("./miscellaneous");
 //---------------------------

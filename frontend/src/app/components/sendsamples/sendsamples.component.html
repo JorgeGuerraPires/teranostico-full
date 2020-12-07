@@ -1,0 +1,98 @@
+<div class="container">
+
+
+    <form class="example-form" (ngSubmit)="onSalveForm()">
+        <h4>Patient id</h4>
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="sdfdsf435465" [(ngModel)]="field.patientid" name="patientid" />
+            <mat-hint>This is need to connect with the patient simulation, and other information</mat-hint>
+        </mat-form-field>
+
+        <h4>Recipient</h4>
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="recipient" disabled value="field.company" [(ngModel)]="field.recipient"
+                name="recipient" />
+        </mat-form-field>
+
+        <h4>Package details</h4>
+        <table class="example-full-width" cellspacing="10px">
+            <tr>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Company/service chosen (e.g., Correios/Sedex)"
+                            [(ngModel)]="field.service" name="service" />
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Tracking number (e.g., SS123456789BR)"
+                            [(ngModel)]="field.trackingNumber" name="trackingNumber" />
+                    </mat-form-field>
+                </td>
+            </tr>
+        </table>
+
+        <h4>Sender</h4>
+        <table class="example-full-width" cellspacing="0">
+            <tr>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="First name" [(ngModel)]="field.firstName" name="FirstName" />
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="Long Last Name" [(ngModel)]="field.lastName" name="lastName" />
+                    </mat-form-field>
+                </td>
+            </tr>
+        </table>
+
+        <p>
+            <mat-form-field class="example-full-width">
+                <textarea matInput placeholder="main address" [(ngModel)]="field.address1" name="address">
+  1600 Amphitheatre Pkwy</textarea>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+                <textarea matInput placeholder="Address 2" [(ngModel)]="field.address2" name="address2"></textarea>
+            </mat-form-field>
+        </p>
+
+        <table class="example-full-width" cellspacing="0">
+            <tr>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="City" [(ngModel)]="field.city" name="city" />
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <input matInput placeholder="State" [(ngModel)]="field.state" name="state" />
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field class="example-full-width">
+                        <input matInput #postalCode maxlength="9" placeholder="Postal Code" value="35411-000"
+                            [(ngModel)]="field.postalcode" name="postalCode" />
+                        <mat-hint align="end">{{ postalCode.value.length }} / 9</mat-hint>
+                    </mat-form-field>
+                </td>
+            </tr>
+        </table>
+
+        <h4>Contact information</h4>
+        <mat-form-field class="example-full-width">
+            <span matPrefix>+55 &nbsp;</span>
+            <input type="tel" matInput placeholder="Telephone with local code" [(ngModel)]="field.phoneNumber"
+                name="phone" />
+            <mat-icon matSuffix>mode_edit</mat-icon>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <input matInput placeholder="email" value="example@example.com" [(ngModel)]="field.email" name="email" />
+        </mat-form-field>
+
+        <div><button mat-raised-button color="primary">Save</button></div>
+    </form>
+</div>

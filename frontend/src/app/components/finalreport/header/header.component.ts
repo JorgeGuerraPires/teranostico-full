@@ -38,6 +38,7 @@ export class HeaderComponent implements OnInit {
 
     this.fields = fb.group({
       patient: fb.group({
+        patientid: ["", Validators.required],
         disease: ["", Validators.required],
         Name: ["", Validators.required],
         sex: ["", Validators.required],
@@ -79,6 +80,7 @@ export class HeaderComponent implements OnInit {
   }
 
   save() {
+    console.log(this.fields.value);
     this.finalReportService.submitHeader(this.fields.value)
       .subscribe((res) => {
         // console.log(res)

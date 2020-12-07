@@ -23,10 +23,14 @@ import { UserPanelModule } from './components/user-panel/user-panel.module';
 import { HeaderComponent } from './components/finalreport/header/header.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RetreivedComponent } from './components/finalreport/retreived/retreived.component';
+import { GalaxyComponent } from './components/galaxy/galaxy.component';
+import { MedicalreportComponent } from './components/medicalreport/medicalreport.component';
+import { SendsamplesComponent } from './components/sendsamples/sendsamples.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [LayoutComponent, MenuComponent, UserSideBarMenuComponent, HeaderComponent, RetreivedComponent],
+  declarations: [SendsamplesComponent, LayoutComponent, MenuComponent, UserSideBarMenuComponent, HeaderComponent, RetreivedComponent, GalaxyComponent, MedicalreportComponent],
   imports: [
     //----------------------------------
     WelcomeModule,
@@ -37,6 +41,7 @@ import { RetreivedComponent } from './components/finalreport/retreived/retreived
     ResetpasswordModule,
     ResetpasswordwithtokenModule,
     UserPanelModule,
+    FormsModule,
     //-----------------------------------
 
 
@@ -56,6 +61,7 @@ import { RetreivedComponent } from './components/finalreport/retreived/retreived
     //------------------------------------------------
 
   ],
+  //(18/11/20):  I have commented out the hash because I am no longer using laizy load
   providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
   bootstrap: [LayoutComponent]
 })

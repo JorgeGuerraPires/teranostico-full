@@ -10,6 +10,8 @@ const patientSchema = new mongoose.Schema({
     birthday: String, //date of birth
     informationForm: [{ type: mongoose.SchemaTypes.ObjectId, ref: "FormPatient" }], //this is for the general information form
     doctor: { type: mongoose.SchemaTypes.ObjectId, ref: "Doctor" }, //Patient's doctor
+    samplesInfo: [{ type: mongoose.SchemaTypes.ObjectId, ref: "SendingSamples" }],
+    finalreport: [{ type: mongoose.SchemaTypes.ObjectId, ref: "FinalReport" }]
 });
 //--------------------------------------------
 

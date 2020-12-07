@@ -14,6 +14,9 @@ import { ResetpasswordwithtokenComponent } from './components/resetpasswordwitht
 import { UserPanelComponent } from './components/user-panel/user-panel.component';
 import { HeaderComponent } from './components/finalreport/header/header.component';
 import { RetreivedComponent } from './components/finalreport/retreived/retreived.component';
+import { GalaxyComponent } from './components/galaxy/galaxy.component';
+import { MedicalreportComponent } from './components/medicalreport/medicalreport.component';
+import { SendsamplesComponent } from './components/sendsamples/sendsamples.component';
 // import { UnsavedChangesGuard } from './components/patientform/formid/unsaved-changes.guard';
 
 
@@ -120,6 +123,26 @@ const routes: Routes = [
     //note 31/08/2020 -> maybe add a guards for unsaved chances
   },
   //----------------------------------------------------------
+  {
+    path: "galaxy/medicalreport",
+    component: MedicalreportComponent,
+    canActivate: [ProtectedGuard]
+  },
+
+  {
+    path: "sendingsamples",
+    component: SendsamplesComponent,
+    canActivate: [ProtectedGuard]
+  },
+
+  {
+    path: "galaxy/:patiendid",
+    component: GalaxyComponent,
+    canActivate: [ProtectedGuard]
+  },
+
+
+  //--------------------------------------------------------------
 
   //---------------------------------------------------------------
 ];

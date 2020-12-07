@@ -4,15 +4,33 @@
     </button>
 
     <mat-menu #menu="matMenu">
+        <!-- This the main menu for administrative functions -->
         <button mat-menu-item routerLink="userpanel"
             *ngIf="this.authenticationService.getCurrentUser().level==='admin'">
             <fa-icon [icon]="faUsers"></fa-icon> User Administration
         </button>
+        <!--  -->
+        <!-- This is the main menu for submissions -->
         <button mat-menu-item [matMenuTriggerFor]="patientforms">
             <fa-icon [icon]="faCheckSquare"></fa-icon> Submit
         </button>
+        <!--  -->
+        <!-- This the main menu for final medical report -->
+        <button mat-menu-item [matMenuTriggerFor]="medicalreport">
+            <fa-icon [icon]="faCheckSquare"></fa-icon> Retrieve
+        </button>
+        <!--  -->
 
     </mat-menu>
+
+    <!-- Medical report -->
+    <mat-menu #medicalreport="matMenu">
+        <button mat-menu-item routerLink="galaxy/medicalreport">
+            <fa-icon [icon]="faLaptopCode"></fa-icon> gene targets table
+        </button>
+    </mat-menu>
+    <!--  -->
+
 
     <mat-menu #patientforms="matMenu">
         <button mat-menu-item routerLink="patientform/formid">
@@ -21,6 +39,10 @@
 
         <button mat-menu-item routerLink="finalreport/header">
             <fa-icon [icon]="faHospitalUser"></fa-icon> Final patient report
+        </button>
+
+        <button mat-menu-item routerLink="sendingsamples">
+            <fa-icon [icon]="faShippingFast"></fa-icon> Register sent samples
         </button>
 
     </mat-menu>

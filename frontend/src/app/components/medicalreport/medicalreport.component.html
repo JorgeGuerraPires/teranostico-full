@@ -1,0 +1,19 @@
+<!--  -->
+<div class="searchcard">
+    <h1>Gene targets</h1>
+    <form [formGroup]="searchForm" class="form">
+        <mat-form-field class="form__field">
+            <input matInput type="text" placeholder="patiend id" formControlName="patientid">
+            <mat-hint>This is the patient id, as it was entered when submitting the patient main form</mat-hint>
+
+            <!-- <mat-error>Title is too short.</mat-error> -->
+        </mat-form-field>
+        <button class="form__submit" color="primary" mat-raised-button (click)="search()">Load gene targets</button>
+    </form>
+</div>
+<!--  -->
+<!--  -->
+<div class="targetsTable">
+    <ter-galaxy [patientid]="patientid"></ter-galaxy>
+</div>
+<!--  -->

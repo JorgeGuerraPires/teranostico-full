@@ -1,6 +1,5 @@
 import { ActivatedRoute } from '@angular/router';
 
-
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl, FormGroupDirective } from '@angular/forms';
 import { faKey } from '@fortawesome/free-solid-svg-icons';

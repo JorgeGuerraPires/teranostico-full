@@ -6,6 +6,7 @@ const User = mongoose.model("User"); //create a model from our schema
 // const util = require("../utils/utils");
 
 
+
 //------------------------------------------
 //This is for the privacy configuration
 const doctorSchema = new mongoose.Schema({

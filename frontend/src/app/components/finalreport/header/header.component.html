@@ -23,6 +23,13 @@
                             <form [formGroup]="fields">
 
                                 <div formGroupName="patient">
+                                    <!-- Disease -->
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label>Patient id</mat-label>
+                                        <input matInput placeholder="e.g., Breast Cancer" formControlName="patientid">
+                                        <mat-error *ngIf="!fields.controls['patient'].dirty "> Required </mat-error>
+                                    </mat-form-field>
+                                    <!--  -->
 
                                     <!-- Disease -->
                                     <mat-form-field class="example-full-width" appearance="fill">
@@ -30,8 +37,8 @@
                                         <input matInput placeholder="e.g., Breast Cancer" formControlName="disease">
                                         <mat-error *ngIf="!fields.controls['patient'].dirty "> Required </mat-error>
                                     </mat-form-field>
-
                                     <!--  -->
+
                                     <!--  -->
 
                                     <!-- Name -->
@@ -58,14 +65,14 @@
                                     <!--  -->
 
                                     <!-- Name -->
-                                    <mat-form-field class="example-full-width" appearance="fill">
+                                    <!-- <mat-form-field class="example-full-width" appearance="fill">
                                         <mat-label>Medical record #</mat-label>
                                         <input matInput placeholder="e.g., dsfsdfdsrw4543gfdgh"
                                             formControlName="Medical_record">
 
                                         <mat-error *ngIf="!fields.controls['patient'].dirty "> Required </mat-error>
 
-                                    </mat-form-field>
+                                    </mat-form-field> -->
                                     <!--  -->
                                 </div>
                                 <!-- end of patient -->
@@ -322,11 +329,6 @@
                 </div>
             </mat-grid-tile>
             <!--  -->
-
-
-
-
-
         </mat-grid-list>
     </div>
 
