@@ -19,9 +19,12 @@ const analysis_type_Ampliseq_seqSchema = new mongoose.Schema({
     Number_of_genes: Number
 });
 
+const GenotypingSchema = new mongoose.Schema({
+    Genotyping: String,
+    Painel_type: String,
+    Customized: String
+});
 //--------------------------------------------
-
-
 
 //------------------------------------------
 //Patient card schema
@@ -64,7 +67,8 @@ const FinalReportSchema = new mongoose.Schema({
     physician: physicianSchema,
     specimen: specimenSchema,
     analysis_type_RNA_seq: analysis_type_RNA_seqSchema,
-    analysis_type_Ampliseq: analysis_type_Ampliseq_seqSchema
+    analysis_type_Ampliseq: analysis_type_Ampliseq_seqSchema,
+    Genotyping: GenotypingSchema
 
 });
 //--------------------------------------------

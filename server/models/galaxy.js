@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 //---------------------------------------------------------
 //Galaxy connection
-const dbURL = 'mongodb+srv://jorge:vk388nii@cluster0.tirpz.mongodb.net/galaxyData?retryWrites=true&w=majority';
+const dbURL = 'mongodb+srv://jorge:tz8GZwaFDz74Z7Y1@cluster0.tirpz.mongodb.net/galaxyData?retryWrites=true&w=majority';
 let logDB = mongoose.createConnection(dbURL, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true });
 //------------------------------------------------------------------
 

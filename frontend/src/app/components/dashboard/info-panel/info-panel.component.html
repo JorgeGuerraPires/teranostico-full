@@ -8,6 +8,13 @@
                 Find here information about your account <mat-icon>info</mat-icon>
             </mat-panel-description>
         </mat-expansion-panel-header>
+        <!--  -->
+        <p>
+            <mat-icon>info</mat-icon> Find here information about your account. Please, contact an administrator if
+            anything is wrong or
+            you need to make changes
+        </p>
+        <!--  -->
         <!-- Main content here! -->
         <div class="userinfo">
             <ter-userinfo></ter-userinfo>
@@ -31,8 +38,17 @@
         </mat-expansion-panel-header>
 
         <ul>
-            <li *ngFor="let item of getUserForms()"> <a [routerLink]="['/patientform/retriveById', item]"
-                    target="_blank">{{item}}</a> </li>
+            <!--  -->
+            <p>
+                <mat-icon>info</mat-icon> You find here a list of active links to the forms submitted by you. Click on
+                the
+                form for having access
+                to the information submitted.
+            </p>
+            <!--  -->
+
+            <li *ngFor="let item of getUserForms(); let i = index"> <a [routerLink]="['/patientform/retriveById', item]"
+                    target="_blank">Form {{i + 1}}</a> </li>
         </ul>
 
         <mat-action-row>
@@ -51,10 +67,16 @@
                 <mat-icon>date_range</mat-icon>
             </mat-panel-description>
         </mat-expansion-panel-header>
+        <!--  -->
+        <p>
+            <mat-icon>info</mat-icon> You find here a list of active links to the patient final reports submitted by
+            you. Click on the form for having access to the information submitted.
+        </p>
+        <!--  -->
 
         <ul>
-            <li *ngFor="let item of getUserFinalForms()"> <a [routerLink]="['/finalreport', item]"
-                    target="_blank">{{item}}</a> </li>
+            <li *ngFor="let item of getUserFinalForms(); let i = index"> <a [routerLink]="['/finalreport', item]"
+                    target="_blank">Report {{i +1 }}</a> </li>
         </ul>
 
         <mat-datepicker #picker></mat-datepicker>

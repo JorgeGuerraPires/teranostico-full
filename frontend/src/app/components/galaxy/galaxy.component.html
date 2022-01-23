@@ -3,6 +3,10 @@
 <!-- <button mat-button color="primary" (click)="getGeneTargets()">Load gene targets</button> -->
 <!-- <div *ngIf="dataSource.length===0">no target for this patient</div> -->
 
+<h2>TARGET IDENTIFIED</h2>
+<p>Based on the expression phenotype (RNA-seq) of the tumor considered, the targets given below are the most relevant to
+    be addressed by chemotherapy or immunotherapy.</p>
+
 <section class="table">
 
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort matSortActive="connections"

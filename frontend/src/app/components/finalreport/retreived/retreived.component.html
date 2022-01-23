@@ -12,6 +12,7 @@
 
     <!--  -->
     <!-- I need to do this for each card from the header! -->
+    <!-- Patient -->
     <h2 *ngIf="patient">Patient</h2>
     <mat-table [dataSource]="patient">
         <!-- Position Column -->
@@ -29,9 +30,78 @@
         <!-- <mat-header-row style="display: none;"></mat-header-row> -->
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
+    <!--  -->
 
+    <!-- Physician -->
+    <h2 *ngIf="patient">Physician</h2>
+    <mat-table [dataSource]="physician">
+        <!-- Position Column -->
+        <ng-container matColumnDef="tag">
+            <!-- <mat-header-cell *matHeaderCellDef> No. </mat-header-cell> -->
+            <mat-cell *matCellDef="let element"> {{element.tag}} </mat-cell>
+        </ng-container>
+        <!-- Position Column -->
+        <ng-container matColumnDef="value">
+            <!-- <mat-header-cell *matHeaderCellDef> No. </mat-header-cell> -->
+            <mat-cell *matCellDef="let element"> {{element.value}} </mat-cell>
+        </ng-container>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <!--  -->
+
+    <!-- Physician -->
+    <h2 *ngIf="patient">Specimen</h2>
+    <mat-table [dataSource]="specimen">
+        <!-- Position Column -->
+        <ng-container matColumnDef="tag">
+            <!-- <mat-header-cell *matHeaderCellDef> No. </mat-header-cell> -->
+            <mat-cell *matCellDef="let element"> {{element.tag}} </mat-cell>
+        </ng-container>
+        <!-- Position Column -->
+        <ng-container matColumnDef="value">
+            <!-- <mat-header-cell *matHeaderCellDef> No. </mat-header-cell> -->
+            <mat-cell *matCellDef="let element">
+                <!-- {{element.value}}  -->
+                <ng-container *ngIf="element.tag ==='Date of reception' || element.tag ==='Date of collection'  ">
+                    {{ element.value | date: 'dd/MM/yyyy'}}
+                </ng-container>
+                <ng-container *ngIf="element.tag !=='Date of reception' && element.tag !=='Date of collection'">
+                    {{ element.value }}
+                </ng-container>
+            </mat-cell>
+        </ng-container>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <!--  -->
+
+    <!-- Physician -->
+    <h2 *ngIf="patient">Analysis type</h2>
+
+    <mat-table [dataSource]="analysis_type">
+        <!-- Position Column -->
+        <ng-container matColumnDef="tag">
+            <!-- <mat-header-cell *matHeaderCellDef> No. </mat-header-cell> -->
+            <mat-cell *matCellDef="let element"> {{element.tag}} </mat-cell>
+        </ng-container>
+        <!-- Position Column -->
+        <ng-container matColumnDef="value">
+            <!-- <mat-header-cell *matHeaderCellDef> No. </mat-header-cell> -->
+            <mat-cell *matCellDef="let element">
+                <!-- {{element.value}}  -->
+                <ng-container *ngIf="element.tag ==='Date of reception' || element.tag ==='Date of collection'  ">
+                    {{ element.value | date: 'dd/MM/yyyy'}}
+                </ng-container>
+                <ng-container *ngIf="element.tag !=='Date of reception' && element.tag !=='Date of collection'">
+                    {{ element.value }}
+                </ng-container>
+            </mat-cell>
+        </ng-container>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <!--  -->
     <!--  -->
 </div>
+
 
 
 <!--  -->
