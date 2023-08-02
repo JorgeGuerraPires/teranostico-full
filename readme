@@ -1,4 +1,8 @@
+This is the raw repository for my postdoctoral fellowship
+Learn more: https://github.com/Teranostico
 
+
+# Note
 …or create a new repository on the command line
 echo "# Teranostico-v.-4.0.0-" >> README.md
 git init
